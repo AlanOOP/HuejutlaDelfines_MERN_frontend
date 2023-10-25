@@ -40,24 +40,24 @@ const Footer = () => {
         </div>
         
         <div className="col-span-5 md:col-span-4 md:col-start-5 lg:col-start-auto lg:col-span-2">
-          <h3 className="text-dark-light font-bold md:text-lg">Company</h3>
+          <h3 className="text-dark-light font-bold md:text-lg">Club</h3>
           <ul className="text-[#959EAD] text-sm mt-5 space-y-4 md:text-base">
             <li>
-              <a href="/">Acerca de</a>
+              <a href="/about">Acerca de</a>
             </li>
             <li>
-              <a href="/">Terminos y Condiciones</a>
+              <a href="/private-policy">Terminos y Condiciones</a>
             </li>
             <li>
-              <a href="/">Politica de Privacidad</a>
+              <a href="/private-policy">Politica de Privacidad</a>
             </li>
             <li>
-              <a href="/">Competencias</a>
+              <a href="/blog">Competencias</a>
             </li>
           </ul>
         </div>
         <div className="col-span-5 md:col-span-4 lg:col-span-2">
-          <h3 className="text-dark-light font-bold md:text-lg">More</h3>
+          <h3 className="text-dark-light font-bold md:text-lg">Más</h3>
           <ul className="text-[#959EAD] text-sm mt-5 space-y-4 md:text-base">
             <li>
               <a href="/">Documentation</a>
