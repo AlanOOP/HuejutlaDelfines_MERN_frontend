@@ -6,7 +6,7 @@ const PrivatePolicy = () => {
     <Layout>
         <div className='my-5 flex flex-col items-center'>
         <div className='flex-col'>
-            <h1 className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-4xl dark:text-white p-4 uppercase">Avisos de privacidad
+            <h1 className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-4xl  p-4 uppercase">Avisos de privacidad
 
             </h1>
         </div>
