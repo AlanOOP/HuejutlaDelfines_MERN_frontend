@@ -13,7 +13,7 @@ const CourseDetail = () => {
   return (
 
     <Layout>
-      <section class="py-10 font-poppins dark:bg-gray-800">
+      <section class="py-10  dark:bg-gray-800">
         <div class="max-w-6xl px-4 mx-auto">
           <div class="flex flex-wrap mb-24 -mx-4">
             <div class="w-full px-4 mb-8 md:w-1/2 md:mb-0">

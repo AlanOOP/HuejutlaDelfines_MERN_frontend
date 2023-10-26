@@ -66,7 +66,7 @@ const Footer = () => {
               <a href="/">License</a>
             </li>
             <li>
-              <a href="/">Changelog</a>
+              <a href="/faq">Preguntas y Respuestas</a>
             </li>
           </ul>
         </div>

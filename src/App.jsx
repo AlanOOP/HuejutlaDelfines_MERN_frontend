@@ -16,6 +16,7 @@ import Contacto from './pages/Contacto';
 import Page404 from './pages/Page404';
 import Profile from './pages/Profile';
 import PrivatePolicy from './pages/PrivatePolicy';
+import FAQ from './pages/FAQ';
 
 
 // privado
@@ -44,6 +45,7 @@ function App() {
           <Route path='/courses' element={<Courses />} />
           <Route path='/course-detail' element={<ProductDetail />} />
           <Route path='/private-policy' element={<PrivatePolicy/>} />
+          <Route path='/faq' element={<FAQ/>} />
 
           {/* private */}
 
