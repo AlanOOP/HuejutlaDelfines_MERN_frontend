@@ -3,11 +3,11 @@ import Layout from '../components/Layout';
 import CoursesHome from '../components/home/CoursesHome';
 
 const Courses = () => {
-  
-    return (
-    
+
+  return (
+
     <Layout>
-        <CoursesHome/>
+      <CoursesHome />
     </Layout>
   )
 }

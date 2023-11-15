@@ -38,7 +38,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        
+
         <div className="col-span-5 md:col-span-4 md:col-start-5 lg:col-start-auto lg:col-span-2">
           <h3 className="text-dark-light font-bold md:text-lg">Club</h3>
           <ul className="text-[#959EAD] text-sm mt-5 space-y-4 md:text-base">
@@ -46,13 +46,13 @@ const Footer = () => {
               <a href="/about">Acerca de</a>
             </li>
             <li>
-              <a href="/private-policy">Terminos y Condiciones</a>
+              <a href="/terms">Terminos y Condiciones</a>
             </li>
             <li>
               <a href="/private-policy">Politica de Privacidad</a>
             </li>
             <li>
-              <a href="/blog">Competencias</a>
+              <a href="/cookies">Aviso de Cookies</a>
             </li>
           </ul>
         </div>
@@ -77,7 +77,7 @@ const Footer = () => {
             className="mx-auto md:mx-0"
           />
           <p className="text-sm text-dark-light text-center mt-4 md:text-left md:text-base lg:text-sm">
-            Build a modern and creative website with crealand
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
           </p>
           <ul className="flex justify-center items-center mt-5 space-x-4 text-gray-300 md:justify-start">
             <li>
@@ -87,7 +87,7 @@ const Footer = () => {
             </li>
             <li>
               <a href="/">
-                <AiFillYoutube className="w-6 h-auto" color='red'/>
+                <AiFillYoutube className="w-6 h-auto" color='red' />
               </a>
             </li>
             <li>
@@ -97,7 +97,7 @@ const Footer = () => {
             </li>
             <li>
               <a href="/">
-                <FaFacebook className="w-6 h-auto" color='blue'/>
+                <FaFacebook className="w-6 h-auto" color='blue' />
               </a>
             </li>
             <li>
