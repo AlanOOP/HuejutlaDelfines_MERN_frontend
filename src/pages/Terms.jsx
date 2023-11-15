@@ -15,13 +15,13 @@ const Terms = () => {
         <Layout>
             <main className='my-5 flex flex-col items-center'>
 
-                <p class="mb-10  font-bold flex justify-end">Última actualización: 14/11/2023</p>
 
                 <h1 className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-4xl  p-4 uppercase">
                     Términos y Condiciones
                 </h1>
 
                 <div className='container w-4/5 text-xl text-justify'>
+                    <p class="mb-10  font-bold flex justify-end">Última actualización: 14/11/2023</p>
                     <h2 class="my-3 text-2xl font-bold flex">Escuela de Natación Huejutla Delfines </h2>
 
                     <p className="text-gray-500 dark:text-gray-400"><span className='font-bold'>Domicilio:</span>Calle Lima 349, colonia Valle del encinal, ciudad Huejutla, municipio o delegación Huejutla, c.p. 43000
