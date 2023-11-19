@@ -19,21 +19,21 @@ const CoursesHome = () => {
 
       </div>
       <div className=" flex flex-wrap md:gap-x-5 gap-y-5 pb-10 items-center justify-center">
-        <CourseCard/>
-        <CourseCard/>
-        <CourseCard/>
-        <CourseCard/>
-        <CourseCard/>
-        <CourseCard/>
-        <CourseCard/>
-        <CourseCard/>
-        <CourseCard/>
-        <CourseCard/>
-        <CourseCard/>
+        <CourseCard />
+        <CourseCard />
+        <CourseCard />
+        <CourseCard />
+        <CourseCard />
+        <CourseCard />
+        <CourseCard />
+        <CourseCard />
+        <CourseCard />
+        <CourseCard />
+        <CourseCard />
       </div>
       <a className="mx-auto flex items-center gap-x-2 font-bold text-primary border-2 border-primary px-6 py-3 rounded-lg">
         <span>Más Cursos</span>
-        <FaArrowRight className="w-3 h-3" />
+
       </a>
     </section>
   )

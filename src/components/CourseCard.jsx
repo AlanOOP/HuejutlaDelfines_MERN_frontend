@@ -1,9 +1,5 @@
 import React from 'react'
 
-import { BsCheckLg } from "react-icons/bs";
-import { AiOutlineClose } from "react-icons/ai";
-
-import { GrFavorite } from 'react-icons/gr'
 
 import { MdFavorite } from 'react-icons/md'
 
@@ -51,7 +47,6 @@ const CourseCard = () => {
         </div>
         <div className="flex justify-between flex-nowrap items-center mt-6">
           <div className="flex items-center gap-x-2 md:gap-x-2.5">
-            <MdFavorite width={40} height={100} color='red' />
             <div className="flex flex-col">
               <h4 className="font-bold  text-dark-soft text-sm md:text-base">
                 Club de Natacion Huejutla Delfines

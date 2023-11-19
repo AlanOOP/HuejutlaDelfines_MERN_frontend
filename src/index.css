@@ -5,4 +5,16 @@
 
 body {
   font-family: 'Inter', sans-serif;
+
+}
+
+.no-styles * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

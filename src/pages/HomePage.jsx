@@ -8,11 +8,10 @@ const HomePage = () => {
 
   return (
     <Layout>
-        <Slider
+      <Slider
+      />
 
-        />
-
-        <CoursesHome/>
+      <CoursesHome />
     </Layout>
   )
 }

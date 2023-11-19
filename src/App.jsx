@@ -19,13 +19,13 @@ import PrivatePolicy from './pages/PrivatePolicy';
 import FAQ from './pages/FAQ';
 import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
+import Accesibility from './pages/Accesibility';
 
 // privado
 
 import AdminLayout from './pages/dashboardAdmin/layout/AdminLayout';
 
 function App() {
-
 
   return (
     <>
@@ -49,18 +49,15 @@ function App() {
           <Route path='/faq' element={<FAQ />} />
           <Route path='/terms' element={<Terms />} />
           <Route path='/cookies' element={<Cookies />} />
-
+          <Route path='/accesibility' element={<Accesibility />} />
 
           {/* private */}
 
           <Route path='/admin/dashboard' element={<AdminLayout />} />
 
-
           <Route path='*' element={<Page404 />} />
 
         </Routes>
-
-
 
       </BrowserRouter>
 
