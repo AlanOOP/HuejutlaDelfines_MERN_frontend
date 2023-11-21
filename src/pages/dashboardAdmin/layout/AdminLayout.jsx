@@ -1,10 +1,13 @@
 import React from 'react'
 import AdminSidebar from '../partials/AdminSidebar';
 import Layout from '../../../components/Layout';
+import Header from '../../../components/Header';
 
 const AdminLayout = ({ children }) => {
   return (
-    <Layout>
+    <div>
+      <Header />
+
       <section className="flex bg-gray-100">
         <AdminSidebar />
         <div className="w-full md:w-11/12 h-full">
@@ -12,7 +15,8 @@ const AdminLayout = ({ children }) => {
           {children}
         </div>
       </section>
-    </Layout>
+    </div>
+
   )
 }
 

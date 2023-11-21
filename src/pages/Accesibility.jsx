@@ -4,11 +4,13 @@ import audioFile from '../assets/audio/77.mp3';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-tailwind/react';
 import { images } from '../constants';
+import useDelf from '../hooks/useDelf';
 
 const Accesibility = () => {
 
     const audioRef = useRef(new Audio(audioFile));
-    const [isPlaying, setIsPlaying] = useState(false);
+    const { isPlaying , setIsPlaying} = useDelf();
+
 
     const handleMouseEnter = () => {
         if (isPlaying) {
@@ -22,15 +24,17 @@ const Accesibility = () => {
         }
     }
 
+    const handleOut = () => {
+        if (isPlaying) {
+            audioRef.current.pause();
+            setIsPlaying(!isPlaying);
+        }
+    }
+
     return (
         <Layout>
             <section className='flex flex-col container mx-auto px-5 py-10'>
-                <Button
-                    className='mx-auto flex items-center my-5 gap-x-2 font-bold text-primary border-2 border-primary px-6 py-3 rounded-lg'
-                    onClick={() => setIsPlaying(!isPlaying)}
-                >
-                    Menu de información
-                </Button>
+                
                 <div className='flex flex-wrap mx-auto w-10/12 md:gap-x-5 gap-y-5 pb-10 items-center justify-center'>
 
 
@@ -38,6 +42,7 @@ const Accesibility = () => {
                         className='flex bg-gradient-to-r from-cyan-400 to-blue-500 rounded-xl p-5 h-60 w-72 items-center justify-center hover:transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
+                        onClick={ handleOut }
                     >
                         <div className='flex flex-col items-center justify-center space-y-5'>
                             <img src={images.iconoBack} alt="logo" className='w-20 h-20' />

@@ -11,6 +11,15 @@ import iconoAbout from '../assets/images/about.png';
 import iconoBack from '../assets/images/regresar.png';
 import iconoHome from '../assets/images/home.png';
 
+
+
+//iconos
+
+import iconoCiego from '../assets/icons/iconoCiego.png';
+import iconoDis from '../assets/icons/iconoDis.png';
+import iconoHTML from '../assets/icons/iconoHTML.png';
+import iconoSor from '../assets/icons/iconoSor.png';
+
 const images = {
     Logo,
     Hero,
@@ -23,7 +32,12 @@ const images = {
     iconoContacto,
     iconoAbout,
     iconoBack,
-    iconoHome
+    iconoHome,
+    iconoCiego,
+    iconoDis,
+    iconoHTML,
+    iconoSor
 };
+
 
 export default images;

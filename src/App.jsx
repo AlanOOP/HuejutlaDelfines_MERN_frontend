@@ -21,9 +21,12 @@ import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
 import Accesibility from './pages/Accesibility';
 
+import { HomeProvider } from './context/homeProvider';
+
 // privado
 
 import AdminLayout from './pages/dashboardAdmin/layout/AdminLayout';
+import HomeAdmin from './components/admin/HomeAdmin';
 
 function App() {
 
@@ -31,35 +34,36 @@ function App() {
     <>
 
       <BrowserRouter>
-        <ScrollTop />
-        <Routes>
+        <HomeProvider>
+          <ScrollTop />
+          <Routes>
 
-          {/* public */}
+            {/* public */}
 
-          <Route index path='/' element={<HomePage />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/about' element={<AboutMe />} />
-          <Route path='/contact' element={<Contacto />} />
-          <Route path='/blog' element={<Blog />} />
-          <Route path='/courses' element={<Courses />} />
-          <Route path='/course-detail' element={<ProductDetail />} />
-          <Route path='/private-policy' element={<PrivatePolicy />} />
-          <Route path='/faq' element={<FAQ />} />
-          <Route path='/terms' element={<Terms />} />
-          <Route path='/cookies' element={<Cookies />} />
-          <Route path='/accesibility' element={<Accesibility />} />
+            <Route index path='/' element={<HomePage />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/about' element={<AboutMe />} />
+            <Route path='/contact' element={<Contacto />} />
+            <Route path='/blog' element={<Blog />} />
+            <Route path='/courses' element={<Courses />} />
+            <Route path='/course-detail' element={<ProductDetail />} />
+            <Route path='/private-policy' element={<PrivatePolicy />} />
+            <Route path='/faq' element={<FAQ />} />
+            <Route path='/terms' element={<Terms />} />
+            <Route path='/cookies' element={<Cookies />} />
+            <Route path='/accesibility' element={<Accesibility />} />
 
-          {/* private */}
+            {/* private */}
 
-          <Route path='/admin/dashboard' element={<AdminLayout />} />
+            <Route path='/admin/dashboard' element={<HomeAdmin />} />
 
-          <Route path='*' element={<Page404 />} />
+            <Route path='*' element={<Page404 />} />
+          </Routes>
+        </HomeProvider>
 
-        </Routes>
-
-      </BrowserRouter>
+      </BrowserRouter >
 
     </>
   )

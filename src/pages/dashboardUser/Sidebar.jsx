@@ -30,7 +30,7 @@ const Sidebar = () => {
             : ""
             }  px-4 py-4 hover:bg-gray-200 cursor-pointer`}
         >
-          My Orders
+          Progreso
         </div>
         <hr />
         <div
@@ -40,14 +40,14 @@ const Sidebar = () => {
             : ""
             }  px-4 py-4 hover:bg-gray-200 cursor-pointer`}
         >
-          My Accounts
+          Mi Cuenta
         </div>
         <hr />
         <div
           //onClick={(e) => history.push("/wish-list")}
           className={` px-4 py-4 hover:bg-gray-200 cursor-pointer`}
         >
-          My Wishlist
+          Mis Favoritos
         </div>
         <hr />
         <div
@@ -57,7 +57,7 @@ const Sidebar = () => {
             : ""
             }  px-4 py-4 hover:bg-gray-200 cursor-pointer`}
         >
-          Setting
+          Configuración
         </div>
         <hr />
         <div
@@ -67,7 +67,7 @@ const Sidebar = () => {
             : ""
             }  px-4 py-4 hover:bg-gray-200 cursor-pointer`}
         >
-          Logout
+          Cerrar Sesión
         </div>
       </div>
     </div>

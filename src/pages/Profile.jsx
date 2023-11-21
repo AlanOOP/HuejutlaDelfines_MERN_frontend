@@ -17,7 +17,7 @@ const Profile = () => {
               
            
             <div className="flex flex-col space-y-2">
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">Nombre:</label>
               <input
                 // onChange={(e) => setFdata({ ...fData, name: e.target.value })}
                 value="Alan Alexis Hernandez Francisco"
@@ -35,12 +35,12 @@ const Profile = () => {
                 id="email"
                 className="cursor-not-allowed border px-4 py-2 bg-gray-200 w-full focus:outline-none focus:cursor-not-allowed"
               />
-              <span className="text-xs text-gray-500">
+              <span className="text-xs text-sky-800 ">
                 No puedes cambiar tu email
               </span>
             </div>
             <div className="flex flex-col space-y-2">
-              <label htmlFor="number">Phone Number</label>
+              <label htmlFor="number">Numero de telefono:</label>
               <input
                 // onChange={(e) => setFdata({ ...fData, phone: e.target.value })}
                 value="7717128042"
@@ -53,7 +53,7 @@ const Profile = () => {
               // onClick={(e) => handleSubmit()}
               className="w-full text-center cursor-pointer px-4 py-2 text-gray-100 bg-blue-600"
             >
-              Update Information
+              Actualizar Información
             </div>
           </div>
         </div>
