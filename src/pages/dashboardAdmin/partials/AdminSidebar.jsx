@@ -36,9 +36,10 @@ const AdminSidebar = () => {
         <span className="hover:text-gray-800">Dashboard</span>
       </div>
       <hr className="border-b border-gray-200" />
-      <div
-        onClick={(e) => history.push("/admin/dashboard/categories")}
-        className={`${location.pathname === "/admin/dashboard/categories"
+
+      <Link
+        to="/admin/dashboard/courses"
+        className={`${location.pathname === "/admin/dashboard/courses"
           ? "border-r-4 border-gray-800 bg-gray-100"
           : ""
           } hover:bg-gray-200 cursor-pointer flex flex-col items-center justify-center py-6`}
@@ -60,10 +61,12 @@ const AdminSidebar = () => {
           </svg>
         </span>
         <span className="hover:text-gray-800">Cursos</span>
-      </div>
+      </Link>
       <hr className="border-b border-gray-200" />
-      <div
-        onClick={(e) => history.push("/admin/dashboard/products")}
+
+
+      <Link
+        to="/admin/dashboard/products"
         className={`${location.pathname === "/admin/dashboard/products"
           ? "border-r-4 border-gray-800 bg-gray-100"
           : ""
@@ -86,7 +89,7 @@ const AdminSidebar = () => {
           </svg>
         </span>
         <span className="hover:text-gray-800">Competencias</span>
-      </div>
+      </Link>
       <hr className="border-b border-gray-200" />
       <div
         onClick={(e) => history.push("/admin/dashboard/orders")}

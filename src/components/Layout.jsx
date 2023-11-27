@@ -8,6 +8,7 @@ import useDelf from '../hooks/useDelf';
 
 const Layout = ({ children }) => {
 
+
   const { isStyle, setIsStyle, isPlaying, setIsPlaying } = useDelf();
 
   return (
@@ -21,16 +22,19 @@ const Layout = ({ children }) => {
             onClick={e => setIsPlaying(!isPlaying)}
             to='/accesibility'
             className='bg-purple-400 text-white px-4 py-2  hover:scale-x-150 rounded-sm'
+            title='Accesibilidad para ciegos'
           >
             <img src={images.iconoCiego} alt="" width={35} height={35} />
           </Link>
           <Link
+            onClick={e => setIsPlaying(!isPlaying)}
             to='/accesibility'
             className='bg-yellow-400 text-white px-4 py-2 hover:scale-x-150 rounded-sm'
           >
             <img src={images.iconoSor} alt="" width={35} height={35} />
           </Link>
           <Link
+            onClick={e => setIsPlaying(!isPlaying)}
             to='/accesibility'
             className='bg-green-500 text-white px-4 py-2 hover:scale-x-150 rounded-sm'
           >

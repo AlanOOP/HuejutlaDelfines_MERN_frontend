@@ -36,7 +36,7 @@ const images = {
     iconoCiego,
     iconoDis,
     iconoHTML,
-    iconoSor
+    iconoSor,
 };
 
 

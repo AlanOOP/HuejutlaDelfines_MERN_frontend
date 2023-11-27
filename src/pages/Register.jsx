@@ -51,7 +51,7 @@ const Register = () => {
 
                 <label for="date">
                   <p className="font-medium text-slate-700 pb-2">Fecha de Nacimiento:</p>
-                
+
 
 
                   <div class="relative max-w-sm">

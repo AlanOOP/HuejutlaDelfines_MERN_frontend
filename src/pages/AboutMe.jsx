@@ -23,8 +23,9 @@ const AboutMe = () => {
               <img src={images.ImgVision} alt="About Us Image" class="object-cover rounded-lg shadow-md" />
             </div>
           </div>
+
         </div>
-        
+
         {/* Vision */}
 
         <div class="container mx-auto py-16 px-4 sm:px-6 lg:px-8">

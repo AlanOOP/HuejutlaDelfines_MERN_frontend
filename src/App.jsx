@@ -20,6 +20,9 @@ import FAQ from './pages/FAQ';
 import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
 import Accesibility from './pages/Accesibility';
+import { toast, ToastContainer } from 'react-toastify'
+
+
 
 import { HomeProvider } from './context/homeProvider';
 
@@ -27,6 +30,9 @@ import { HomeProvider } from './context/homeProvider';
 
 import AdminLayout from './pages/dashboardAdmin/layout/AdminLayout';
 import HomeAdmin from './components/admin/HomeAdmin';
+
+import CoursesAdmin from './pages/dashboardAdmin/CoursesAdmin';
+import AddCourse from './pages/dashboardAdmin/AddCourse';
 
 function App() {
 
@@ -55,9 +61,15 @@ function App() {
             <Route path='/cookies' element={<Cookies />} />
             <Route path='/accesibility' element={<Accesibility />} />
 
+
+
             {/* private */}
 
             <Route path='/admin/dashboard' element={<HomeAdmin />} />
+            <Route path='/admin/dashboard/courses' element={<CoursesAdmin />} />
+            <Route path='/admin/dashboard/addCourse' element={<AddCourse />} />
+
+            {/* 404 */}
 
             <Route path='*' element={<Page404 />} />
           </Routes>

@@ -4,11 +4,12 @@
 
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
 
 }
 
 .no-styles * {
+  color: #000;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -17,4 +18,19 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.no-styles img,
+.no-styles svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin: 0 auto;
+}
+
+.background {
+  background-image: url('./assets/images/textura.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import Layout from '../components/Layout'
-import audioFile from '../assets/audio/77.mp3';
+// import audioFile from '../assets/audio/77.mp3';
+import audioFile from '../assets/audio/cursos.mp3';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-tailwind/react';
 import { images } from '../constants';
@@ -9,7 +10,7 @@ import useDelf from '../hooks/useDelf';
 const Accesibility = () => {
 
     const audioRef = useRef(new Audio(audioFile));
-    const { isPlaying , setIsPlaying} = useDelf();
+    const { isPlaying, setIsPlaying } = useDelf();
 
 
     const handleMouseEnter = () => {
@@ -34,7 +35,7 @@ const Accesibility = () => {
     return (
         <Layout>
             <section className='flex flex-col container mx-auto px-5 py-10'>
-                
+
                 <div className='flex flex-wrap mx-auto w-10/12 md:gap-x-5 gap-y-5 pb-10 items-center justify-center'>
 
 
@@ -42,13 +43,14 @@ const Accesibility = () => {
                         className='flex bg-gradient-to-r from-cyan-400 to-blue-500 rounded-xl p-5 h-60 w-72 items-center justify-center hover:transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
-                        onClick={ handleOut }
+                        onClick={handleOut}
                     >
                         <div className='flex flex-col items-center justify-center space-y-5'>
                             <img src={images.iconoBack} alt="logo" className='w-20 h-20' />
                             <p className='text-3xl uppercase font-bold text-white'>Regresar</p>
                         </div>
                     </Link>
+
                     <Link to='/'
                         className='flex bg-gradient-to-tr from-amber-500 to-yellow-500 rounded-xl p-5 h-60 w-72 items-center justify-center hover:transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'
                         onMouseEnter={handleMouseEnter}
