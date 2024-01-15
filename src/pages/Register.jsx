@@ -48,7 +48,14 @@ const Register = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(user),
+        body: {
+          name: user.name,
+          email: user.email,
+          app: user.app,
+          tel: user.tel,
+          date: user.date,
+          password: user.password,
+        }
       })
       const data = await response.json()
       if (data.status === 'success') {
