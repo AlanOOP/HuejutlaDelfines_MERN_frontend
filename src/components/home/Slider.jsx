@@ -41,7 +41,7 @@ const Slider = () => {
               Natacion
             </li>
             <li className="rounded-lg bg-primary bg-opacity-10 px-3 py-1.5 text-primary font-semibold">
-              Entrenamientos
+              Tecnicas de Nado
             </li>
           </ul>
         </div>
