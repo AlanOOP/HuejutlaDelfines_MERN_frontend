@@ -33,6 +33,7 @@ import HomeAdmin from './components/admin/HomeAdmin';
 
 import CoursesAdmin from './pages/dashboardAdmin/CoursesAdmin';
 import AddCourse from './pages/dashboardAdmin/AddCourse';
+import Page403 from './pages/Page403';
 
 function App() {
 
@@ -61,17 +62,28 @@ function App() {
             <Route path='/cookies' element={<Cookies />} />
             <Route path='/accesibility' element={<Accesibility />} />
 
-
-
             {/* private */}
 
             <Route path='/admin/dashboard' element={<HomeAdmin />} />
+            <Route path='/admin' element={<Page403
+              codigo={"403"}
+              error={"Acceso denegado"}
+              des={"No tienes acceso a esta pagina"}
+            />} />
+            <Route path='/admin/servidor' element={<Page403
+              codigo={"500"}
+              error={"Error del servidor"}
+              des={"Estamos teniendo problemas con el servidor"}
+            />} />
             <Route path='/admin/dashboard/courses' element={<CoursesAdmin />} />
             <Route path='/admin/dashboard/addCourse' element={<AddCourse />} />
 
             {/* 404 */}
 
             <Route path='*' element={<Page404 />} />
+
+
+
           </Routes>
         </HomeProvider>
 

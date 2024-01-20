@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import { images } from '../constants';
 
 const Page404 = () => {
+
   return (
 
     <Layout>
@@ -32,4 +33,4 @@ const Page404 = () => {
   )
 }
 
-export default Page404
+export default Page404;

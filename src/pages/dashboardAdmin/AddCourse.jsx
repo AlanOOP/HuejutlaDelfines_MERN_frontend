@@ -68,7 +68,6 @@ const AddCourse = () => {
                 }
             });
 
-
             if (respuesta.status === 200) {
                 toast.success(respuesta.data.message, {
                     position: toast.POSITION.BOTTOM_RIGHT

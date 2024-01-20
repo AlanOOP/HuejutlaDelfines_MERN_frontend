@@ -3,7 +3,8 @@ import Layout from '../components/Layout';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
+import clienteAxios from '../config/clientAxios';
+import { isEmail, isPassword } from '../utils/Regex';
 
 const Register = () => {
 
@@ -19,9 +20,11 @@ const Register = () => {
     password: '',
     password_confirmation: ''
   });
+  const [error, setError] = useState(false);
+  const [message, setMessage] = useState('');
 
   const isValidated = () => {
-    if (user.name === '' || user.email === '' || user.password === '' || user.password_confirmation === '') {
+    if (user.name === '' || user.email === '' || user.password === '' || user.password_confirmation === '' || user.date === '') {
       toast.error('Todos los campos son obligatorios')
       return false
     }
@@ -29,6 +32,17 @@ const Register = () => {
       toast.error('Las contraseñas no coinciden')
       return false
     }
+
+    if (user.name.length < 2) {
+      toast.error('El nombre debe tener 2 caracteres')
+      return false;
+    }
+
+    if (user.password !== user.password_confirmation) {
+      toast.error('Las contraseñas no coinciden')
+      return false;
+    }
+
     return true
   }
 
@@ -41,32 +55,55 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!isValidated()) return;
+
+    if (!isEmail(user.email)) {
+      toast.error('El email no es valido')
+      return;
+    }
+
+    if (!isPassword(user.password)) {
+      toast.error('La contraseña debe tener al menos 8 caracteres, una mayuscula, una minuscula, un numero y un caracter especial')
+      return;
+    }
+
+    const usuario = {
+      name: user.name,
+      password: user.password,
+      age: user.date,
+      email: user.email,
+      phone: user.tel
+    }
+
+
     try {
-      const response = await fetch('http://localhost:8000/api/register', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/users`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: {
-          name: user.name,
-          email: user.email,
-          app: user.app,
-          tel: user.tel,
-          date: user.date,
-          password: user.password,
-        }
+        body: JSON.stringify(usuario)
+
       })
       const data = await response.json()
-      if (data.status === 'success') {
-        toast.success(data.message)
-        navigate('/login')
-      }
-      if (data.status === 'fail') {
+
+      console.log(data.message)
+
+      if (data.message === 'Usuario creado correctamente') {
+        toast.success('Usuario creado correctamente')
+
+        setTimeout(() => {
+          navigate('/login')
+        }, 2000)
+
+      } else {
         toast.error(data.message)
       }
+
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
@@ -98,38 +135,26 @@ const Register = () => {
           <form
             className="my-5"
             onSubmit={handleSubmit}
+            noValidate
           >
             <div className="flex flex-col space-y-5">
 
               {/* dos columnas nombre y apellido  */}
-              <div className="flex flex-row w-full justify-between items-end space-x-5">
-                <label htmlFor="name">
-                  <p className="font-medium text-slate-700 pb-2">Nombre:</p>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none "
-                    placeholder="Ingrese su Nombre"
-                    defaultValue={user.name}
-                    onChange={updateState}
-                  />
 
-                </label>
-                <label htmlFor="app">
-                  <p className="font-medium text-slate-700 pb-2">Apellido:</p>
-                  <input
-                    type="text"
-                    name="app"
-                    id="apellido"
-                    className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none "
-                    placeholder="Ingrese su Apellido"
-                    defaultValue={user.app}
-                    onChange={updateState}
-                  />
+              <label htmlFor="name">
+                <p className="font-medium text-slate-700 pb-2">Nombre Completo:</p>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none "
+                  placeholder="Ingrese su Nombre"
+                  defaultValue={user.name}
+                  onChange={updateState}
+                />
 
-                </label>
-              </div>
+              </label>
+
 
               {/* dos columnas  telefono type number y fecha de nacimiento date*/}
               <div className="flex flex-row w-full justify-between items-end space-x-5">
