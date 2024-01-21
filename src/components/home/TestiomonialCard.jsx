@@ -3,7 +3,7 @@ import { Rating } from "@material-tailwind/react";
 
 const TestiomonialCard = ({ name, img, description, review }) => {
     return (
-        <div className='bg-white rounded-md p-5 border mx-2'>
+        <div className='bg-white rounded-md p-5 border mx-2 mb-2'>
             <div className='flex items-center gap-3 mb-4'>
                 <img
                     src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?cs=srgb&dl=pexels-simon-robben-614810.jpg&fm=jpg"

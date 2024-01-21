@@ -1,33 +1,36 @@
 import React from 'react'
 
-const BlogDetail = () => {
+const BlogDetail = ({ item }) => {
+
+  const { id, tittle, image, date, description } = item
+
   return (
-    <div class="overflow-hidden">
-      <div class="max-w-3xl">
+    <div className=" flex">
+      <div className="max-w-3xl">
         <div
-          class="m-4  rounded-lg bg-white p-6 shadow-lg dark:bg-neutral-800 dark:shadow-black/20">
-          <div class="max-w-md">
-            {/* <div
-              class="">
+          className="m-4  rounded-lg bg-white p-6 shadow-lg ">
+          <div className="max-w-md">
+            <div
+              className="">
               <img
-                src="https://www.ccnatacion.com//wp-content/uploads/2019/10/estilos-de-natacion-clubca%C3%B1ada2.jpg"
-                class="w-full object-cover object-center h-auto md:h-52 lg:h-48 xl:h-60 "
-                alt="Estilos de nado" />
-            </div> */}
-            <div class="mt-5 space-y-3">
+                src={image}
+                className="w-full object-cover object-center h-auto md:h-52 lg:h-48 xl:h-60 "
+                alt="Estilos de nado"
+                loading='lazy'
+              />
+            </div>
+            <div className="mt-5 space-y-3">
               <p
-                class="mb-2 text-xl font-semibold text-neutral-800 dark:text-neutral-200">
-                Nado de Crol
+                className="mb-2 text-xl font-semibold text-neutral-800 capitalize">
+                {tittle}
               </p>
               <p
-                class="mb-0 font-semibold text-neutral-500 dark:text-neutral-400">
-                Escrito por: <span class="text-neutral-700 dark:text-neutral-300">Juan Perez</span>
+                className="mb-0 font-semibold text-neutral-500 ">
+                Fecha: <span className="text-neutral-700 ">{date}</span>
               </p>
               <p
-                class="mb-6 font-light text-neutral-500 dark:text-neutral-300">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id
-                quam sapiente molestiae numquam quas, voluptates omnis nulla
-                ea odio quia similique corrupti magnam.
+                className="mb-6 font-light text-neutral-500 ">
+                {description}
               </p>
             </div>
           </div>

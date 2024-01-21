@@ -1,35 +1,36 @@
 import React from 'react'
 import CourseCard from '../CourseCard'
-
-import { FaArrowRight } from "react-icons/fa";
-
+import { courses } from '../../constants/data'
 
 
 const CoursesHome = () => {
   return (
     <section className="my-10">
 
-      <div className='flex justify-center mb-10'>
+      <div className="pt-10 pb-10 ">
 
+        <div className="flex-col gap-5 p-5 md:col-span-2 bg-blue-500 text-slate-100 flex  justify-center items-center md:flex-row">
 
-        <h2 className='text-3xl mx-auto text-center font-extrabold text-yellow-500 md:text-4xl lg:text-5xl xl:text-6xl lg:text-left leading-relaxed '>
-          Cursos
-        </h2>
+          <div>
+            <h1 className="text-3xl text-center font-extrabold md:text-4xl lg:text-5xl xl:text-6xl bg-opacity-10 rounded py-2">
+              Cursos
+            </h1>
 
-        {/* unete */}
+            <p className="mt-2 text-xl text-slate-300">
+              Ven y aprende con nosotros, no hay mejor lugar que el club de natación para aprender a nadar.
+            </p>
 
-        {/* <div className="flex items-center justify-center gap-x-2.5 gap-y-2.5 mt-3 lg:text-sm xl:text-base">
-          <button className="rounded-lg bg-primary bg-opacity-10 px-3 py-1.5 text-primary font-semibold">
-            Unete
-          </button>
-          <FaArrowRight className='text-2xl' />
-        </div> */}
+          </div>
+        </div>
 
       </div>
+
       <div className=" flex flex-wrap md:gap-x-5 gap-y-5 pb-10 items-center justify-center">
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
+        {
+          courses.map((course, index) => (
+            <CourseCard key={index} course={course} />
+          ))
+        }
       </div>
     </section>
   )

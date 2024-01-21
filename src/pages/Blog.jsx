@@ -7,22 +7,29 @@ import CourseCard from '../components/CourseCard';
 const Blog = () => {
   return (
     <Layout>
-      <section
-        class="flex flex-col container mx-auto px-5 py-10"
-      >
+      <section class=" px-5 py-10">
+        <div className="flex-col gap-5 p-5 md:col-span-2 bg-blue-500 text-slate-100 flex  justify-center items-center md:flex-row">
 
-        <h1 className="flex mx-auto items-center justify-center text-3xl text-center font-bold text-dark-soft md:text-5xl lg:text-4xl xl:text-5xl lg:text-left lg:max-w-[540px]">
-          Blog
-        </h1>
+          <div>
+            <h1 className="text-3xl text-center font-extrabold md:text-4xl lg:text-5xl xl:text-6xl bg-opacity-10  rounded py-2">
+              Noticias
+            </h1>
+          </div>
 
-        <div className='flex flex-wrap md:gap-x-5 gap-y-5 pb-10 items-center justify-center mt-5'>
-          
-          <BlogDetail />
-          <BlogDetail />
-          <BlogDetail />
-          <BlogDetail />
-          
         </div>
+
+
+        <div className='flex items-center justify-center'>
+          <div className=' mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-5 gap-y-5 pb-10  mt-5'>
+
+            {/* <BlogDetail />
+            <BlogDetail />
+            <BlogDetail />
+            <BlogDetail /> */}
+
+          </div>
+        </div>
+
 
       </section>
     </Layout>
