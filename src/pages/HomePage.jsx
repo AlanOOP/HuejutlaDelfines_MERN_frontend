@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 
 import Hero from '../components/home/Hero';
 import CoursesHome from '../components/home/CoursesHome';
+import Testimonials from '../components/home/Testimonials';
 
 const HomePage = () => {
 
@@ -11,7 +12,7 @@ const HomePage = () => {
 
       <Hero />
       <CoursesHome />
-
+      <Testimonials />
 
 
     </Layout>
