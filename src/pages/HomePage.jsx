@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
 
-import Slider from '../components/home/Slider';
+import Hero from '../components/home/Hero';
 import CoursesHome from '../components/home/CoursesHome';
 
 const HomePage = () => {
@@ -9,7 +9,7 @@ const HomePage = () => {
   return (
     <Layout>
 
-      <Slider />
+      <Hero />
       <CoursesHome />
 
 

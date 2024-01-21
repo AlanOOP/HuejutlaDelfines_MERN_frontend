@@ -11,6 +11,8 @@ import iconoAbout from '../assets/images/about.png';
 import iconoBack from '../assets/images/regresar.png';
 import iconoHome from '../assets/images/home.png';
 
+import hero1 from '../assets/images/hero1.jpg';
+
 
 
 //iconos
@@ -39,5 +41,7 @@ const images = {
     iconoSor,
 };
 
+
+export const logos = [  Hero, hero1 ];
 
 export default images;
