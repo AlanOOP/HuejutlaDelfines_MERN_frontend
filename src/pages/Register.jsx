@@ -257,7 +257,7 @@ const Register = () => {
                 </label>
               </div>
               <div>
-                <Link href="#" className="font-medium text-blue-600">Recuperar Contraseña?</Link>
+                <Link href="/olvide-password" className="font-medium text-blue-600">Recuperar Contraseña?</Link>
               </div>
             </div>
 

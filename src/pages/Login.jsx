@@ -135,7 +135,7 @@ const Login = () => {
                                 </label>
                             </div>
                             <div>
-                                <a href="#" className="font-medium text-blue-600">Recuperar Contraseña?</a>
+                                <Link to='/olvide-password' className="font-medium text-blue-600">Recuperar Contraseña?</Link>
                             </div>
                         </div>
                         <button className="btn-action">

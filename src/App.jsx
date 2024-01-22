@@ -20,6 +20,8 @@ import FAQ from './pages/FAQ';
 import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
 import Accesibility from './pages/Accesibility';
+import OlvidePassword from './pages/OlvidePassword';
+import NewPassword from './pages/NewPassword';
 import { toast, ToastContainer } from 'react-toastify'
 
 
@@ -61,6 +63,8 @@ function App() {
             <Route path='/terms' element={<Terms />} />
             <Route path='/cookies' element={<Cookies />} />
             <Route path='/accesibility' element={<Accesibility />} />
+            <Route path='/olvide-password' element={<OlvidePassword />} />
+            <Route path='/olvide-password/:token' element={<NewPassword />} />
 
             {/* private */}
 
