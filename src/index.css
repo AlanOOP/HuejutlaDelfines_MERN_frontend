@@ -45,6 +45,23 @@ body {
   margin: 0;
 }
 
+/* botones con tailwind */
+
+.btn-auth {
+  @apply w-full text-center py-3 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150;
+
+}
+
+.input-auth {
+  @apply w-full py-3 border border-slate-200 bg-slate-50 rounded-lg px-3 focus:outline-none;
+}
+
+.btn-action {
+  @apply w-full py-3 font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center;
+}
+
+
+/* galeria container */
 
 .swiper_container {
   height: 52rem;

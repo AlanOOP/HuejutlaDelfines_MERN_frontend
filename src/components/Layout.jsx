@@ -4,6 +4,7 @@ import Footer from './Footer';
 import { Link, Outlet } from 'react-router-dom';
 import { images } from '../constants';
 import useDelf from '../hooks/useDelf';
+import { ToastContainer } from 'react-toastify';
 
 
 const Layout = ({ children }) => {
@@ -15,10 +16,14 @@ const Layout = ({ children }) => {
     <div className={isStyle ? 'no-styles' : ''}>
       <Header />
 
+      <div className=''>
+        <ToastContainer />
+      </div>
+
       <div className='fixed top-1/3 '>
 
         <div className='flex flex-col space-y-2'>
-          <Link
+          {/* <Link
             onClick={e => setIsPlaying(!isPlaying)}
             to='/accesibility'
             className='bg-purple-400 text-white px-4 py-2  hover:scale-x-150 rounded-sm'
@@ -46,7 +51,7 @@ const Layout = ({ children }) => {
             className='bg-red-500 text-white px-4 py-2 hover:scale-x-150 rounded-sm'
           >
             <img src={images.iconoHTML} alt="" width={35} height={35} />
-          </button>
+          </button> */}
 
         </div>
 

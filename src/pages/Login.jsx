@@ -1,52 +1,136 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import Layout from '../components/Layout';
-import { Link } from 'react-router-dom';
-import { images } from '../constants';
-
-
+import { Link, useNavigate } from 'react-router-dom';
+import { isEmail, isPassword } from '../utils/Regex';
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebook } from "react-icons/fa6";
+import { IoLogIn } from "react-icons/io5";
+import { LuExternalLink } from "react-icons/lu";
+import useDelf from '../hooks/useDelf';
+import clienteAxios from '../config/clientAxios';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+
+    const navigate = useNavigate();
+
+    const { auth, setAuth } = useDelf();
+
+    const [showPassword, setShowPassword] = useState(false);
+    const togglePassword = () => setShowPassword(!showPassword);
+
+    const [user, setUser] = useState({
+        email: '',
+        password: '',
+    });
+
+    const updateState = (e) => {
+        setUser({
+            ...user,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const isValidated = () => {
+        if (user.email === '' || user.password === '') {
+            toast.error('Todos los campos son obligatorios')
+            return false;
+        }
+
+        if (!isEmail(user.email)) {
+            toast.error('El email no es valido')
+            return false;
+        }
+
+        if (!isPassword(user.password)) {
+            toast.error('La contraseña no es valida')
+            return false;
+        }
+        return true
+    }
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!isValidated()) return;
+
+        try {
+            const response = await clienteAxios.post('/singUp', user);
+            console.log(response.data);
+
+            const { token } = response.data.user;
+
+            setAuth({
+                token: token,
+                auth: true,
+            });
+            localStorage.setItem('token', token);
+
+            toast.success(response.data.message);
+
+            setTimeout(() => {
+                navigate('/');
+            }, 3000);
+
+        } catch (error) {
+            console.log(error);
+            toast.error(error.response.data.message);
+        }
+    }
+
+
 
     return (
 
         <Layout>
-            <div className="max-w-lg mx-auto my-5 bg-white p-8 rounded-xl shadow shadow-slate-300">
+            <div className="max-w-lg mx-auto  bg-white p-8 rounded-xl shadow shadow-slate-300 my-16">
+
                 <h1 className="text-4xl font-medium text-center">Login</h1>
                 <p className="text-slate-500 font-bold">Hola, Bienvenido 👋</p>
 
-                <div className="my-5">
-                    <button className="w-full text-center py-3 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
-
-                        <img src="https://www.svgrepo.com/show/355037/google.svg" className="w-6 h-6 " alt="" /><span>Continua con Google</span>
+                <div className="my-5 flex gap-x-2 sm:flex-row flex-col">
+                    <button className="btn-auth">
+                        <FcGoogle className='w-6 h-6' /> <span>Continua con Google</span>
                     </button>
-                    <button className="w-full text-center py-3 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
+                    <button className="btn-auth">
 
-                        <img src="https://svgrepo.com/show/448224/facebook.svg" className="w-6 h-6 " alt="" /><span>Continua con Facebook</span>
+                        <FaFacebook className="w-6 h-6 text-blue-700" /><span>Continua con Facebook</span>
                     </button>
                 </div>
-                <form action="" className="my-5">
+
+                <form
+                    onSubmit={handleSubmit}
+                    className="my-5"
+                >
                     <div className="flex flex-col space-y-5">
-                        <label for="email">
-                            <p className="font-medium text-slate-700 pb-2">Email:</p>
-                            <input 
-                            type="email" 
-                            name="email" 
-                            id="email" 
-                            className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" 
-                            placeholder="Enter email address" 
+                        <div >
+                            <label htmlFor="email" className="font-medium text-slate-700 pb-2">Email:</label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                className='input-auth'
+                                placeholder="Ingrese su Email"
+                                defaultValue={user.email}
+                                onChange={e => updateState(e)}
                             />
-                        </label>
-                        <label for="password">
-                            <p className="font-medium text-slate-700 pb-2">Contraseña</p>
-                            <input type="password" name="password" id="password" className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter your password" />
-                        </label>
+                        </div>
+                        <div >
+                            <label htmlFor="password" className="font-medium text-slate-700 pb-2">Contraseña:</label>
+                            <input
+                                type="password"
+                                name="password"
+                                id="password" className='input-auth'
+                                placeholder="Ingrese su Contraseña"
+                                defaultValue={user.password}
+                                onChange={e => updateState(e)}
+                            />
+                        </div>
                         <div className="flex flex-row justify-between">
                             <div>
-                                <label for="remember" className="">
-
+                                <label htmlFor="remember" className="">
                                     <input type="checkbox" id="remember" className="w-4 h-4 border-slate-200 focus:bg-blue-600" />
-
                                     Recordar contraseña
                                 </label>
                             </div>
@@ -54,26 +138,22 @@ const Login = () => {
                                 <a href="#" className="font-medium text-blue-600">Recuperar Contraseña?</a>
                             </div>
                         </div>
-                        <button class="w-full py-3 font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-                            </svg>
+                        <button className="btn-action">
+                            <IoLogIn className="w-6 h-6" />
                             <span>Login</span>
                         </button>
-                        <p class="text-center">Aún no tienes cuenta?
-                            <Link to={'/register'}
-                                class="text-blue-600 font-medium inline-flex space-x-1 items-center"
+                        <p className="text-center">Aún no tienes cuenta?
+                            <Link
+                                to='/register'
+                                className="text-blue-600 font-medium inline-flex space-x-1 items-center"
                             >
                                 <span>Registrate Ahora </span>
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                    </svg>
-                                </span>
+                                <LuExternalLink className="w-4 h-4" />
                             </Link>
                         </p>
                     </div>
                 </form>
+
             </div>
 
         </Layout>

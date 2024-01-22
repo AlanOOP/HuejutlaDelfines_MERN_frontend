@@ -13,12 +13,9 @@ import { Rating } from "@material-tailwind/react";
 
 const CourseCard = ({ course }) => {
 
-  console.log(course)
-
-
   return (
     <div
-      className={`rounded-xl overflow-hidden shadow px-2 `}
+      className={`rounded-sm py-2 overflow-hidden shadow bg-slate-100 px-2 `}
     >
       <Link to={``}>
         <img

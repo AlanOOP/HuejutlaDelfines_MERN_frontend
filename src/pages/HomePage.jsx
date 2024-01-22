@@ -42,7 +42,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* <Galery /> */}
+      <Galery />
 
       <Testimonials />
 
