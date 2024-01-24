@@ -10,6 +10,7 @@ import { FaFacebook } from "react-icons/fa6";
 import { IoLogIn } from "react-icons/io5";
 import { LuExternalLink } from "react-icons/lu";
 import { IoIosEyeOff } from "react-icons/io";
+import Breadcrumb from '../components/Breadcrumb';
 
 const Register = () => {
 
@@ -130,6 +131,12 @@ const Register = () => {
   return (
 
     <Layout>
+
+      <div className='flex container mx-auto justify-center'>
+        <Breadcrumb
+          path={'Registro'}
+        />
+      </div>
 
       <div className="max-w-[800px] container  my-5  p-8 rounded-xl shadow shadow-slate-300 mx-auto">
         <h1 className="text-4xl font-medium text-center">Registrate</h1>
@@ -257,7 +264,7 @@ const Register = () => {
                 </label>
               </div>
               <div>
-                <Link href="/olvide-password" className="font-medium text-blue-600">Recuperar Contraseña?</Link>
+                <Link to="/olvide-password" className="font-medium text-blue-600">Recuperar Contraseña?</Link>
               </div>
             </div>
 

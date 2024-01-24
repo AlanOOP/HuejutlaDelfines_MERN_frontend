@@ -9,6 +9,8 @@ import { LuExternalLink } from "react-icons/lu";
 import useDelf from '../hooks/useDelf';
 import clienteAxios from '../config/clientAxios';
 import { toast } from 'react-toastify';
+import Spinner from '../components/Spinner';
+import Breadcrumb from '../components/Breadcrumb';
 
 const Login = () => {
 
@@ -84,6 +86,13 @@ const Login = () => {
     return (
 
         <Layout>
+
+            <div className='flex container mx-auto justify-center'>
+                <Breadcrumb
+                    path={'Inicio de sesión'}
+                />
+            </div>
+
             <div className="max-w-lg mx-auto  bg-white p-8 rounded-xl shadow shadow-slate-300 my-16">
 
                 <h1 className="text-4xl font-medium text-center">Login</h1>
@@ -142,6 +151,7 @@ const Login = () => {
                             <IoLogIn className="w-6 h-6" />
                             <span>Login</span>
                         </button>
+                        <Spinner />
                         <p className="text-center">Aún no tienes cuenta?
                             <Link
                                 to='/register'

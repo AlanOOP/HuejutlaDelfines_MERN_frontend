@@ -1,15 +1,23 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import AdminLayout from './layout/AdminLayout';
 import { Link } from 'react-router-dom';
 import clienteAxios from '../../config/clientAxios';
+import { MdOutlineAddCircle } from "react-icons/md";
+import { FaSearch } from "react-icons/fa";
+import { BiCategoryAlt } from "react-icons/bi";
 
 const CoursesAdmin = () => {
+
+  const [courses, setCourses] = useState([]);
+
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const getProducts = async () => {
       try {
         const response = await clienteAxios.get('/courses');
-        console.log(response);
+        setCourses(response.data);
+        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -17,30 +25,51 @@ const CoursesAdmin = () => {
     getProducts();
   }, []);
 
+  const searchProduct = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await clienteAxios.post(`/courses/search?title=${search}`);
+      setCourses(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <AdminLayout>
       <div className='grid grid-cols-1 space-y-4 p-4'>
-        <div className="col-span-1 flex justify-between items-center">
-          <div className="flex items-center">
+        <div className="mb-10">
+          <div className="flex justify-between">
             {/* It's open the add product modal */}
             <Link to="/admin/dashboard/addCourse"
               // style={{ background: "#303031" }}
-              className="rounded-lg cursor-pointer p-2 bg-blue-800 flex items-center text-gray-100 text-sm font-semibold uppercase"
+              className="rounded-md cursor-pointer p-4 bg-blue-800 flex items-center text-gray-100 text-sm font-semibold uppercase"
             >
-              <svg
-                className="w-6 h-6 text-gray-100 mr-2"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              <MdOutlineAddCircle />
               Agregar Curso
             </Link>
+            <div className='flex'>
+              <input
+                type="text"
+                className="input-auth"
+                placeholder="Buscar"
+                defaultValue={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <button
+                className="rounded-lg hover:cursor-pointer p-2 bg-blue-800 flex items-center text-gray-100 text-sm font-semibold uppercase gap-2"
+                onClick={searchProduct}
+              >
+                <FaSearch />
+                Buscar
+              </button>
+            </div>
+            <button 
+              className="rounded-lg cursor-pointer p-2 bg-blue-800 flex items-center text-gray-100 text-sm font-semibold uppercase gap-2"
+            >
+              <BiCategoryAlt />
+              Categorias
+            </button>
           </div>
 
         </div>
@@ -63,7 +92,9 @@ const CoursesAdmin = () => {
             </thead>
             <tbody>
 
-              <ProductTable />
+              {courses.map((course) => (
+                <CourseTable key={course._id} course={course} />
+              ))}
             </tbody>
           </table>
           <div className="text-sm text-gray-600 mt-2">
@@ -76,40 +107,50 @@ const CoursesAdmin = () => {
   )
 }
 
-const ProductTable = ({ product, deleteProduct, editProduct }) => {
+const CourseTable = ({ course }) => {
+
+  const { title, description, image, active, category, offer, price, updatedAt, createdAt } = course;
+
   return (
     <Fragment>
       <tr>
         <td className="p-2 text-left">
-          Curso de Natación para niños
+          {title}
         </td>
         <td className="p-2 text-left">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-          voluptas, quas, quibusdam, doloribus voluptates voluptatem
-          voluptatibus
+          {description}
         </td>
         <td className="p-2 text-center">
           <img
             className="w-12 h-12 object-cover object-center"
-            // src={`${apiURL}/uploads/products/${product.pImages[0]}`}
+            src={`${import.meta.env.VITE_BACKEND_URL}/uploads/${image[0]}`}
             alt="pic"
           />
         </td>
         <td className="p-2 text-center">
-          Activo
+          {active ? (
+            <span className="bg-green-100 text-green-500 rounded-md p-1">
+              Activo
+            </span>
+          ) : (
+            <span className="bg-red-100 text-red-500 rounded-md px-2 py-1">
+              Desactivado
+            </span>
+          )
+          }
         </td>
-        <td className="p-2 text-center"> 1500 </td>
-        <td className="p-2 text-center"> Principiante </td>
-        <td className="p-2 text-center"> 0% </td>
+        <td className="p-2 text-center"> ${price} </td>
+        <td className="p-2 text-center"> {category} </td>
+        <td className="p-2 text-center"> {offer}% </td>
         <td className="p-2 text-center">
-          27/08/2021
+          {createdAt.slice(0, 10)}
         </td>
         <td className="p-2 text-center">
-          27/08/2021
+          {updatedAt.slice(0, 10)}
         </td>
         <td className="p-2 flex items-center justify-center">
           <span
-            onClick={(e) => editProduct(product._id, product, true)}
+            // onClick={(e) => editProduct(product._id, product, true)}
             className="cursor-pointer hover:bg-gray-200 rounded-lg p-2 mx-1"
           >
             <svg
@@ -127,7 +168,7 @@ const ProductTable = ({ product, deleteProduct, editProduct }) => {
             </svg>
           </span>
           <span
-            onClick={(e) => deleteProduct(product._id)}
+            // onClick={(e) => deleteProduct(product._id)}
             className="cursor-pointer hover:bg-gray-200 rounded-lg p-2 mx-1"
           >
             <svg

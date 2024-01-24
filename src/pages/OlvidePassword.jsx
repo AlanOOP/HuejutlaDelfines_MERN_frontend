@@ -6,6 +6,7 @@ import { LuExternalLink } from "react-icons/lu";
 import { isEmail, isPassword } from '../utils/Regex';
 import clienteAxios from '../config/clientAxios';
 import { toast } from 'react-toastify';
+import Breadcrumb from '../components/Breadcrumb';
 
 const OlvidePassword = () => {
 
@@ -59,7 +60,13 @@ const OlvidePassword = () => {
 
     return (
         <Layout>
+            <div className='flex container mx-auto justify-center'>
+                <Breadcrumb
+                    path={'Olvide password'}
+                />
+            </div>
             <div className="container mx-auto my-16">
+
 
                 <div className="max-w-lg mx-auto  bg-white p-8 rounded-xl shadow shadow-slate-300 my-16">
                     <h1 className="text-4xl font-bold text-dark-hard text-center">Recuperar contraseña</h1>

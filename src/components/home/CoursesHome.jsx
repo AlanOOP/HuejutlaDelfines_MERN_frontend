@@ -5,7 +5,7 @@ import { courses } from '../../constants/data'
 
 const CoursesHome = () => {
   return (
-    <section className="my-10">
+    <section className="my-5">
       <div className="pt-10 pb-10 ">
         <div className="flex-col gap-5 p-5 md:col-span-2 bg-blue-500 text-slate-100 flex  justify-center items-center md:flex-row">
           <div>

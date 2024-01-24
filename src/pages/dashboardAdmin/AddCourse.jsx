@@ -49,7 +49,7 @@ const AddCourse = () => {
         let formData = new FormData();
         for (const file of image) {
             console.log(file)
-            formData.append("image", file);
+            formData.append("image", file[0]);
         }
 
         formData.append('title', course.title);

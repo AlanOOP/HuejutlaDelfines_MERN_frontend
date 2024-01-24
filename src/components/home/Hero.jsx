@@ -3,6 +3,7 @@ import { logos } from '../../constants/images';
 import { Link } from 'react-router-dom';
 import { FiSearch } from "react-icons/fi";
 import { images } from '../../constants';
+import Breadcrumb from '../Breadcrumb';
 
 const Hero = () => {
 

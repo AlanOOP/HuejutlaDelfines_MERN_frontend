@@ -7,6 +7,7 @@ import useDelf from '../hooks/useDelf';
 import { ToastContainer } from 'react-toastify';
 
 
+
 const Layout = ({ children }) => {
 
 
@@ -21,6 +22,8 @@ const Layout = ({ children }) => {
       </div>
 
       <div className='fixed top-1/3 '>
+
+
 
         <div className='flex flex-col space-y-2'>
           {/* <Link
@@ -60,6 +63,15 @@ const Layout = ({ children }) => {
       {children}
 
       <Footer />
+
+      <Link
+        to={'/faq'}
+        className='fixed bottom-9 right-4'>
+        <img src={images.iconoAbout} className="h-10 w-10" />
+        <span>Ayuda.</span>
+      </Link>
+
+
     </div >
   )
 }
