@@ -5,12 +5,17 @@ import clienteAxios from '../../config/clientAxios';
 import { MdOutlineAddCircle } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { BiCategoryAlt } from "react-icons/bi";
+import { toast, ToastContainer } from 'react-toastify';
+import PageError from '../PageError';
 
 const CoursesAdmin = () => {
 
   const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const [search, setSearch] = useState('');
+  const [category, setCategory] = useState('');
+  const [active, setActive] = useState('');
 
   useEffect(() => {
     const getProducts = async () => {
@@ -18,8 +23,10 @@ const CoursesAdmin = () => {
         const response = await clienteAxios.get('/courses');
         setCourses(response.data);
         console.log(response.data);
+        setLoading(true);
       } catch (error) {
-        console.log(error);
+        toast.error(response.data.message);
+
       }
     };
     getProducts();
@@ -30,79 +37,124 @@ const CoursesAdmin = () => {
     try {
       const response = await clienteAxios.post(`/courses/search?title=${search}`);
       setCourses(response.data);
+      toast.success(response.data.message);
     } catch (error) {
-      console.log(error);
+      toast.error(response.data.message);
+    }
+  }
+
+  const filterProduct = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await clienteAxios.post(`/courses/search/category?category=${category}&active=${active}`);
+      setCourses(response.data);
+    } catch (error) {
+      toast.error(response.data.message);
     }
   }
 
   return (
     <AdminLayout>
-      <div className='grid grid-cols-1 space-y-4 p-4'>
-        <div className="mb-10">
-          <div className="flex justify-between">
-            {/* It's open the add product modal */}
-            <Link to="/admin/dashboard/addCourse"
-              // style={{ background: "#303031" }}
-              className="rounded-md cursor-pointer p-4 bg-blue-800 flex items-center text-gray-100 text-sm font-semibold uppercase"
-            >
-              <MdOutlineAddCircle />
-              Agregar Curso
-            </Link>
-            <div className='flex'>
-              <input
-                type="text"
-                className="input-auth"
-                placeholder="Buscar"
-                defaultValue={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              <button
-                className="rounded-lg hover:cursor-pointer p-2 bg-blue-800 flex items-center text-gray-100 text-sm font-semibold uppercase gap-2"
-                onClick={searchProduct}
+
+      {/* comprobar que se carguen los datos, si no madar la pagina de error */}
+
+      {!loading ? <PageError
+        codigo={500} error={'Error del servidor'}
+        des={'No se pudo cargar los datos, intente mas tarde'}
+      /> :
+
+        <div className='grid grid-cols-1 space-y-4 p-4'>
+          <div className="mb-10">
+            <div className="flex justify-between">
+              {/* It's open the add product modal */}
+              <Link to="/admin/dashboard/addCourse"
+                // style={{ background: "#303031" }}
+                className="rounded-md cursor-pointer p-4 bg-blue-800 flex items-center text-gray-100 text-sm font-semibold uppercase"
               >
-                <FaSearch />
-                Buscar
-              </button>
+                <MdOutlineAddCircle />
+                Agregar Curso
+              </Link>
+              <div className='flex'>
+                <input
+                  type="text"
+                  className="input-auth"
+                  placeholder="Buscar"
+                  defaultValue={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+                <button
+                  className="rounded-lg hover:cursor-pointer p-2 bg-blue-800 flex items-center text-gray-100 text-sm font-semibold uppercase gap-2"
+                  onClick={searchProduct}
+                >
+                  <FaSearch />
+                  Buscar
+                </button>
+              </div>
+              <div className='flex'>
+
+                <select
+                  className="input-auth"
+                  defaultValue={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                >
+                  <option value="">Categoría</option>
+                  <option value="Principiante">Principiante</option>
+                  <option value="Intermedio">Intermedio</option>
+                  <option value="Avanzado">Avanzado</option>
+                </select>
+
+                <select
+                  className="input-auth"
+                  defaultValue={active}
+                  onChange={(e) => setActive(e.target.value)}
+                >
+                  <option value="">Estado</option>
+                  <option value={true}>Activo</option>
+                  <option value={false}>Desactivado</option>
+                </select>
+
+                <button
+                  className="rounded-lg cursor-pointer p-2 bg-blue-800 flex items-center text-gray-100 text-sm font-semibold uppercase gap-2"
+                  onClick={filterProduct}
+                >
+                  <BiCategoryAlt />
+                  Categorias
+                </button>
+              </div>
             </div>
-            <button 
-              className="rounded-lg cursor-pointer p-2 bg-blue-800 flex items-center text-gray-100 text-sm font-semibold uppercase gap-2"
-            >
-              <BiCategoryAlt />
-              Categorias
-            </button>
+
+          </div>
+
+          <div className="col-span-1 overflow-auto bg-white shadow-lg p-4">
+            <table className="table-auto border w-full my-2">
+              <thead>
+                <tr>
+                  <th className="px-4 py-2 border">Product</th>
+                  <th className="px-4 py-2 border">Description</th>
+                  <th className="px-4 py-2 border">Image</th>
+                  <th className="px-4 py-2 border">Status</th>
+                  <th className="px-4 py-2 border">Stock</th>
+                  <th className="px-4 py-2 border">Category</th>
+                  <th className="px-4 py-2 border">Offer</th>
+                  <th className="px-4 py-2 border">Created at</th>
+                  <th className="px-4 py-2 border">Updated at</th>
+                  <th className="px-4 py-2 border">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                {courses.map((course) => (
+                  <CourseTable key={course._id} course={course} />
+                ))}
+              </tbody>
+            </table>
+            <div className="text-sm text-gray-600 mt-2">
+              Total  product found
+            </div>
           </div>
 
         </div>
-
-        <div className="col-span-1 overflow-auto bg-white shadow-lg p-4">
-          <table className="table-auto border w-full my-2">
-            <thead>
-              <tr>
-                <th className="px-4 py-2 border">Product</th>
-                <th className="px-4 py-2 border">Description</th>
-                <th className="px-4 py-2 border">Image</th>
-                <th className="px-4 py-2 border">Status</th>
-                <th className="px-4 py-2 border">Stock</th>
-                <th className="px-4 py-2 border">Category</th>
-                <th className="px-4 py-2 border">Offer</th>
-                <th className="px-4 py-2 border">Created at</th>
-                <th className="px-4 py-2 border">Updated at</th>
-                <th className="px-4 py-2 border">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              {courses.map((course) => (
-                <CourseTable key={course._id} course={course} />
-              ))}
-            </tbody>
-          </table>
-          <div className="text-sm text-gray-600 mt-2">
-            Total  product found
-          </div>
-        </div>
-
-      </div>
+      }
     </AdminLayout>
   )
 }

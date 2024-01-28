@@ -7,6 +7,7 @@ import { isEmail, isPassword } from '../utils/Regex';
 import clienteAxios from '../config/clientAxios';
 import { toast } from 'react-toastify';
 import Breadcrumb from '../components/Breadcrumb';
+import Spinner from '../components/Spinner';
 
 const OlvidePassword = () => {
 
@@ -41,7 +42,6 @@ const OlvidePassword = () => {
         if (!isValidated()) return;
 
         //olvide password 
-
         try {
             const response = await clienteAxios.post('/olvide-password', user);
 
@@ -53,8 +53,7 @@ const OlvidePassword = () => {
             })
 
         } catch (error) {
-            console.log(error);
-
+            toast.warn(error.response.data.message)
         }
     }
 

@@ -35,7 +35,7 @@ import HomeAdmin from './components/admin/HomeAdmin';
 
 import CoursesAdmin from './pages/dashboardAdmin/CoursesAdmin';
 import AddCourse from './pages/dashboardAdmin/AddCourse';
-import Page403 from './pages/Page403';
+import PageError from './pages/PageError';
 
 function App() {
 
@@ -69,12 +69,12 @@ function App() {
             {/* private */}
 
             <Route path='/admin/dashboard' element={<HomeAdmin />} />
-            <Route path='/admin' element={<Page403
+            <Route path='/admin' element={<PageError
               codigo={"403"}
               error={"Acceso denegado"}
               des={"No tienes acceso a esta pagina"}
             />} />
-            <Route path='/admin/servidor' element={<Page403
+            <Route path='/admin/servidor' element={<PageError
               codigo={"500"}
               error={"Error del servidor"}
               des={"Estamos teniendo problemas con el servidor"}
