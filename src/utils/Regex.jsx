@@ -17,3 +17,4 @@ export const isAge = (date) => {
 
     return age >= 15;
 }
+

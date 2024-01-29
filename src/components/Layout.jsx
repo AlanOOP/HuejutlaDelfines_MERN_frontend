@@ -5,15 +5,29 @@ import { Link, Outlet } from 'react-router-dom';
 import { images } from '../constants';
 import useDelf from '../hooks/useDelf';
 import { ToastContainer } from 'react-toastify';
+import { Helmet } from "react-helmet";
 
 
 const Layout = ({ children }) => {
 
+  const csp = ` 
+  default-src 'self'; 
+  script-src 'self' 'unsafe-inline'; 
+  style-src 'self' 'unsafe-inline'; 
+  img-src 'self' data:; 
+  font-src 'self' data:; 
+`;
 
   const { isStyle, setIsStyle, isPlaying, setIsPlaying } = useDelf();
 
   return (
     <div className={isStyle ? 'no-styles' : ''}>
+
+      <Helmet>
+        <meta
+          http-equiv="Content-Security-Policy"
+          content={csp} />
+      </Helmet>
       <Header />
 
       <div className=''>
@@ -21,6 +35,7 @@ const Layout = ({ children }) => {
       </div>
 
       <div className='fixed top-1/3 '>
+
 
 
 

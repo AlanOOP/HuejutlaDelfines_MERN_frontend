@@ -25,6 +25,8 @@ const NewPassword = () => {
         })
     }
 
+    
+
     const isValidated = () => {
         if (user.password === '' || user.password_confirmation === '') {
             toast.error('Todos los campos son obligatorios')
