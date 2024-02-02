@@ -16,31 +16,30 @@ const Layout = ({ children }) => {
   style-src 'self' 'unsafe-inline'; 
   img-src 'self' data:; 
   font-src 'self' data:; 
-`;
+  `;
 
   const { isStyle, setIsStyle, isPlaying, setIsPlaying } = useDelf();
 
   return (
     <div className={isStyle ? 'no-styles' : ''}>
 
-      <Helmet>
+      {/* <Helmet>
         <meta
           http-equiv="Content-Security-Policy"
           content={csp} />
-      </Helmet>
+      </Helmet> */}
+
       <Header />
+
+
 
       <div className=''>
         <ToastContainer />
       </div>
 
       <div className='fixed top-1/3 '>
-
-
-
-
         <div className='flex flex-col space-y-2'>
-          {/* <Link
+          <Link
             onClick={e => setIsPlaying(!isPlaying)}
             to='/accesibility'
             className='bg-purple-400 text-white px-4 py-2  hover:scale-x-150 rounded-sm'
@@ -68,7 +67,7 @@ const Layout = ({ children }) => {
             className='bg-red-500 text-white px-4 py-2 hover:scale-x-150 rounded-sm'
           >
             <img src={images.iconoHTML} alt="" width={35} height={35} />
-          </button> */}
+          </button>
 
         </div>
 
@@ -79,7 +78,6 @@ const Layout = ({ children }) => {
       <Footer />
 
       {
-
         <Link
           to={'/faq'}
           className='fixed bottom-9 right-4'>
@@ -87,7 +85,6 @@ const Layout = ({ children }) => {
           <span>Ayuda.</span>
         </Link>
       }
-
 
     </div >
   )

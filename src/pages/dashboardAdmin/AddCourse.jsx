@@ -47,6 +47,7 @@ const AddCourse = () => {
         // Crear un formdata
 
         let formData = new FormData();
+        
         for (const file of image) {
             console.log(file)
             formData.append("image", file[0]);
