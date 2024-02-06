@@ -8,7 +8,7 @@ const BlogDetail = ({ item }) => {
     <div className=" flex">
       <div className="max-w-3xl">
         <div
-          className="m-4  rounded-lg bg-white p-6 shadow-lg ">
+          className="m-4  rounded-sm bg-white p-6 shadow-lg ">
           <div className="max-w-md">
             <div
               className="">

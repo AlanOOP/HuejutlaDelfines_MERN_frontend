@@ -7,7 +7,7 @@ const CoursesHome = () => {
   return (
     <section className="my-5">
       <div className="pt-10 pb-10 ">
-        <div className="flex-col gap-5 p-5 md:col-span-2 bg-blue-500 text-slate-100 flex  justify-center items-center md:flex-row">
+        <div className="flex-col gap-5 p-5 md:col-span-2 bg-gradient-to-tr from-sky-800 to-blue-400 text-slate-100 flex  justify-center items-center md:flex-row">
           <div>
             <h1 className="text-3xl text-center font-extrabold md:text-4xl lg:text-5xl xl:text-6xl bg-opacity-10 rounded py-2">
               Cursos

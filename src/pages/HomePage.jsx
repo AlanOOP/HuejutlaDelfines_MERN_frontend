@@ -7,6 +7,7 @@ import Testimonials from '../components/home/Testimonials';
 import BlogDetail from '../components/blog/BlogDetail';
 import Galery from '../components/home/Galery';
 import { news } from '../constants/data';
+import ContactForm from '../components/home/ContactForm';
 
 const HomePage = () => {
 
@@ -16,7 +17,7 @@ const HomePage = () => {
       <Hero />
       <CoursesHome />
 
-      <div className='flex flex-col '>
+      <div className='flex flex-col my-10 bg-slate-200'>
         {/* badge */}
 
         <h5 className='text-5xl font-bold text-dark-hard text-center mb-10 mt-10'>Noticias </h5>
@@ -45,6 +46,8 @@ const HomePage = () => {
       <Galery />
 
       <Testimonials />
+
+      <ContactForm />
 
     </Layout >
   )

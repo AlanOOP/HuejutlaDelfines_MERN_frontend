@@ -12,6 +12,7 @@ import { LuExternalLink } from "react-icons/lu";
 import { IoIosEyeOff } from "react-icons/io";
 import Breadcrumb from '../components/Breadcrumb';
 
+
 const Register = () => {
 
 
@@ -22,6 +23,7 @@ const Register = () => {
 
   const [user, setUser] = useState({
     name: '',
+    lastName: '',
     email: '',
     app: '',
     tel: '',
@@ -34,25 +36,30 @@ const Register = () => {
 
 
 
-  const isDisabled = () => [user.name, user.email, user.password, user.password_confirmation, user.date, user.tel].includes('');
+
+  const isDisabled = () => [user.name, user.lastName, user.email, user.password, user.password_confirmation, user.date, user.tel].includes('');
 
   const isValidated = () => {
-    if (user.name === '' || user.email === '' || user.password === '' || user.password_confirmation === '' || user.date === '' || user.tel === '') {
-      toast.error('Todos los campos son obligatorios')
+    if (user.name === '' || user.lastName === '' || user.email === '' || user.password === '' || user.password_confirmation === '' || user.date === '' || user.tel === '') {
+      setError(true)
+      setMessage('Todos los campos son obligatorios')
       return false;
     }
     if (user.password !== user.password_confirmation) {
-      toast.error('Las contraseñas no coinciden')
+      setError(true)
+      setMessage('Las contraseñas no coinciden')
       return false;
     }
 
     if (user.name.length < 2) {
-      toast.error('El nombre debe tener 2 caracteres')
+      setError(true)
+      setMessage('El nombre debe tener al menos 2 caracteres')
       return false;
     }
 
     if (user.password !== user.password_confirmation) {
-      toast.error('Las contraseñas no coinciden')
+      setError(true)
+      setMessage('Las contraseñas no coinciden')
       return false;
     }
 
@@ -73,23 +80,27 @@ const Register = () => {
     if (!isValidated()) return;
 
     if (!isAge(user.date)) {
-      toast.error('Debes ser mayor de 15 años')
+      setError(true)
+      setMessage('La fecha de nacimiento no es valida')
       return;
     }
 
     if (!isEmail(user.email)) {
-      toast.error('El email no es valido')
+      setError(true)
+      setMessage('El email no es valido')
       return;
     }
 
 
     if (!isPassword(user.password)) {
-      toast.error('La contraseña debe tener al menos 8 caracteres, una mayuscula, una minuscula, un numero y un caracter especial')
+      setError(true)
+      setMessage('La contraseña debe tener al menos 8 caracteres, una mayuscula, una minuscula, un numero y un caracter especial')
       return;
     }
 
     const usuario = {
       name: user.name,
+      lastName: user.lastName,
       password: user.password,
       age: user.date,
       email: user.email,
@@ -157,21 +168,42 @@ const Register = () => {
           onSubmit={handleSubmit}
           noValidate
         >
+
+          {
+            error &&
+            <div className='my-2'>
+              <p className='bg-[#FED7D7] p-4 border-l-4 border-solid border-[#C53030] text-red-700'>{message}</p>
+            </div>
+          }
+
           <div className="flex flex-col space-y-5">
             {/* dos columnas nombre y apellido  */}
-            <div >
-              <label htmlFor="name" className="font-medium text-slate-700 pb-2">Nombre Completo:</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                className='input-auth'
-                placeholder="Ingrese su Nombre"
-                defaultValue={user.name}
-                onChange={updateState}
-              />
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-x-2 gap-y-2'>
+              <div >
+                <label htmlFor="name" className="font-medium text-slate-700 pb-2">Nombre Completo:</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  className='input-auth'
+                  placeholder="Ingrese su Nombre"
+                  defaultValue={user.name}
+                  onChange={updateState}
+                />
+              </div>
+              <div >
+                <label htmlFor="lastName" className="font-medium text-slate-700 pb-2">Apellidos:</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  className='input-auth'
+                  placeholder="Ingrese su Apellido"
+                  defaultValue={user.lastName}
+                  onChange={updateState}
+                />
+              </div>
             </div>
-
 
             {/* dos columnas  telefono type number y fecha de nacimiento date*/}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-2 gap-y-2">

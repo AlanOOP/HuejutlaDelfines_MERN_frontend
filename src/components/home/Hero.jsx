@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { logos } from '../../constants/images';
 import { Link } from 'react-router-dom';
 import { FiSearch } from "react-icons/fi";
-import { images } from '../../constants';
-import Breadcrumb from '../Breadcrumb';
+import video from '../../assets/video/huejutla-delfines.mp4'
+
 
 const Hero = () => {
 
@@ -22,7 +22,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <div className='bg-sky-100'>
+    <div className='bg-sky-100 '>
       <section className="mx-1 sm:mx-10 flex flex-col px-5 py-5 lg:flex-row space-x-5 ">
 
         <div className="sm:mt-10 lg:w-1/2 flex items-center justify-end mt-2 ">
@@ -69,6 +69,15 @@ const Hero = () => {
               src={logos[1]}
               alt="users are reading articles"
             />
+
+            {/* <video
+              className=" object-cover  h-auto md:h-3/6 lg:h-5/6 xl:h-5/6"
+              src={video}
+              autoPlay
+              loop
+              muted
+            >
+            </video> */}
 
           </div>
         </div>

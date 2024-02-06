@@ -8,7 +8,8 @@ import { IoLogIn } from "react-icons/io5";
 import { LuExternalLink } from "react-icons/lu";
 import useDelf from '../hooks/useDelf';
 import clienteAxios from '../config/clientAxios';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import Spinner from '../components/Spinner';
 import Breadcrumb from '../components/Breadcrumb';
 
@@ -67,7 +68,7 @@ const Login = () => {
                 token: token,
                 auth: true,
             });
-            localStorage.setItem('token', token);
+            // localStorage.setItem('token', token);
 
             toast.success(response.data.message);
 
@@ -77,7 +78,7 @@ const Login = () => {
 
         } catch (error) {
             console.log(error);
-            toast.error(error.response.data.message);
+            toast.error(error.response.data);
         }
     }
 
@@ -93,7 +94,8 @@ const Login = () => {
                 />
             </div>
 
-            <div className="max-w-lg mx-auto  bg-white p-8 rounded-xl shadow shadow-slate-300 my-16">
+
+            <div className="max-w-lg mx-auto  bg-white p-8 rounded-xl shadow shadow-slate-300 my-16  from-sky-800 to-blue-100">
 
                 <h1 className="text-4xl font-medium text-center">Login</h1>
                 <p className="text-slate-500 font-bold">Hola, Bienvenido 👋</p>
@@ -151,7 +153,7 @@ const Login = () => {
                             <IoLogIn className="w-6 h-6" />
                             <span>Login</span>
                         </button>
-                        <Spinner />
+                        {/* <Spinner /> */}
                         <p className="text-center">Aún no tienes cuenta?
                             <Link
                                 to='/register'

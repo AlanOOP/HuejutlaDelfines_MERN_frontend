@@ -6,12 +6,12 @@ const PrivatePolicy = () => {
     <Layout>
       <div className='my-5 flex flex-col items-center'>
         <div className='flex-col'>
-          <h1 className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-4xl  p-4 uppercase">Avisos de privacidad
+          <h1 className="mb-4 text-2xl font-extrabold leading-relaxed tracking-tight text-gray-900 md:text-2xl lg:text-4xl  p-4 uppercase">Avisos de privacidad
 
           </h1>
         </div>
 
-        <div className='w-3/4 '>
+        <div className='max-w-3xl lg:max-w-5xl text-lg leading-relaxed'>
 
           <p class="mb-10  font-bold flex justify-end">Última actualización: 22/09/2023</p>
 

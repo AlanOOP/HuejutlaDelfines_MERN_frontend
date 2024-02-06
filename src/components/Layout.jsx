@@ -6,6 +6,7 @@ import { images } from '../constants';
 import useDelf from '../hooks/useDelf';
 import { ToastContainer } from 'react-toastify';
 import { Helmet } from "react-helmet";
+import { Toaster } from 'react-hot-toast';
 
 
 const Layout = ({ children }) => {
@@ -35,6 +36,10 @@ const Layout = ({ children }) => {
 
       <div className=''>
         <ToastContainer />
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
       </div>
 
       <div className='fixed top-1/3 '>
@@ -78,12 +83,12 @@ const Layout = ({ children }) => {
       <Footer />
 
       {
-        <Link
-          to={'/faq'}
-          className='fixed bottom-9 right-4'>
-          <img src={images.iconoAbout} className="h-10 w-10" />
-          <span>Ayuda.</span>
-        </Link>
+        // <Link
+        //   to={'/faq'}
+        //   className='fixed bottom-9 right-4'>
+        //   <img src={images.iconoAbout} className="h-10 w-10" />
+        //   <span>Ayuda.</span>
+        // </Link>
       }
 
     </div >
