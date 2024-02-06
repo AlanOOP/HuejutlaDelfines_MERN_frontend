@@ -34,7 +34,8 @@ const Login = () => {
         })
     }
 
-    const isValidated = () => {
+    const isValidated = (e) => {
+       
         if (user.email === '' || user.password === '') {
             toast.error('Todos los campos son obligatorios')
             return false;
