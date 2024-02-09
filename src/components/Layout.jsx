@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
       <div className=''>
         <ToastContainer />
         <Toaster
-          position="top-center"
+          position="bottom-rights"
           reverseOrder={false}
         />
       </div>

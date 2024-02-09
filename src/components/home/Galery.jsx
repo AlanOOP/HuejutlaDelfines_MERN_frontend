@@ -52,7 +52,10 @@ const Galery = () => {
                     imgSlider.map((item, index) => (
                         <SwiperSlide key={index}>
                             <img src={item} alt="slider" className='absolute brightness-90' />
-                            <p className='relative text-center text-white my-10 text-3xl'>Huejutla Delfines 🐬</p>
+                            <div className='relative flex flex-col items-center'>
+                                <p className='text-center text-white my-10 text-3xl'>Huejutla Delfines</p>
+                                <p className='text-center text-white my-10 text-3xl'>El 09</p>
+                            </div>
                         </SwiperSlide>
                     ))
                 }

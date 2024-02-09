@@ -35,7 +35,7 @@ const Login = () => {
     }
 
     const isValidated = (e) => {
-       
+
         if (user.email === '' || user.password === '') {
             toast.error('Todos los campos son obligatorios')
             return false;
@@ -53,12 +53,10 @@ const Login = () => {
         return true
     }
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!isValidated()) return;
-
         try {
             const response = await clienteAxios.post('/singUp', user);
             console.log(response.data);
@@ -71,7 +69,7 @@ const Login = () => {
             });
             // localStorage.setItem('token', token);
 
-            toast.success(response.data.message);
+            toast.success('Bienvenido a Huejutla Delfines');
 
             setTimeout(() => {
                 navigate('/');
@@ -82,7 +80,6 @@ const Login = () => {
             toast.error(error.response.data);
         }
     }
-
 
 
     return (

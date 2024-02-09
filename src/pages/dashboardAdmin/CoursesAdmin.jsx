@@ -17,6 +17,9 @@ const CoursesAdmin = () => {
   const [active, setActive] = useState('');
 
   useEffect(() => {
+
+   
+
     const getProducts = async () => {
       try {
         const response = await clienteAxios.get('/courses');

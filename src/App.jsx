@@ -23,6 +23,7 @@ import Accesibility from './pages/Accesibility';
 import OlvidePassword from './pages/OlvidePassword';
 import NewPassword from './pages/NewPassword';
 import OTPVerification from './pages/OTPVerification';
+import Confirmar from './pages/Confirmar';
 
 
 
@@ -67,6 +68,7 @@ function App() {
             <Route path='/olvide-password' element={<OlvidePassword />} />
             <Route path='/olvide-password/:token' element={<NewPassword />} />
             <Route path='/otp-verification' element={<OTPVerification />} />
+            <Route path='/confirmar/:token' element={<Confirmar />} />
 
             {/* private */}
 
