@@ -12,6 +12,14 @@ import clienteAxios from '../config/clientAxios';
 import { toast } from 'react-hot-toast';
 import Spinner from '../components/Spinner';
 import Breadcrumb from '../components/Breadcrumb';
+import { IoIosEyeOff } from "react-icons/io";
+import { Turnstile } from '@marsidev/react-turnstile'
+
+
+function Widget() {
+    return <Turnstile siteKey={import.meta.env.VITE_TURNSTILE} />
+}
+
 
 const Login = () => {
 
@@ -21,6 +29,7 @@ const Login = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const togglePassword = () => setShowPassword(!showPassword);
+    const [attempt, setAttempt] = useState(0);
 
     const [user, setUser] = useState({
         email: '',
@@ -34,7 +43,7 @@ const Login = () => {
         })
     }
 
-    const isValidated = (e) => {
+    const isValidated = () => {
 
         if (user.email === '' || user.password === '') {
             toast.error('Todos los campos son obligatorios')
@@ -50,7 +59,7 @@ const Login = () => {
             toast.error('La contraseña no es valida')
             return false;
         }
-        return true
+        return true;
     }
 
     const handleSubmit = async (e) => {
@@ -76,14 +85,13 @@ const Login = () => {
             }, 3000);
 
         } catch (error) {
-            console.log(error);
             toast.error(error.response.data);
+            setAttempt(attempt + 1);
         }
     }
 
 
     return (
-
         <Layout>
 
             <div className='flex container mx-auto justify-center'>
@@ -97,6 +105,15 @@ const Login = () => {
 
                 <h1 className="text-4xl font-medium text-center">Login</h1>
                 <p className="text-slate-500 font-bold">Hola, Bienvenido 👋</p>
+
+                {
+                    attempt >= 3 && (
+                        <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 my-5" role="alert">
+                            <p className="font-bold">Usuario Bloqueado</p>
+                            <p>Has excedido el número de intentos permitidos, tu cuenta ha sido bloqueada por 1 hora.</p>
+                        </div>
+                    )
+                }
 
                 <div className="my-5 flex gap-x-2 sm:flex-row flex-col">
                     <button className="btn-auth">
@@ -122,20 +139,34 @@ const Login = () => {
                                 className='input-auth'
                                 placeholder="Ingrese su Email"
                                 defaultValue={user.email}
-                                onChange={e => updateState(e)}
+                                onChange={updateState}
                             />
                         </div>
                         <div >
                             <label htmlFor="password" className="font-medium text-slate-700 pb-2">Contraseña:</label>
-                            <input
-                                type="password"
-                                name="password"
-                                id="password" className='input-auth'
-                                placeholder="Ingrese su Contraseña"
-                                defaultValue={user.password}
-                                onChange={e => updateState(e)}
-                            />
+                            <div className='relative'>
+                                <input
+                                    type={showPassword ? 'text' : 'password'}
+                                    name="password"
+                                    id="password" className='input-auth'
+                                    placeholder="Ingrese su Contraseña"
+                                    defaultValue={user.password}
+                                    onChange={updateState}
+                                />
+                                <IoIosEyeOff
+                                    className={`absolute top-1/2 right-3 transform -translate-y-1/3 hover:cursor-pointer hover:scale-110 ${showPassword ? 'text-blue-600' : 'text-slate-500'}`}
+                                    onClick={togglePassword}
+                                />
+
+                            </div>
                         </div>
+
+                        {/* o inicie sesion con */}
+
+                        <div className='flex items-center justify-center'>
+                            {Widget()}
+                        </div>
+
                         <div className="flex flex-row justify-between">
                             <div>
                                 <label htmlFor="remember" className="">
@@ -164,7 +195,9 @@ const Login = () => {
                     </div>
                 </form>
 
+
             </div>
+
 
         </Layout>
     )

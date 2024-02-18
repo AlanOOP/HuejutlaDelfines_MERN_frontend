@@ -27,13 +27,11 @@ const AboutMe = () => {
         <h5 className='sm:text-2xl md:text-5xl font-bold text-dark-hard text-center mb-10'> Sobre Nosotros</h5>
 
         <div className='bg-white lg:shadowxl lg:shadow-slate-200/50'>
-
           {
             data.map(({ title, description, img }) => (
               <div className='bg-blue-100 flex flex-col md:even:flex-row-reverse md:odd:flex-row'>
                 <div className='flex-1'>
                   <img src={img} alt={title} loading='lazy' className='w-full h-80 md:h-96' />
-
                 </div>
                 <div className='flex-1 items-center flex'>
                   <div className='p-10'>
@@ -45,7 +43,6 @@ const AboutMe = () => {
               </div>
             ))
           }
-
         </div>
 
       </section>

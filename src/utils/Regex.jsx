@@ -18,3 +18,10 @@ export const isAge = (date) => {
     return age >= 15;
 }
 
+export const requirementsPassword = [
+    { regex: /.{8,}/, index: 0 },
+    { regex: /[a-z]/, index: 1 },
+    { regex: /[A-Z]/, index: 2 },
+    { regex: /[0-9]/, index: 3 },
+    { regex: /[!@#$%^&*]/, index: 4 }
+]

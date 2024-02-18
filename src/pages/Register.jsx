@@ -4,12 +4,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import clienteAxios from '../config/clientAxios';
-import { isEmail, isPassword, isAge } from '../utils/Regex';
+import { isEmail, isPassword, isAge, requirementsPassword } from '../utils/Regex';
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
 import { IoLogIn } from "react-icons/io5";
 import { LuExternalLink } from "react-icons/lu";
 import { IoIosEyeOff } from "react-icons/io";
+import Spinner from '../components/Spinner';
 import Breadcrumb from '../components/Breadcrumb';
 
 
@@ -20,7 +21,8 @@ const Register = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const togglePassword = () => setShowPassword(!showPassword);
-
+  const [loading, setLoading] = useState(false);
+  // const [message, setMessage] = useState('');
   const [user, setUser] = useState({
     name: '',
     lastName: '',
@@ -34,7 +36,9 @@ const Register = () => {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState('');
 
-
+  const [terms, setTerms] = useState(false);
+  const [msg, setMsg] = useState("");
+  const [progress, setProgress] = useState("");
 
 
   const isDisabled = () => [user.name, user.lastName, user.email, user.password, user.password_confirmation, user.date, user.tel].includes('');
@@ -73,14 +77,48 @@ const Register = () => {
     })
   }
 
-  const handleSubmit = async (e) => {
+  const password = () => {
+    const strengthChecks = {
+      length: 0,
+      hasUpperCase: false,
+      hasLowerCase: false,
+      hasDigit: false,
+      hasSpecialChar: false,
+    };
 
+    strengthChecks.length = user.password.length >= 8 ? true : false;
+    strengthChecks.hasUpperCase = /[A-Z]+/.test(user.password);
+    strengthChecks.hasLowerCase = /[a-z]+/.test(user.password);
+    strengthChecks.hasDigit = /[0-9]+/.test(user.password);
+    strengthChecks.hasSpecialChar = /[^A-Za-z0-9]+/.test(user.password);
+
+    let verifiedList = Object.values(strengthChecks).filter((value) => value);
+
+    let strength =
+      verifiedList.length == 5
+        ? "Fuerte"
+        : verifiedList.length >= 2
+          ? "Media"
+          : "Debil";
+
+    // setPassword(user.password);
+    setProgress(`${(verifiedList.length / 5) * 100}%`);
+    setMsg(strength);
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!isValidated()) return;
+    setLoading(true)
+
+    if (!isValidated()) {
+      setLoading(false)
+      return;
+    }
 
     if (!isAge(user.date)) {
       setError(true)
+      setLoading(false)
       setMessage('La fecha de nacimiento no es valida')
       return;
     }
@@ -88,6 +126,7 @@ const Register = () => {
     if (!isEmail(user.email)) {
       setError(true)
       setMessage('El email no es valido')
+      setLoading(false)
       return;
     }
 
@@ -95,6 +134,14 @@ const Register = () => {
     if (!isPassword(user.password)) {
       setError(true)
       setMessage('La contraseña debe tener al menos 8 caracteres, una mayuscula, una minuscula, un numero y un caracter especial')
+      setLoading(false)
+      return;
+    }
+
+    if (!terms) {
+      setError(true)
+      setMessage('Debe aceptar los terminos y condiciones')
+      setLoading(false)
       return;
     }
 
@@ -120,7 +167,8 @@ const Register = () => {
       })
       const data = await response.json()
 
-      console.log(data.message)
+      setLoading(false)
+      // console.log(data.message)
 
       if (data.message === 'Usuario creado correctamente') {
         toast.success('Usuario creado correctamente')
@@ -138,6 +186,12 @@ const Register = () => {
     }
   }
 
+
+  const getActiveColor = (type) => {
+    if (type === "Fuerte") return "#22c55e";
+    if (type === "Media") return "#f59e0b";
+    return "#FF0054";
+  };
 
   return (
 
@@ -260,14 +314,32 @@ const Register = () => {
                     placeholder="Enter your password"
                     defaultValue={user.password}
                     onChange={updateState}
-
+                    onKeyUp={password}
                   />
                   <IoIosEyeOff
-                    className='absolute top-1/2 right-3 transform -translate-y-1/3 hover:cursor-pointer hover:scale-110'
+                    className={`absolute top-1/2 right-3 transform -translate-y-1/3 hover:cursor-pointer hover:scale-110 ${showPassword ? 'text-blue-600' : 'text-slate-500'}`}
                     onClick={togglePassword}
+
                   />
                 </div>
+                {
+                  user.password.length === 0 ? null :
+                    <div
+                      className="relative h-2 w-2 bg-[#fbfbfb] rounded-md"
+                      style={{
+                        width: progress,
+                        backgroundColor: getActiveColor(msg),
+                      }}
+                    >
+                    </div>
+                }
+                {user.password.length !== 0 ? (
+                  <p className="font-medium leading-relaxed" style={{ color: getActiveColor(msg) }}>
+                    Tu contraseña es {msg}
+                  </p>
+                ) : null}
               </div>
+
               <div>
                 <label htmlFor="password_confirmation" className=" font-medium text-slate-700 pb-2">Confirmar Contraseña:</label>
                 <div className='relative'>
@@ -281,7 +353,7 @@ const Register = () => {
                     onChange={updateState}
                   />
                   <IoIosEyeOff
-                    className='absolute top-1/2 right-3 transform -translate-y-1/3 hover:cursor-pointer hover:scale-110'
+                    className={`absolute top-1/2 right-3 transform -translate-y-1/3 hover:cursor-pointer hover:scale-110 ${showPassword ? 'text-blue-600' : 'text-slate-500'}`}
                     onClick={togglePassword}
                   />
                 </div>
@@ -291,8 +363,14 @@ const Register = () => {
             <div className="flex flex-row justify-between">
               <div>
                 <label htmlFor="remember" className="">
-                  <input type="checkbox" id="remember" className="w-4 h-4 border-slate-200 focus:bg-blue-600" />
-                  Recordar contraseña
+                  <input
+                    type="checkbox"
+                    id="remember"
+                    className="w-4 h-4 border-slate-200 focus:bg-blue-600"
+                    defaultChecked={terms}
+                    onChange={() => setTerms(!terms)}
+                  />
+                  Aceptar Términos y Condiciones
                 </label>
               </div>
               <div>
@@ -300,10 +378,15 @@ const Register = () => {
               </div>
             </div>
 
-            <button className={` btn-action ${isDisabled() ? 'opacity-40' : ''} `} >
-              <IoLogIn className="w-6 h-6" />
-              <span>Registrar</span>
-            </button>
+            {
+              !loading ?
+                <button className={` btn-action ${isDisabled() ? 'opacity-40' : ''} `} >
+                  <IoLogIn className="w-6 h-6" />
+                  <span>Registrar</span>
+                </button>
+                :
+                <Spinner />
+            }
 
             <p className="text-center">¿Ya tienes cuenta?{' '}
               <Link
