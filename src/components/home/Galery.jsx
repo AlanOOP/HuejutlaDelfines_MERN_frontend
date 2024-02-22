@@ -1,6 +1,6 @@
-import React from 'react';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { logos } from '../../constants/images.js';
+// import { logos } from '../../constants/images.js';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 
 import 'swiper/css';

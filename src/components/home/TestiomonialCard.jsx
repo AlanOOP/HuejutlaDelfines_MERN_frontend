@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Rating } from "@material-tailwind/react";
 
 const TestiomonialCard = ({ name, img, description, review }) => {

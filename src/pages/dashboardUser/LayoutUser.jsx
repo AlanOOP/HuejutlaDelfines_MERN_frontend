@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Sidebar from './Sidebar';
 import Layout from '../../components/Layout';
 

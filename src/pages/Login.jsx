@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Layout from '../components/Layout';
 import { Link, useNavigate } from 'react-router-dom';
 import { isEmail, isPassword } from '../utils/Regex';
@@ -10,7 +10,7 @@ import useDelf from '../hooks/useDelf';
 import clienteAxios from '../config/clientAxios';
 // import { toast } from 'react-toastify';
 import { toast } from 'react-hot-toast';
-import Spinner from '../components/Spinner';
+// import Spinner from '../components/Spinner';
 import Breadcrumb from '../components/Breadcrumb';
 import { IoIosEyeOff } from "react-icons/io";
 import { Turnstile } from '@marsidev/react-turnstile'
@@ -25,7 +25,7 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    const { auth, setAuth } = useDelf();
+    const { setAuth } = useDelf();
 
     const [showPassword, setShowPassword] = useState(false);
     const togglePassword = () => setShowPassword(!showPassword);
@@ -68,7 +68,7 @@ const Login = () => {
         if (!isValidated()) return;
         try {
             const response = await clienteAxios.post('/singUp', user);
-            console.log(response.data);
+            // console.log(response.data);
 
             const { token } = response.data.user;
 

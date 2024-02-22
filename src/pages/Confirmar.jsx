@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import clienteAxios from '../config/clientAxios';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+
+import {useParams, useNavigate } from 'react-router-dom';
+
 import OTPVerification from './OTPVerification';
+
 
 
 const Confirmar = () => {

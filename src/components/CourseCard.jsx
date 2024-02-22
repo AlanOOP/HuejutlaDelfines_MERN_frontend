@@ -1,13 +1,5 @@
-import React from 'react'
 
-
-import { MdFavorite } from 'react-icons/md'
-
-import { images } from "../constants";
 import { Link } from "react-router-dom";
-
-import { DefaultRating } from '../utils/Rating';
-
 
 import { Rating } from "@material-tailwind/react";
 

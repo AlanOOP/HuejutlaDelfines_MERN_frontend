@@ -1,6 +1,3 @@
-import React from 'react';
-
-
 import {
   AiOutlineTwitter,
   AiFillYoutube,
@@ -9,8 +6,6 @@ import {
 } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
 import { BsTelegram } from "react-icons/bs";
-import { Link } from "react-router-dom";
-
 import { images } from "../constants";
 
 
