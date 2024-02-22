@@ -164,10 +164,13 @@ const Login = () => {
                         {/* o inicie sesion con */}
 
                         <div className='flex items-center justify-center'>
-                            {Widget()}
+                            {
+                                // Widget()
+                                < Turnstile siteKey={import.meta.env.VITE_TURNSTILE} />
+                            }
                         </div>
 
-                        <div className="flex flex-row justify-between">
+                        <div clascosName="flex flex-row justify-between">
                             <div>
                                 <label htmlFor="remember" className="">
                                     <input type="checkbox" id="remember" className="w-4 h-4 border-slate-200 focus:bg-blue-600" />

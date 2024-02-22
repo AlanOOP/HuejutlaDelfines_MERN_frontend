@@ -22,6 +22,8 @@ const OlvidePassword = () => {
         })
     }
 
+    
+
     const isValidated = () => {
         if (user.email === '' || user.password === '') {
             toast.error('Todos los campos son obligatorios')
