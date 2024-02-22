@@ -18,6 +18,9 @@ const NewPassword = () => {
         password_confirmation: '',
     });
 
+    const [progress, setProgress] = useState('');
+    const [msg, setMsg] = useState('');
+
     const updateState = (e) => {
         setUser({
             ...user,
@@ -25,7 +28,40 @@ const NewPassword = () => {
         })
     }
 
-    
+    const password = () => {
+        const strengthChecks = {
+            length: 0,
+            hasUpperCase: false,
+            hasLowerCase: false,
+            hasDigit: false,
+            hasSpecialChar: false,
+        };
+
+        strengthChecks.length = user.password.length >= 8 ? true : false;
+        strengthChecks.hasUpperCase = /[A-Z]+/.test(user.password);
+        strengthChecks.hasLowerCase = /[a-z]+/.test(user.password);
+        strengthChecks.hasDigit = /[0-9]+/.test(user.password);
+        strengthChecks.hasSpecialChar = /[^A-Za-z0-9]+/.test(user.password);
+
+        let verifiedList = Object.values(strengthChecks).filter((value) => value);
+
+        let strength =
+            verifiedList.length == 5
+                ? "Fuerte"
+                : verifiedList.length >= 2
+                    ? "Media"
+                    : "Debil";
+
+        // setPassword(user.password);
+        setProgress(`${(verifiedList.length / 5) * 100}%`);
+        setMsg(strength);
+    }
+
+    const getActiveColor = (type) => {
+        if (type === "Fuerte") return "#22c55e";
+        if (type === "Media") return "#f59e0b";
+        return "#FF0054";
+    };
 
     const isValidated = () => {
         if (user.password === '' || user.password_confirmation === '') {
@@ -105,6 +141,22 @@ const NewPassword = () => {
                                     className='absolute top-1/2 right-3 transform -translate-y-1/3 hover:cursor-pointer hover:scale-110'
                                     onClick={togglePassword}
                                 />
+                                {
+                                    user.password.length === 0 ? null :
+                                        <div
+                                            className="relative h-2 w-2 bg-[#fbfbfb] rounded-md"
+                                            style={{
+                                                width: progress,
+                                                backgroundColor: getActiveColor(msg),
+                                            }}
+                                        >
+                                        </div>
+                                }
+                                {user.password.length !== 0 ? (
+                                    <p className="font-medium leading-relaxed" style={{ color: getActiveColor(msg) }}>
+                                        Tu contraseña es {msg}
+                                    </p>
+                                ) : null}
                             </div>
                         </div>
 
