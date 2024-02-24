@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Layout from '../components/Layout';
 import { preguntasFrecuentes } from '../constants/data';
-import { FaQuestionCircle, FaRobot } from "react-icons/fa";
+import { FaQuestionCircle } from "react-icons/fa";
 
 const FAQ = () => {
 
@@ -20,37 +20,15 @@ const FAQ = () => {
 
                     <div className="grid pt-8 text-left border-t border-gray-200 md:gap-10 dark:border-gray-700 md:grid-cols-2">
                         {
-                            preguntasFrecuentes.map((pregunta) => (
-                                <div className="mb-5  cursor-pointer" onClick={() => setAccordionOpen(!accordionOpen)}>
+                            preguntasFrecuentes.map((i, pregunta) => (
+                                <div key={i} className="mb-5  cursor-pointer" onClick={() => setAccordionOpen(!accordionOpen)}>
                                     <h3 className="flex items-center mb-4 text-lg font-medium text-gray-900 dark:text-white gap-2 ">
 
                                         <FaQuestionCircle />
 
                                         {pregunta.pregunta}
 
-                                        <svg
-                                            className="fill-indigo-500 shrink-0 ml-8"
-                                            width="16"
-                                            height="16"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <rect
-                                                y="7"
-                                                width="16"
-                                                height="2"
-                                                rx="1"
-                                                className={`transform origin-center transition duration-200 ease-out ${accordionOpen && "!rotate-180"
-                                                    }`}
-                                            />
-                                            <rect
-                                                y="7"
-                                                width="16"
-                                                height="2"
-                                                rx="1"
-                                                className={`transform origin-center rotate-90 transition duration-200 ease-out ${accordionOpen && "!rotate-180"
-                                                    }`}
-                                            />
-                                        </svg>
+                                      
                                     </h3>
                                     <p className={` dark:text-gray-400 grid overflow-hidden transition-all duration-300 ease-in-out text-slate-600 text-md ${accordionOpen
                                         ? "grid-rows-[1fr] opacity-100"

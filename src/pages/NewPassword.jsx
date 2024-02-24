@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Layout from '../components/Layout';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { IoLogIn } from "react-icons/io5";
 import { IoIosEyeOff } from "react-icons/io";
-import { isEmail, isPassword } from '../utils/Regex';
+import { isPassword } from '../utils/Regex';
 import clienteAxios from '../config/clientAxios';
 import { toast } from 'react-toastify';
 
@@ -96,9 +96,9 @@ const NewPassword = () => {
         try {
             const response = await clienteAxios.post(`/olvide-password/${token}`, { password: user.password });
 
-            console.log(response.data.message);
+            // console.log(response.data.message);
 
-            console.log(response.data);
+            // console.log(response.data);
             toast.success(response.data.message);
             setUser({
                 password: '',
@@ -106,7 +106,7 @@ const NewPassword = () => {
             });
 
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             toast.error(error.response.data.message);
 
         }

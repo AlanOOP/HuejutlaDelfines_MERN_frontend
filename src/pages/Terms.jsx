@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Layout from '../components/Layout';
 
 const Terms = () => {
@@ -21,8 +21,8 @@ const Terms = () => {
                 </h1>
 
                 <div className='container w-4/5 text-xl text-justify'>
-                    <p class="mb-10  font-bold flex justify-end">Última actualización: 14/11/2023</p>
-                    <h2 class="my-3 text-2xl font-bold flex">Escuela de Natación Huejutla Delfines </h2>
+                    <p className="mb-10  font-bold flex justify-end">Última actualización: 14/11/2023</p>
+                    <h2 className="my-3 text-2xl font-bold flex">Escuela de Natación Huejutla Delfines </h2>
 
                     <p className="text-gray-500 dark:text-gray-400"><span className='font-bold'>Domicilio:</span>Calle Lima 349, colonia Valle del encinal, ciudad Huejutla, municipio o delegación Huejutla, c.p. 43000
                     </p>
@@ -32,7 +32,7 @@ const Terms = () => {
                     </p>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex">Descripción del Servicio </p>
+                        <p className="my-3 text-lg font-bold flex">Descripción del Servicio </p>
 
                         <p className="text-gray-500 dark:text-gray-400"><span className='font-bold'>Ofrecemos una variedad de servicios relacionados con la natación, que incluyen:</span>
                         </p>
@@ -54,7 +54,7 @@ const Terms = () => {
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex">Asignación de Riesgos y Descargos de Responsabilidad </p>
+                        <p className="my-3 text-lg font-bold flex">Asignación de Riesgos y Descargos de Responsabilidad </p>
 
                         <p className="text-gray-500 dark:text-gray-400">
                             Al participar en actividades relacionadas con el club de natación, reconoces y aceptas los riesgos inherentes a la natación y otras actividades acuáticas.
@@ -65,7 +65,7 @@ const Terms = () => {
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex">Garantía </p>
+                        <p className="my-3 text-lg font-bold flex">Garantía </p>
 
                         <p className="text-gray-500 dark:text-gray-400">
                             No ofrecemos garantías explícitas para nuestros servicios, a menos que se acuerde expresamente de otra manera en circunstancias particulares.
@@ -74,7 +74,7 @@ const Terms = () => {
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex">Derecho de Desistimiento </p>
+                        <p className="my-3 text-lg font-bold flex">Derecho de Desistimiento </p>
 
                         <p className="text-gray-500 dark:text-gray-400">
                             No aplica el derecho de desistimiento para nuestros servicios, ya que se trata de servicios de ocio que se ofrecen en una fecha o período específico.
@@ -84,7 +84,7 @@ const Terms = () => {
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex">Información de Seguridad </p>
+                        <p className="my-3 text-lg font-bold flex">Información de Seguridad </p>
 
                         <p className="text-gray-500 dark:text-gray-400">
                             Destacamos la importancia de seguir las normas de seguridad para garantizar un entorno seguro para todos los participantes, e indicamos que estas instrucciones se dan por profesionales capacitados.
@@ -92,7 +92,7 @@ const Terms = () => {
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex">Condiciones de Entrega </p>
+                        <p className="my-3 text-lg font-bold flex">Condiciones de Entrega </p>
                         <p className="text-gray-500 dark:text-gray-400">
                             Informamos que las condiciones específicas para eventos se comunicarán claramente antes de que los participantes confirmen su asistencia, garantizando una preparación adecuada.
 
@@ -101,14 +101,14 @@ const Terms = () => {
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex">Derechos de Uso</p>
+                        <p className="my-3 text-lg font-bold flex">Derechos de Uso</p>
                         <p className="text-gray-500 dark:text-gray-400">
                             Aseguramos que el uso de nuestras instalaciones está sujeto a un comportamiento y cumplimiento específicos para mantener un entorno seguro y respetuoso, y ofrecemos acceso a las normas completas en caso de dudas.
                         </p>
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex">Política de Reembolsos y Cambios</p>
+                        <p className="my-3 text-lg font-bold flex">Política de Reembolsos y Cambios</p>
                         <p className="text-gray-500 dark:text-gray-400">
                             Aclaración sobre los procesos para solicitar reembolsos o realizar cambios, asegurando transparencia y justicia, y ofrecemos ejemplos concretos para mayor comprensión.
 
@@ -119,7 +119,7 @@ const Terms = () => {
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex">Métodos de Pago</p>
+                        <p className="my-3 text-lg font-bold flex">Métodos de Pago</p>
                         <p className="text-gray-500 dark:text-gray-400">
                             Aceptamos pagos en efectivo y con tarjeta de crédito o débito, y ofrecemos instrucciones claras para cada método de pago.
 
@@ -130,7 +130,7 @@ const Terms = () => {
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex">Facturación</p>
+                        <p className="my-3 text-lg font-bold flex">Facturación</p>
                         <p className="text-gray-500 dark:text-gray-400">
                             No ofrecemos facturas para nuestros servicios.
                             Los recibos se pueden solicitar en nuestras instalaciones o en el perfil del participante en nuestro sitio web.
@@ -140,7 +140,7 @@ const Terms = () => {
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex">Propiedad Intelectual</p>
+                        <p className="my-3 text-lg font-bold flex">Propiedad Intelectual</p>
                         <p className="text-gray-500 dark:text-gray-400">
                             Huejutla Delfines es una marca registrada, y no se permite el uso de la marca sin nuestro consentimiento expreso.
 
@@ -161,7 +161,7 @@ const Terms = () => {
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex">Marco Legal</p>
+                        <p className="my-3 text-lg font-bold flex">Marco Legal</p>
                         <p className="text-gray-500 dark:text-gray-400">
                             Aclaración sobre el marco legal que rige nuestros servicios, y ofrecemos ejemplos concretos para mayor comprensión.
 
@@ -173,7 +173,7 @@ const Terms = () => {
                         </p>
                     </div>
                     <div>
-                        <p class="my-3 text-lg font-bold flex">Envíos</p>
+                        <p className="my-3 text-lg font-bold flex">Envíos</p>
                         <p className="text-gray-500 dark:text-gray-400">
                             No ofrecemos envíos para nuestros servicios.
                             Se pueden solicitar los productos fisicos en nuestras instalaciones.
@@ -181,7 +181,7 @@ const Terms = () => {
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex"> ¿Cómo comprar? </p>
+                        <p className="my-3 text-lg font-bold flex"> ¿Cómo comprar? </p>
                         <p className="text-gray-500 dark:text-gray-400">
                             Aclaración sobre los procesos para comprar nuestros productos, asegurando transparencia y justicia, y ofrecemos ejemplos concretos para mayor comprensión.
 
@@ -192,7 +192,7 @@ const Terms = () => {
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex"> Descuentos </p>
+                        <p className="my-3 text-lg font-bold flex"> Descuentos </p>
                         <p className="text-gray-500 dark:text-gray-400">
                             Los codigos de descuento se pueden utilizar en nuestras instalaciones o en línea, y se aplican condiciones específicas para cada caso.
                         </p>
@@ -204,7 +204,7 @@ const Terms = () => {
 
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex"> Sanciones </p>
+                        <p className="my-3 text-lg font-bold flex"> Sanciones </p>
                         <p className="text-gray-500 dark:text-gray-400">
                             En caso de violación de estos términos y condiciones, nos reservamos el derecho de tomar medidas legales.
 
@@ -215,7 +215,7 @@ const Terms = () => {
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex"> Capacidad </p>
+                        <p className="my-3 text-lg font-bold flex"> Capacidad </p>
                         <p className="text-gray-500 dark:text-gray-400">
                             Podrán usar nuestros servicios las personas que tengan capacidad legal para contratar.
                         </p>
@@ -225,7 +225,7 @@ const Terms = () => {
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex"> Registro y Cuenta </p>
+                        <p className="my-3 text-lg font-bold flex"> Registro y Cuenta </p>
                         <p className="text-gray-500 dark:text-gray-400">
                             Quien quiera usar nuestros servicios, deberá completar el formulario de registro con los datos que le sean requeridos. Al completarlo, se compromete a hacerlo de manera exacta, precisa y verdadera y a mantener sus datos siempre actualizados. La Persona Usuaria será la única responsable de la certeza de sus datos de registro. Sin perjuicio de la información brindada en el formulario, podremos solicitar y/o consultar información adicional para corroborar la identidad de la Persona Usuaria.
                         </p>
@@ -239,7 +239,7 @@ const Terms = () => {
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex"> Privacidad de datos </p>
+                        <p className="my-3 text-lg font-bold flex"> Privacidad de datos </p>
                         <p className="text-gray-500 dark:text-gray-400">
                             La privacidad de los datos de nuestros clientes es muy importante para nosotros. Por eso, nos comprometemos a no divulgar ni compartir la información personal de nuestros clientes con terceros, excepto en los casos en que sea necesario para la prestación de nuestros servicios, o cuando estemos obligados por ley.
                         </p>

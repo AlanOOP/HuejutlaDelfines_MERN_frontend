@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Layout from '../components/Layout';
 
 const PrivatePolicy = () => {
@@ -13,19 +13,19 @@ const PrivatePolicy = () => {
 
         <div className='max-w-3xl lg:max-w-5xl text-lg leading-relaxed'>
 
-          <p class="mb-10  font-bold flex justify-end">Última actualización: 22/09/2023</p>
+          <p className="mb-10  font-bold flex justify-end">Última actualización: 22/09/2023</p>
 
           <div className='mb-10  font-bold flex justify-end'>
             <a href="/AvisoPrivacidad.pdf" className="font-medium text-blue-600 dark:text-blue-500 underline">Descargar PDF </a>
           </div>
 
 
-          <p class="text-gray-500 dark:text-gray-400">HUEJUTLA DELFINES, con domicilio en calle Lima 349, colonia Valle del encinal, ciudad Huejutla, municipio o delegación Huejutla, c.p. 43000, en la entidad de Hidalgo, país Mexico, y portal de internet www.HuejutlaDelfines.com, es el responsable del uso, protección de sus datos personales y confidencialidad de acuerdo con lo previsto en la Ley Federal de Protección de Datos Personales, se pone a su disposición el presente aviso de privacidad, en el cual se describen nuestras prácticas en relación con la informacion se que se recaba de nuestros usuarios y al respecto le informamos lo siguiente: </p>
+          <p className="text-gray-500 dark:text-gray-400">HUEJUTLA DELFINES, con domicilio en calle Lima 349, colonia Valle del encinal, ciudad Huejutla, municipio o delegación Huejutla, c.p. 43000, en la entidad de Hidalgo, país Mexico, y portal de internet www.HuejutlaDelfines.com, es el responsable del uso, protección de sus datos personales y confidencialidad de acuerdo con lo previsto en la Ley Federal de Protección de Datos Personales, se pone a su disposición el presente aviso de privacidad, en el cual se describen nuestras prácticas en relación con la informacion se que se recaba de nuestros usuarios y al respecto le informamos lo siguiente: </p>
 
           <div>
-            <p class="my-3 font-bold flex">¿Para qué fines utilizaremos sus datos personales? </p>
+            <p className="my-3 font-bold flex">¿Para qué fines utilizaremos sus datos personales? </p>
 
-            <p class="text-gray-500 dark:text-gray-400">En Huejutla Delfines, estamos comprometidos con la protección de su privacidad y la seguridad de sus datos personales. Como parte de nuestro compromiso, le informamos sobre cómo utilizaremos sus datos personales y le solicitamos su consentimiento para ciertos fines de procesamiento de datos:</p>
+            <p className="text-gray-500 dark:text-gray-400">En Huejutla Delfines, estamos comprometidos con la protección de su privacidad y la seguridad de sus datos personales. Como parte de nuestro compromiso, le informamos sobre cómo utilizaremos sus datos personales y le solicitamos su consentimiento para ciertos fines de procesamiento de datos:</p>
 
             <ul className=" space-y-1 text-gray-500 list-inside dark:text-gray-400">
               <li className="flex items-center pl-4">
@@ -57,7 +57,7 @@ const PrivatePolicy = () => {
           </div>
 
           <div className='my-4'>
-            <p class="text-gray-500 dark:text-gray-400 mb-3">De manera adicional, utilizaremos su información personal para las siguientes finalidades secundarias que no son necesarias para el servicio solicitado, pero que nos permiten y facilitan brindarle una mejor atención: </p>
+            <p className="text-gray-500 dark:text-gray-400 mb-3">De manera adicional, utilizaremos su información personal para las siguientes finalidades secundarias que no son necesarias para el servicio solicitado, pero que nos permiten y facilitan brindarle una mejor atención: </p>
 
             <ul>
               <li className="flex items-center pl-4">
@@ -70,11 +70,11 @@ const PrivatePolicy = () => {
           </div>
 
           <div>
-            <p class="my-3 font-bold flex">¿Qué datos personales utilizaremos para estos fines? </p>
+            <p className="my-3 font-bold flex">¿Qué datos personales utilizaremos para estos fines? </p>
 
-            <p class="text-gray-500 dark:text-gray-400">Para llevar a cabo las finalidades descritas en el presente aviso de privacidad, utilizaremos los siguientes datos personales:</p>
+            <p className="text-gray-500 dark:text-gray-400">Para llevar a cabo las finalidades descritas en el presente aviso de privacidad, utilizaremos los siguientes datos personales:</p>
 
-            <p class="my-3 ml-10 font-bold flex">Datos Personales Requeridos: </p>
+            <p className="my-3 ml-10 font-bold flex">Datos Personales Requeridos: </p>
 
             <ul>
               <li className='text-gray-500 ml-10'>• Su nombre completo se utilizará para identificarlo en los registros y estadísticas de participación en campeonatos y competiciones.</li>
@@ -82,7 +82,7 @@ const PrivatePolicy = () => {
               <li className='text-gray-500 ml-10'>•	Su género es importante para fines de análisis estadísticos, como la separación por categorías.</li>
             </ul>
 
-            <p class="my-3 ml-10 font-bold flex">Información de Contacto: </p>
+            <p className="my-3 ml-10 font-bold flex">Información de Contacto: </p>
 
             <ul>
               <li className='text-gray-500 ml-10'>•	Su dirección de correo electrónico se utilizará para enviarle comunicaciones relacionadas con eventos, resultados de competencias y noticias importantes.</li>
@@ -90,7 +90,7 @@ const PrivatePolicy = () => {
               <li className='text-gray-500 ml-10'>•	Su dirección postal puede ser necesaria para el envío de información impresa o premios relacionados con competencias.</li>
             </ul>
 
-            <p class="my-3 ml-10 font-bold flex">¿Qué uso de damos a su información?</p>
+            <p className="my-3 ml-10 font-bold flex">¿Qué uso de damos a su información?</p>
 
             <ul>
               <li className='text-gray-500 ml-10'>•	Mantener un registro</li>
@@ -100,11 +100,11 @@ const PrivatePolicy = () => {
           </div>
 
           <div className='mt-10'>
-            <p class="my-3 font-bold flex">¿Cómo puede acceder, rectificar o cancelar sus datos personales, u oponerse a su uso (ARCO)?  </p>
+            <p className="my-3 font-bold flex">¿Cómo puede acceder, rectificar o cancelar sus datos personales, u oponerse a su uso (ARCO)?  </p>
 
-            <p class="text-gray-500 dark:text-gray-400">Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos y las condiciones del uso que les damos (Acceso). Asimismo, es su derecho solicitar la corrección de su información personal en caso de que esté desactualizada, sea inexacta o incompleta (Rectificación); que la eliminemos de nuestros registros o bases de datos cuando considere que la misma no está siendo utilizada adecuadamente (Cancelación); así como oponerse al uso de sus datos personales para fines específicos (Oposición). Estos derechos se conocen como derechos ARCO.</p>
+            <p className="text-gray-500 dark:text-gray-400">Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos y las condiciones del uso que les damos (Acceso). Asimismo, es su derecho solicitar la corrección de su información personal en caso de que esté desactualizada, sea inexacta o incompleta (Rectificación); que la eliminemos de nuestros registros o bases de datos cuando considere que la misma no está siendo utilizada adecuadamente (Cancelación); así como oponerse al uso de sus datos personales para fines específicos (Oposición). Estos derechos se conocen como derechos ARCO.</p>
 
-            <p class="my-3 font-bold flex">Para el ejercicio de cualquiera de los derechos ARCO, usted deberá presentar la solicitud respectiva a través del siguiente medio: </p>
+            <p className="my-3 font-bold flex">Para el ejercicio de cualquiera de los derechos ARCO, usted deberá presentar la solicitud respectiva a través del siguiente medio: </p>
 
             <p className='text-gray-500 dark:text-gray-400'>Con relación al procedimiento y requisitos para el ejercicio de sus derechos ARCO, le informamos lo siguiente:</p>
 
@@ -130,32 +130,32 @@ const PrivatePolicy = () => {
           </div>
 
           <div className='mt-10'>
-            <p class="my-3 font-bold flex">Usted puede revocar su consentimiento para el uso de sus datos personales </p>
+            <p className="my-3 font-bold flex">Usted puede revocar su consentimiento para el uso de sus datos personales </p>
 
-            <p class="text-gray-500 dark:text-gray-400">Usted puede revocar el consentimiento que, en su caso, nos haya otorgado para el tratamiento de sus datos personales. Sin embargo, es importante que tenga en cuenta que no en todos los casos podremos atender su solicitud o concluir el uso de forma inmediata, ya que es posible que por alguna obligación legal requiramos seguir tratando sus datos personales. Asimismo, usted deberá considerar que para ciertos fines, la revocación de su consentimiento implicará que no le podamos seguir prestando el servicio que nos solicitó, o la conclusión de su relación con nosotros.</p>
+            <p className="text-gray-500 dark:text-gray-400">Usted puede revocar el consentimiento que, en su caso, nos haya otorgado para el tratamiento de sus datos personales. Sin embargo, es importante que tenga en cuenta que no en todos los casos podremos atender su solicitud o concluir el uso de forma inmediata, ya que es posible que por alguna obligación legal requiramos seguir tratando sus datos personales. Asimismo, usted deberá considerar que para ciertos fines, la revocación de su consentimiento implicará que no le podamos seguir prestando el servicio que nos solicitó, o la conclusión de su relación con nosotros.</p>
 
             <p className='mt-5 text-gray-500 dark:text-gray-400'>Para revocar su consentimiento deberá presentar su solicitud a través del siguiente medio.</p>
 
           </div>
 
           <div className='mt-10'>
-            <p class="my-3 font-bold flex">Autorización de promoción o comunicación</p>
+            <p className="my-3 font-bold flex">Autorización de promoción o comunicación</p>
 
-            <p class="text-gray-500 dark:text-gray-400">•	Podemos utilizar sus datos personales para enviarle información sobre productos y artículos relacionados con la natación, como trajes de baño, gafas, etc. Esta comunicación puede realizarse a través de correo electrónico.</p>
+            <p className="text-gray-500 dark:text-gray-400">•	Podemos utilizar sus datos personales para enviarle información sobre productos y artículos relacionados con la natación, como trajes de baño, gafas, etc. Esta comunicación puede realizarse a través de correo electrónico.</p>
           </div>
 
 
           <div className='mt-10'>
-            <p class="my-3 font-bold flex">¿Cómo puede limitar el uso o divulgación de su información personal?  </p>
+            <p className="my-3 font-bold flex">¿Cómo puede limitar el uso o divulgación de su información personal?  </p>
 
-            <p class="text-gray-500 dark:text-gray-400">Con objeto de que usted pueda limitar el uso y divulgación de su información personal, le ofrecemos los siguientes medios.</p>
+            <p className="text-gray-500 dark:text-gray-400">Con objeto de que usted pueda limitar el uso y divulgación de su información personal, le ofrecemos los siguientes medios.</p>
 
           </div>
 
           <div className='my-10'>
-            <p class="my-3 font-bold flex">Entendiendo la Definición de Consulta</p>
+            <p className="my-3 font-bold flex">Entendiendo la Definición de Consulta</p>
 
-            <p class="text-gray-500 dark:text-gray-400">En esta sección, explicamos lo que significa la "Definición de Consulta" y cómo puede acceder a nuestros avisos de privacidad tanto en nuestro sitio web como en documentos oficiales.
+            <p className="text-gray-500 dark:text-gray-400">En esta sección, explicamos lo que significa la "Definición de Consulta" y cómo puede acceder a nuestros avisos de privacidad tanto en nuestro sitio web como en documentos oficiales.
               La "Definición de Consulta" se refiere al acto de acceder y revisar nuestros avisos de privacidad, que detallan nuestras prácticas de manejo de datos personales. Le brindamos la oportunidad de visualizar estos avisos de privacidad de dos maneras:
             </p>
 

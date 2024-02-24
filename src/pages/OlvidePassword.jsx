@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Layout from '../components/Layout';
 import { Link } from 'react-router-dom';
 import { IoLogIn } from "react-icons/io5";
 import { LuExternalLink } from "react-icons/lu";
-import { isEmail, isPassword } from '../utils/Regex';
+import { isEmail } from '../utils/Regex';
 import clienteAxios from '../config/clientAxios';
 import { toast } from 'react-toastify';
 import Breadcrumb from '../components/Breadcrumb';
-import Spinner from '../components/Spinner';
+// import Spinner from '../components/Spinner';
 
 const OlvidePassword = () => {
 
@@ -47,7 +47,7 @@ const OlvidePassword = () => {
         try {
             const response = await clienteAxios.post('/olvide-password', user);
 
-            console.log(response.data);
+            // console.log(response.data);
             toast.success(response.data.message);
             setUser({
                 email: '',

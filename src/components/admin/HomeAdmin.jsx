@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import AdminLayout from '../../pages/dashboardAdmin/layout/AdminLayout';
 
 const HomeAdmin = () => {

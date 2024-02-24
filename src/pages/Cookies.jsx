@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Layout from '../components/Layout';
 import { Link } from 'react-router-dom';
 
@@ -21,9 +21,9 @@ const Cookies = () => {
                 </div>
 
                 <div className='w-3/4 text-xl text-justify'>
-                    <p class="mb-10  font-bold flex justify-end">Última actualización: 14/11/2023</p>
+                    <p className="mb-10  font-bold flex justify-end">Última actualización: 14/11/2023</p>
                     <div>
-                        <p class="my-3 text-lg font-bold flex"> Cookies </p>
+                        <p className="my-3 text-lg font-bold flex"> Cookies </p>
                         <p className="text-gray-500 dark:text-gray-400">
                             Las cookies son pequeños archivos con texto que se almacenan en su dispositivo cuando visita sitios web. El uso más común es recordar sus preferencias, proporcionar una experiencia de usuario mejorada o recopilar información sobre su comportamiento de navegación.
                         </p>
@@ -73,14 +73,14 @@ const Cookies = () => {
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex"> ¿Cómo usamos las cookies? </p>
+                        <p className="my-3 text-lg font-bold flex"> ¿Cómo usamos las cookies? </p>
                         <p className="text-gray-500 dark:text-gray-400">
                             Usamos cookies para varias razones detalladas a continuación. Desafortunadamente, en la mayoría de los casos, no hay opciones estándar de la industria para deshabilitar las cookies sin deshabilitar completamente la funcionalidad y las características que agregan a este sitio. Se recomienda que deje todas las cookies si no está seguro de si las necesita o no en caso de que se utilicen para proporcionar un servicio que utiliza.
                         </p>
                     </div>
 
                     <div>
-                        <p class="my-3 text-lg font-bold flex"> Deshabilitar cookies </p>
+                        <p className="my-3 text-lg font-bold flex"> Deshabilitar cookies </p>
                         <p className="text-gray-500 dark:text-gray-400">
                             Puede evitar la configuración de cookies ajustando la configuración de su navegador consulte la Ayuda de su navegador para saber cómo hacerlo. Tenga en cuenta que la desactivación de cookies afectará la funcionalidad de este y muchos otros sitios web que visite. La desactivación de las cookies generalmente también provocará la desactivación de ciertas funciones y características de este sitio. Por lo tanto, se recomienda que no desactive las cookies.
                         </p>

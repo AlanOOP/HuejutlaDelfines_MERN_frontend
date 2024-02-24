@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import clienteAxios from '../config/clientAxios';
 import Spinner from '../components/Spinner';
 import { toast } from 'react-hot-toast';
@@ -13,7 +13,7 @@ const OTPVerification = ({ token }) => {
     const handleChange = (element, index) => {
         if (isNaN(element.value)) return false;
 
-        console.log(otp)
+        // console.log(otp)
 
         setOtp([...otp.map((d, idx) => (idx === index) ? element.value : d)]);
 
@@ -30,7 +30,7 @@ const OTPVerification = ({ token }) => {
 
         try {
             const otpValue = otp.join('');
-            console.log(otpValue);
+            // console.log(otpValue);
             const response = await clienteAxios.post('/otp-verification', { token: token, codeOTP: otpValue });
             setLoading(false);
             toast.success(response.data.message);

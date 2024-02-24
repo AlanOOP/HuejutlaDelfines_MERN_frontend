@@ -1,11 +1,11 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import AdminLayout from './layout/AdminLayout';
 import { Link } from 'react-router-dom';
 import clienteAxios from '../../config/clientAxios';
 import { MdOutlineAddCircle } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { BiCategoryAlt } from "react-icons/bi";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import PageError from '../PageError';
 
 const CoursesAdmin = () => {
@@ -24,7 +24,7 @@ const CoursesAdmin = () => {
       try {
         const response = await clienteAxios.get('/courses');
         setCourses(response.data);
-        console.log(response.data);
+        // console.log(response.data);
         setLoading(true);
       } catch (error) {
         toast.error(response.data.message);
