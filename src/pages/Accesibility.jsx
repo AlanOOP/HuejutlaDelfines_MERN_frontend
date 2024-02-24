@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import Layout from '../components/Layout'
-// import audioFile from '../assets/audio/77.mp3';
-import audioFile from '../assets/audio/cursos.mp3';
+import audioFile from '../assets/audio/77.mp3';
+// import audioFile from '../assets/audio/cursos.mp3';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-tailwind/react';
 import { images } from '../constants';
@@ -10,8 +10,9 @@ import useDelf from '../hooks/useDelf';
 const Accesibility = () => {
 
     const audioRef = useRef(new Audio(audioFile));
-    const { isPlaying, setIsPlaying } = useDelf();
 
+
+    const { isPlaying, setIsPlaying } = useDelf();
 
     const handleMouseEnter = () => {
         if (isPlaying) {

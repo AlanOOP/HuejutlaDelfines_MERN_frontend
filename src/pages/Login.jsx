@@ -165,8 +165,8 @@ const Login = () => {
 
                         <div className='flex items-center justify-center'>
                             {
-                                // Widget()
-                                < Turnstile siteKey={import.meta.env.VITE_TURNSTILE} />
+                                Widget()
+                                // < Turnstile siteKey={import.meta.env.VITE_TURNSTILE} />
                             }
                         </div>
 

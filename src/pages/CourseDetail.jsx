@@ -1,12 +1,7 @@
 import React from 'react'
-
 import { images } from '../constants';
-
 import { Rating } from "@material-tailwind/react";
-
 import Layout from '../components/Layout';
-
-
 
 const CourseDetail = () => {
 
