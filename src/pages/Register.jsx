@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+
 import Layout from '../components/Layout';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import clienteAxios from '../config/clientAxios';
-import { isEmail, isPassword, isAge, requirementsPassword } from '../utils/Regex';
+// import clienteAxios from '../config/clientAxios';
+import { isEmail, isPassword, isAge } from '../utils/Regex';
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
 import { IoLogIn } from "react-icons/io5";

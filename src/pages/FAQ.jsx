@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+
 import Layout from '../components/Layout';
 import { preguntasFrecuentes } from '../constants/data';
-import { FaQuestionCircle, FaRobot } from "react-icons/fa";
+import { FaQuestionCircle } from "react-icons/fa";
 
 const FAQ = () => {
 
@@ -23,8 +23,8 @@ const FAQ = () => {
 
                     <div className="grid pt-8 text-left border-t border-gray-200 md:gap-10 dark:border-gray-700 md:grid-cols-2">
                         {
-                            preguntasFrecuentes.map((pregunta) => (
-                                <div className="mb-5  cursor-pointer" onClick={() => setAccordionOpen(!accordionOpen)}>
+                            preguntasFrecuentes.map((index, pregunta) => (
+                                <div key={index} className="mb-5  cursor-pointer" onClick={() => setAccordionOpen(!accordionOpen)}>
                                     <h3 className="flex items-center mb-4 text-lg font-medium text-gray-900 dark:text-white gap-2 ">
 
                                         <FaQuestionCircle />

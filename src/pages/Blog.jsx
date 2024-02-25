@@ -1,13 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+
+// import { Link } from 'react-router-dom'
 import Layout from '../components/Layout';
-import BlogDetail from '../components/blog/BlogDetail';
-import CourseCard from '../components/CourseCard';
+// import BlogDetail from '../components/blog/BlogDetail';
+// import CourseCard from '../components/CourseCard';
 
 const Blog = () => {
   return (
     <Layout>
-      <section class=" px-5 py-10">
+      <section className=" px-5 py-10">
         <div className="flex-col gap-5 p-5 md:col-span-2 bg-blue-500 text-slate-100 flex  justify-center items-center md:flex-row">
 
           <div>

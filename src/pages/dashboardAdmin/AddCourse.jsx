@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+
 import AdminLayout from './layout/AdminLayout'
 import clienteAxios from '../../config/clientAxios'
 import { toast, ToastContainer } from 'react-toastify'
@@ -49,7 +49,7 @@ const AddCourse = () => {
         let formData = new FormData();
         
         for (const file of image) {
-            console.log(file)
+            // console.log(file)
             formData.append("image", file[0]);
         }
 
@@ -60,7 +60,7 @@ const AddCourse = () => {
         formData.append('price', course.price);
         formData.append('offer', course.offer);
 
-        console.log(image)
+        // console.log(image)
 
         try {
             const respuesta = await clienteAxios.post('/courses', formData, {
@@ -77,7 +77,7 @@ const AddCourse = () => {
             }
 
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
 
