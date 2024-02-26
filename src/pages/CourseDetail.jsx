@@ -1,31 +1,53 @@
-<<<<<<< HEAD
-import React from 'react'
-=======
-
-
->>>>>>> ef198cfbca7625ef8f854054c2b5be04c7c4bbb8
 import { images } from '../constants';
 import { Rating } from "@material-tailwind/react";
 import Layout from '../components/Layout';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import clienteAxios from '../config/clientAxios';
+import Spinner from '../components/Spinner';
 
 const CourseDetail = () => {
 
-  return (
+  const { id } = useParams();
 
+  const [course, setCourse] = useState([])
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const getCourse = async () => {
+      try {
+        const response = await clienteAxios.get(`/courses/${id}`)
+        setCourse(response.data)
+        setLoading(true)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    getCourse()
+  }, [id])
+
+
+  return (
     <Layout>
       <section className="py-10  dark:bg-gray-800">
         <div className="max-w-6xl px-4 mx-auto">
           <div className="flex flex-wrap mb-24 -mx-4">
+
             <div className="w-full px-4 mb-8 md:w-1/2 md:mb-0">
+
               <div className="sticky top-0 overflow-hidden ">
+
                 <div className="relative mb-6 lg:mb-10 lg:h-96">
 
-                  <img className="object-contain w-full lg:h-full" src={images.ImgCurso} alt="" />
+                  {course.image && (
+                    <img src={`${import.meta.env.VITE_BACKEND_URL}/uploads/${course.image[0]}`} alt="course" className="object-cover w-full h-full rounded-xl" />
+                  )}
 
                 </div>
-                <div className="flex-wrap hidden -mx-2 md:flex">
+                <div className="flex-wrap hidden mx-2 md:flex">
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ipsum corrupti accusamus sit tempora. Doloremque natus aperiam, atque provident consequuntur consectetur veritatis adipisci inventore accusamus aspernatur saepe vel porro quos.
+                    {course.description}
                   </p>
 
                 </div>
@@ -34,23 +56,23 @@ const CourseDetail = () => {
             <div className="w-full px-4 md:w-1/2">
               <div className="lg:pl-20">
                 <div className="mb-6">
-                  <span className="px-2.5 py-0.5 text-xs text-blue-600 bg-blue-100 dark:bg-gray-700 rounded-xl dark:text-gray-200">Curso
+                  <span className="px-2.5 py-0.5 text-sm text-blue-600 bg-blue-100 dark:bg-gray-700 rounded-sm dark:text-gray-200">Curso
                     Nuevo</span>
                   <div className='flex-row flex-auto items-center text-yellow-400 my-2 '>
-                    <Rating value={4} readonly className='flex' ratedColor="amber" />
+                    <Rating value={5} readonly className='flex' ratedColor="amber" />
                   </div>
                   <h2 className="max-w-xl mt-3 mb-6 text-xl font-semibold leading-loose tracking-wide text-gray-700 md:text-2xl dark:text-gray-300">
-                    Curso de Natacion
+                    {course.title}
                   </h2>
                   <div className="flex flex-wrap items-center mb-2">
 
                     <a className="mb-2 text-xs underline hover:text-blue-600 dark:text-gray-400 dark:hover:text-gray-300 lg:mb-0" href="#">
-                      Natacion Infantil
+                      Natacion {" "} {course.category}
                     </a>
                   </div>
                   <p className="inline-block text-2xl font-semibold text-gray-700 dark:text-gray-400 ">
-                    <span>$499</span>
-                    <span className="ml-3 text-base font-normal text-gray-500 line-through dark:text-gray-400">Rs.10,000.00</span>
+                    <span>{course.price}</span>
+                    <span className="ml-3 text-base font-normal text-gray-500 line-through dark:text-gray-400">$1,000.00</span>
                   </p>
                 </div>
                 <div className="mb-6">
@@ -69,7 +91,7 @@ const CourseDetail = () => {
                                   Cupos
                                 </p>
                                 <h2 className="text-base font-semibold text-gray-700 dark:text-gray-400">
-                                  17
+                                  {course.cupos}
                                 </h2>
                               </div>
                             </div>
@@ -84,7 +106,7 @@ const CourseDetail = () => {
                                   Categoria:
                                 </p>
                                 <h2 className="text-base font-semibold text-gray-700 dark:text-gray-400">
-                                  Infantil
+                                  {course.category}
                                 </h2>
                               </div>
                             </div>

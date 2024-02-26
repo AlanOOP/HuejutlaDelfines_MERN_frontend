@@ -1,11 +1,9 @@
-
 import Header from './Header';
 import Footer from './Footer';
 import { Link} from 'react-router-dom';
 import { images } from '../constants';
 import useDelf from '../hooks/useDelf';
 import { ToastContainer } from 'react-toastify';
-
 import { Toaster } from 'react-hot-toast';
 
 
@@ -31,8 +29,6 @@ const Layout = ({ children }) => {
       </Helmet> */}
 
       <Header />
-
-
 
       <div className=''>
         <ToastContainer />

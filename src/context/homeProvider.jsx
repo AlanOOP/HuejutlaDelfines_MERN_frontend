@@ -7,20 +7,13 @@ const HomeProvider = ({ children }) => {
     const [isStyle, setIsStyle] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
 
-    const [auth, setAuth] = useState({
-        token: '',
-        auth: false,
-    });
-
     return (
         <HomeContext.Provider
             value={{
                 isStyle,
                 setIsStyle,
                 isPlaying,
-                setIsPlaying,
-                auth,
-                setAuth
+                setIsPlaying
             }}
         >
             {children}

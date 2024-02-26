@@ -6,7 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
 import { IoLogIn } from "react-icons/io5";
 import { LuExternalLink } from "react-icons/lu";
-import useDelf from '../hooks/useDelf';
+import useAuth from '../hooks/useAuth';
 import clienteAxios from '../config/clientAxios';
 // import { toast } from 'react-toastify';
 import { toast } from 'react-hot-toast';
@@ -16,16 +16,13 @@ import { IoIosEyeOff } from "react-icons/io";
 import { Turnstile } from '@marsidev/react-turnstile'
 
 
-function Widget() {
-    return <Turnstile siteKey={import.meta.env.VITE_TURNSTILE} />
-}
 
 
 const Login = () => {
 
     const navigate = useNavigate();
 
-    const { setAuth } = useDelf();
+    const { auth, setAuth } = useAuth();
 
     const [showPassword, setShowPassword] = useState(false);
     const togglePassword = () => setShowPassword(!showPassword);
@@ -76,9 +73,11 @@ const Login = () => {
                 token: token,
                 auth: true,
             });
-            // localStorage.setItem('token', token);
+            localStorage.setItem('token', token);
+            console.log(token);
 
             toast.success('Bienvenido a Huejutla Delfines');
+
 
             setTimeout(() => {
                 navigate('/');
@@ -165,7 +164,7 @@ const Login = () => {
 
                         <div className='flex items-center justify-center'>
                             {
-                                Widget()
+                                // Widget()
                                 // < Turnstile siteKey={import.meta.env.VITE_TURNSTILE} />
                             }
                         </div>

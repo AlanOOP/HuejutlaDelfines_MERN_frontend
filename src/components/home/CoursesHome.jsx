@@ -1,9 +1,25 @@
 // import React from 'react'
 import CourseCard from '../CourseCard'
-import { courses } from '../../constants/data'
-
+// import { courses } from '../../constants/data'
+import clienteAxios from '../../config/clientAxios'
+import { useEffect, useState } from 'react'
 
 const CoursesHome = () => {
+
+  const [courses, setCourses] = useState([])
+
+  useEffect(() => {
+    const getCourses = async () => {
+      try {
+        const response = await clienteAxios.get('/courses')
+        setCourses(response.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getCourses()
+  }, [])
+
   return (
     <section className="my-5">
       <div className="pt-10 pb-10 ">
@@ -25,6 +41,8 @@ const CoursesHome = () => {
             <CourseCard key={index} course={course} />
           ))
         }
+
+
       </div>
     </section>
   )

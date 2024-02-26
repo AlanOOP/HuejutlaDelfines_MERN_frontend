@@ -24,11 +24,10 @@ import OlvidePassword from './pages/OlvidePassword';
 import NewPassword from './pages/NewPassword';
 import OTPVerification from './pages/OTPVerification';
 import Confirmar from './pages/Confirmar';
-
-
-
+import Payment from './pages/Payment';
 
 import { HomeProvider } from './context/homeProvider';
+import { AuthProvider } from './context/authProvider';
 
 // privado
 
@@ -45,54 +44,58 @@ function App() {
     <>
 
       <BrowserRouter>
+
         <HomeProvider>
-          <ScrollTop />
-          <Routes>
+          <AuthProvider>
+            <ScrollTop />
+            <Routes>
 
-            {/* public */}
+              {/* public */}
 
-            <Route index path='/' element={<HomePage />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/about' element={<AboutMe />} />
-            <Route path='/contact' element={<Contacto />} />
-            <Route path='/blog' element={<Blog />} />
-            <Route path='/courses' element={<Courses />} />
-            <Route path='/course-detail' element={<ProductDetail />} />
-            <Route path='/private-policy' element={<PrivatePolicy />} />
-            <Route path='/faq' element={<FAQ />} />
-            <Route path='/terms' element={<Terms />} />
-            <Route path='/cookies' element={<Cookies />} />
-            <Route path='/accesibility' element={<Accesibility />} />
-            <Route path='/olvide-password' element={<OlvidePassword />} />
-            <Route path='/olvide-password/:token' element={<NewPassword />} />
-            <Route path='/otp-verification' element={<OTPVerification />} />
-            <Route path='/confirmar/:token' element={<Confirmar />} />
+              <Route index path='/' element={<HomePage />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/about' element={<AboutMe />} />
+              <Route path='/contact' element={<Contacto />} />
+              <Route path='/blog' element={<Blog />} />
+              <Route path='/courses' element={<Courses />} />
+              <Route path='/course-detail/:id' element={<ProductDetail />} />
+              <Route path='/private-policy' element={<PrivatePolicy />} />
+              <Route path='/faq' element={<FAQ />} />
+              <Route path='/terms' element={<Terms />} />
+              <Route path='/cookies' element={<Cookies />} />
+              <Route path='/accesibility' element={<Accesibility />} />
+              <Route path='/olvide-password' element={<OlvidePassword />} />
+              <Route path='/olvide-password/:token' element={<NewPassword />} />
+              <Route path='/otp-verification' element={<OTPVerification />} />
+              <Route path='/confirmar/:token' element={<Confirmar />} />
+              <Route path='/checkout' element={<Payment />} />
+              {/* private */}
 
-            {/* private */}
+              <Route path='/admin/dashboard' element={<HomeAdmin />} />
+              <Route path='/admin' element={<PageError
+                codigo={"403"}
+                error={"Acceso denegado"}
+                des={"No tienes acceso a esta pagina"}
+              />} />
+              <Route path='/admin/servidor' element={<PageError
+                codigo={"500"}
+                error={"Error del servidor"}
+                des={"Estamos teniendo problemas con el servidor"}
+              />} />
+              <Route path='/admin/dashboard/courses' element={<CoursesAdmin />} />
+              <Route path='/admin/dashboard/addCourse' element={<AddCourse />} />
 
-            <Route path='/admin/dashboard' element={<HomeAdmin />} />
-            <Route path='/admin' element={<PageError
-              codigo={"403"}
-              error={"Acceso denegado"}
-              des={"No tienes acceso a esta pagina"}
-            />} />
-            <Route path='/admin/servidor' element={<PageError
-              codigo={"500"}
-              error={"Error del servidor"}
-              des={"Estamos teniendo problemas con el servidor"}
-            />} />
-            <Route path='/admin/dashboard/courses' element={<CoursesAdmin />} />
-            <Route path='/admin/dashboard/addCourse' element={<AddCourse />} />
+              {/* 404 */}
 
-            {/* 404 */}
-
-            <Route path='*' element={<Page404 />} />
+              <Route path='*' element={<Page404 />} />
 
 
 
-          </Routes>
+            </Routes>
+          </AuthProvider>
+
         </HomeProvider>
 
       </BrowserRouter >
