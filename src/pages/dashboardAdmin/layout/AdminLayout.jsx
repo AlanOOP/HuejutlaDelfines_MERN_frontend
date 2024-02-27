@@ -1,4 +1,4 @@
-
+// import React from 'react'
 import AdminSidebar from '../partials/AdminSidebar';
 // import Layout from '../../../components/Layout';
 import Header from '../../../components/Header';

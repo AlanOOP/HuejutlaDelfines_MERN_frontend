@@ -1,8 +1,8 @@
-
-// import { Link } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import Layout from '../components/Layout';
-// import BlogDetail from '../components/blog/BlogDetail';
-// import CourseCard from '../components/CourseCard';
+import BlogDetail from '../components/blog/BlogDetail';
+import CourseCard from '../components/CourseCard';
 
 const Blog = () => {
   return (

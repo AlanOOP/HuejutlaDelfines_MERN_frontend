@@ -1,7 +1,13 @@
-
+import { useRef } from 'react'
 import Layout from '../components/Layout'
 // import audioFile from '../assets/audio/77.mp3';
-import audioFile from '../assets/audio/cursos.mp3';
+import audioinicio from '../assets/audio/Inicio.mp3';
+import audioregresar from '../assets/audio/regresar.mp3';
+import audiocursos from '../assets/audio/cursos.mp3';
+import audioblog from '../assets/audio/blog.mp3';
+import audioacercade from '../assets/audio/acerca de.mp3';
+import audiocontacto from '../assets/audio/contacto.mp3';
+import audioiniciarsesion from '../assets/audio/iniciar sesion.mp3';
 import { Link } from 'react-router-dom';
 // import { Button } from '@material-tailwind/react';
 import { images } from '../constants';
@@ -9,7 +15,7 @@ import useDelf from '../hooks/useDelf';
 
 const Accesibility = () => {
 
-    const audioRef = useRef(new Audio(audioFile));
+    const audioRef = useRef(new Audio(audioregresar));
     const { isPlaying, setIsPlaying } = useDelf();
 
 

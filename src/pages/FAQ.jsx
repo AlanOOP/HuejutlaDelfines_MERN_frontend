@@ -1,7 +1,7 @@
-
+import { useState } from 'react';
 import Layout from '../components/Layout';
 import { preguntasFrecuentes } from '../constants/data';
-import { FaQuestionCircle } from "react-icons/fa";
+import { FaQuestionCircle, FaRobot } from "react-icons/fa";
 
 const FAQ = () => {
 

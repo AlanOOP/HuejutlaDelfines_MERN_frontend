@@ -1,11 +1,11 @@
-
+import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { images } from '../constants';
 import useDelf from '../hooks/useDelf';
 import { ToastContainer } from 'react-toastify';
-// import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet";
 import { Toaster } from 'react-hot-toast';
 
 
