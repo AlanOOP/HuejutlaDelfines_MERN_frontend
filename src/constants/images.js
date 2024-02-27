@@ -11,6 +11,9 @@ import iconoAbout from '../assets/images/about.png';
 import iconoBack from '../assets/images/regresar.png';
 import iconoHome from '../assets/images/home.png';
 
+import imgVision from '../assets/images/imgVision.jpg';
+import imgMision from '../assets/images/imgMision.jpg';
+
 import hero1 from '../assets/images/hero1.jpg';
 
 
@@ -42,6 +45,6 @@ const images = {
 };
 
 
-export const logos = [  Hero, hero1 ];
+export const logos = [Hero, hero1, imgVision, imgMision];
 
 export default images;

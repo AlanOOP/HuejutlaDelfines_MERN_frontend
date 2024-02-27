@@ -35,7 +35,7 @@ const CoursesHome = () => {
         </div>
       </div>
 
-      <div className="mx-4 flex flex-wrap md:gap-x-5 gap-y-5 pb-10 items-center justify-center">
+      <div className="sm:mx-14 mx-2 sm:grid grid-cols-3 gap-x-4 gap-y-5 pb-10 flex flex-wrap">
         {
           courses.map((course, index) => (
             <CourseCard key={index} course={course} />

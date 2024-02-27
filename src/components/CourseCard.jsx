@@ -50,9 +50,13 @@ const CourseCard = ({ course }) => {
         <div className="flex justify-between flex-nowrap items-center mt-6">
           <div className="flex items-center gap-x-2 md:gap-x-2.5">
             <div className="flex flex-col">
-              <h4 className="font-bold  text-dark-soft text-sm md:text-base">
-                Instructor:   {instructor.name + " " + instructor.lastName}
-              </h4>
+              {
+                instructor &&
+                <h4 className="font-bold  text-dark-soft text-sm md:text-base">
+                  Instructor:   {instructor.name + " " + instructor.lastName}
+                </h4>
+
+              }
 
               <div className="flex items-center gap-x-2">
                 {/* <span

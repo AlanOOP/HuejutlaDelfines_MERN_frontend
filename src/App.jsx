@@ -12,7 +12,7 @@ import ProductDetail from './pages/CourseDetail';
 import Courses from './pages/Courses';
 import AboutMe from './pages/AboutMe';
 import Blog from './pages/Blog';
-import Contacto from './pages/Contacto';
+import Contacto from './pages/Galery';
 import Page404 from './pages/Page404';
 import Profile from './pages/Profile';
 import PrivatePolicy from './pages/PrivatePolicy';
@@ -57,7 +57,7 @@ function App() {
               <Route path='/register' element={<Register />} />
               <Route path='/profile' element={<Profile />} />
               <Route path='/about' element={<AboutMe />} />
-              <Route path='/contact' element={<Contacto />} />
+              <Route path='/galeria' element={<Contacto />} />
               <Route path='/blog' element={<Blog />} />
               <Route path='/courses' element={<Courses />} />
               <Route path='/course-detail/:id' element={<ProductDetail />} />

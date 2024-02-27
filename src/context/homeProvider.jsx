@@ -6,6 +6,7 @@ const HomeProvider = ({ children }) => {
 
     const [isStyle, setIsStyle] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [darkMode, setDarkMode] = useState(false);
 
     return (
         <HomeContext.Provider
@@ -13,7 +14,9 @@ const HomeProvider = ({ children }) => {
                 isStyle,
                 setIsStyle,
                 isPlaying,
-                setIsPlaying
+                setIsPlaying,
+                darkMode,
+                setDarkMode,
             }}
         >
             {children}

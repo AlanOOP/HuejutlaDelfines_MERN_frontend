@@ -24,7 +24,7 @@ const AboutMe = () => {
 
       <section className='max-w-[1200px] py-16 mx-auto'>
 
-        <h5 className='sm:text-2xl md:text-5xl font-bold text-dark-hard text-center mb-10'> Sobre Nosotros</h5>
+        <h1 className='sm:text-2xl md:text-5xl font-bold text-dark-hard text-center mb-10'> Sobre Nosotros</h1>
 
         <div className='bg-white lg:shadowxl lg:shadow-slate-200/50'>
           {

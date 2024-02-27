@@ -1,6 +1,6 @@
 import Header from './Header';
 import Footer from './Footer';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { images } from '../constants';
 import useDelf from '../hooks/useDelf';
 import { ToastContainer } from 'react-toastify';
@@ -17,10 +17,10 @@ const Layout = ({ children }) => {
   font-src 'self' data:; 
   `;
 
-  const { isStyle, setIsStyle, isPlaying, setIsPlaying } = useDelf();
+  const { isStyle, setIsStyle, isPlaying, setIsPlaying, darkMode, setDarkMode } = useDelf();
 
   return (
-    <div className={isStyle ? 'no-styles' : ''}>
+    <div className={`${isStyle ? 'no-styles' : ''} ${darkMode ? 'bg-gray-600' : ''}`}>
 
       {/* <Helmet>
         <meta

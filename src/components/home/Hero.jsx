@@ -1,28 +1,27 @@
 import { useEffect, useState } from 'react'
 import { logos } from '../../constants/images';
-// import { Link } from 'react-router-dom';
+import useDelf from '../../hooks/useDelf';
 import { FiSearch } from "react-icons/fi";
 // import video from '../../assets/video/huejutla-delfines.mp4'
 
 
 const Hero = () => {
 
-  const [curr, setCurr] = useState(0)
   const autoSlideInterval = 5000
+  const { darkMode } = useDelf();
 
-
-  const prev = () => setCurr((curr) => (curr === 0 ? logos.length - 1 : curr - 1))
-
-  const next = () => setCurr((curr) => (curr === logos.length - 1 ? 0 : curr + 1))
+  const [currentImage, setCurrentImage] = useState(logos[0]);
 
   useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImage(logos[(logos.indexOf(currentImage) + 1) % logos.length]);
+    }, 5000);
 
-    const slideInterval = setInterval(next, autoSlideInterval)
-    return () => clearInterval(slideInterval)
-  }, [])
+    return () => clearInterval(timer); // Limpia el intervalo cuando el componente se desmonta
+  }, [currentImage]);
 
   return (
-    <div className='bg-sky-100 '>
+    <div className={darkMode ? 'bg-gray-600' : 'bg-sky-100'}>
       <section className="mx-1 sm:mx-10 flex flex-col px-5 py-5 lg:flex-row space-x-5 ">
 
         <div className="sm:mt-10 lg:w-1/2 flex items-center justify-end mt-2 ">

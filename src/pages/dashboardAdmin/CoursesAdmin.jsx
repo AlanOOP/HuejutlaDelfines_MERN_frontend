@@ -18,8 +18,6 @@ const CoursesAdmin = () => {
 
   useEffect(() => {
 
-   
-
     const getProducts = async () => {
       try {
         const response = await clienteAxios.get('/courses');
@@ -76,21 +74,23 @@ const CoursesAdmin = () => {
                   <MdOutlineAddCircle />
                   Agregar Curso
                 </Link>
-                <div className='flex'>
+                <div className='flex items-center gap-x-2'>
+                  <label htmlFor="search" className="">Buscar Curso:</label>
                   <input
                     type="text"
                     className="input-auth"
                     placeholder="Buscar"
                     defaultValue={search}
                     onChange={(e) => setSearch(e.target.value)}
+                    onKeyUp={searchProduct}
                   />
-                  <button
+                  {/* <button
                     className="rounded-lg hover:cursor-pointer p-2 bg-blue-800 flex items-center text-gray-100 text-sm font-semibold uppercase gap-2"
                     onClick={searchProduct}
                   >
                     <FaSearch />
                     Buscar
-                  </button>
+                  </button> */}
                 </div>
                 <div className='flex'>
 

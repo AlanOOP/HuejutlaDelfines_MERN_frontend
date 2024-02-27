@@ -4,6 +4,8 @@ import { images } from '../constants';
 import useAuth from '../hooks/useAuth';
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { MdLightMode, MdDarkMode } from "react-icons/md";
+import useDelf from '../hooks/useDelf';
 
 
 
@@ -12,7 +14,7 @@ const navItemsInfo = [
   { name: "Cursos", type: "link", href: "/courses" },
   { name: "Blog", type: "link", href: "/blog" },
   { name: "Acerca de", type: "link", href: "/about" },
-  { name: "Contacto", type: "link", href: "/contact" },
+  { name: "Galeria", type: "link", href: "/galeria" },
 ];
 
 const NavItem = ({ item }) => {
@@ -74,6 +76,7 @@ const Header = () => {
   const [navIsVisible, setNavIsVisible] = useState(false);
   // const userState = useSelector((state) => state.user);
   const { auth, setAuth } = useAuth();
+  const { darkMode, setDarkMode } = useDelf();
 
   const [profileDrowpdown, setProfileDrowpdown] = useState(false);
 
@@ -93,7 +96,9 @@ const Header = () => {
   };
 
   return (
-    <section className="sticky top-0 left-0 right-0 z-50 bg-white shadow">
+    <section
+      className={`${darkMode ? "bg-gradient-to-tr from-slate-500 to-sky-900" : "bg-white"} sticky top-0 left-0 right-0 z-50 shadow-md `}
+    >
       <header className="container mx-auto px-5 flex justify-between py-4 items-center">
         <Link to="/">
           <img className="w-20" src={images.Logo} alt="logo" />
@@ -174,11 +179,24 @@ const Header = () => {
                     </div>
                   </div>
                 </div>
+
               </div>
             )
           }
+          <div >
+            {/* darkmode y lightmode con switch  */}
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="flex gap-x-1 items-center mt-5 lg:mt-0 shadow border-blue-500 px-6 py-2 rounded-sm text-blue-500 font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300"
+            >
+              {
+                darkMode ?
+                  <MdLightMode className='h-6 w-6 text-yellow-500' />
+                  : <MdDarkMode className='h-6 w-6 text-slate-700' />
+              }
+            </button>
 
-
+          </div>
 
         </div>
       </header>
