@@ -68,8 +68,8 @@ const FAQ = () => {
 
                     <div className="grid pt-8 text-left border-t border-gray-200 md:gap-10 dark:border-gray-700 md:grid-cols-2">
                         {
-                            preguntasFrecuentes.map((pregunta, index) => (
-                                <QuestiondAndAnswers key={index} pregunta={pregunta} />
+                            preguntasFrecuentes.map((pregunta) => (
+                                <QuestiondAndAnswers key={pregunta.id} pregunta={pregunta} />
                             ))
                         }
                     </div>
