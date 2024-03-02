@@ -1,8 +1,7 @@
 
-
 const BlogDetail = ({ item }) => {
 
-  const { id, tittle, image, date, description } = item
+  const { id, tittle, image, date, description } = item;
 
   return (
     <div className=" flex">
