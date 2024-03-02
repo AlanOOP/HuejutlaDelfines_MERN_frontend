@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 import { logos } from '../../constants/images';
+<<<<<<< HEAD
 import useDelf from '../../hooks/useDelf';
+=======
+// import { Link } from 'react-router-dom';
+>>>>>>> ae19f65f1bc766fccbe99e6dba83cf5a13ac9c8e
 import { FiSearch } from "react-icons/fi";
 // import video from '../../assets/video/huejutla-delfines.mp4'
 
