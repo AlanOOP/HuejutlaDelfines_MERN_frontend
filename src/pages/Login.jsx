@@ -61,7 +61,6 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         if (!isValidated()) return;
         try {
             const response = await clienteAxios.post('/singUp', user);
@@ -77,7 +76,6 @@ const Login = () => {
             console.log(token);
 
             toast.success('Bienvenido a Huejutla Delfines');
-
 
             setTimeout(() => {
                 navigate('/');

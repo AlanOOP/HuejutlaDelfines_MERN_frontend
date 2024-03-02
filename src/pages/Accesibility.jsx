@@ -16,7 +16,6 @@ const Accesibility = () => {
     // const audioRef = useRef(new Audio(audioFile));
     // const audioRef = useRef(new Audio(audioFile));
 
-
     const { isPlaying, setIsPlaying } = useDelf();
 
     const handleMouseEnter = () => {

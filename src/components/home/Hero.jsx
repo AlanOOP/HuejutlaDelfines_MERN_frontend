@@ -62,10 +62,10 @@ const Hero = () => {
           </div>
         </div>
         <div className=" lg:block lg:w-1/2 m-2 ">
-          <div className='flex justify-center items-center mt-10'>
+          <div className='flex justify-center items-center mt-10 shadow'>
             <img
               className=" object-cover  h-auto md:h-3/6 lg:h-5/6 xl:h-5/6"
-              src={logos[1]}
+              src={currentImage}
               alt="users are reading articles"
             />
 
