@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-
-=======
-// import React from 'react';
->>>>>>> ae19f65f1bc766fccbe99e6dba83cf5a13ac9c8e
 import Layout from '../components/Layout';
 
 const Terms = () => {

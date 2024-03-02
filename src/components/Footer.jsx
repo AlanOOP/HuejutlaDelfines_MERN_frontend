@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> ae19f65f1bc766fccbe99e6dba83cf5a13ac9c8e
 import {
   AiOutlineTwitter,
   AiFillYoutube,
@@ -12,11 +7,6 @@ import {
 } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
 import { BsTelegram } from "react-icons/bs";
-<<<<<<< HEAD
-=======
-// import { Link } from "react-router-dom";
-
->>>>>>> ae19f65f1bc766fccbe99e6dba83cf5a13ac9c8e
 import { images } from "../constants";
 
 
@@ -26,7 +16,7 @@ const Footer = () => {
   return (
     <div>
       <div className=''>
-        
+
       </div>
       <section className="bg-dark-hard">
         <footer className="container mx-auto grid grid-cols-10 px-5 py-10 gap-y-10 gap-x-5 md:pt-20 md:grid-cols-12 lg:grid-cols-10 lg:gap-x-10">

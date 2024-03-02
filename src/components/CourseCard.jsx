@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-=======
-
-
-
 import { MdFavorite } from 'react-icons/md'
-
 import { images } from "../constants";
->>>>>>> ae19f65f1bc766fccbe99e6dba83cf5a13ac9c8e
+
 import { Link } from "react-router-dom";
 import { Rating } from "@material-tailwind/react";
 

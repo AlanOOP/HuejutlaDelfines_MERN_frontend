@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 
 import { Link } from 'react-router-dom';
-=======
-// import React from 'react';
-// import { Link } from 'react-router-dom';
->>>>>>> ae19f65f1bc766fccbe99e6dba83cf5a13ac9c8e
 
 const Breadcrumb = ({ path }) => {
 

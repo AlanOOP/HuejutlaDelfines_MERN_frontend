@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 
-=======
-// import React from 'react';
->>>>>>> ae19f65f1bc766fccbe99e6dba83cf5a13ac9c8e
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import { logos } from '../../constants/images.js';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';

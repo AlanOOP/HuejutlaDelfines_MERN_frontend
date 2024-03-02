@@ -1,12 +1,8 @@
-<<<<<<< HEAD
 
 import AdminSidebar from '../partials/AdminSidebar';
-
-=======
 // import React from 'react'
 import AdminSidebar from '../partials/AdminSidebar';
 // import Layout from '../../../components/Layout';
->>>>>>> ae19f65f1bc766fccbe99e6dba83cf5a13ac9c8e
 import Header from '../../../components/Header';
 
 const AdminLayout = ({ children }) => {
