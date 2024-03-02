@@ -1,4 +1,3 @@
-// import React from 'react';
 import TestiomonialCard from './TestiomonialCard';
 
 const Testimonials = () => {

@@ -1,7 +1,4 @@
-
 import LayoutUser from './dashboardUser/LayoutUser';
-
-
 
 const Profile = () => {
   return (
@@ -14,8 +11,8 @@ const Profile = () => {
           <hr />
           <div className="py-4 px-4 md:px-8 lg:px-16 flex flex-col space-y-4">
             {/* {fData.success ? ( */}
-              
-           
+
+
             <div className="flex flex-col space-y-2">
               <label htmlFor="name">Nombre:</label>
               <input

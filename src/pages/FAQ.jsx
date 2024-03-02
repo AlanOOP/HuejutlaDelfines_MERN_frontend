@@ -68,8 +68,14 @@ const FAQ = () => {
 
                     <div className="grid pt-8 text-left border-t border-gray-200 md:gap-10 dark:border-gray-700 md:grid-cols-2">
                         {
+<<<<<<< HEAD
                             preguntasFrecuentes.map((pregunta) => (
                                 <QuestiondAndAnswers key={pregunta.id} pregunta={pregunta} />
+=======
+                            preguntasFrecuentes.map((index, pregunta) => (
+                                <div key={index} className="mb-5  cursor-pointer" onClick={() => setAccordionOpen(!accordionOpen)}>
+                                    <h3 className="flex items-center mb-4 text-lg font-medium text-gray-900 dark:text-white gap-2 ">
+>>>>>>> ae19f65f1bc766fccbe99e6dba83cf5a13ac9c8e
 
                             ))
                         }

@@ -147,13 +147,13 @@ const CourseDetail = () => {
                   </div>
                 </div>
                 {/* <div class="py-6 mb-6 border-t border-b border-gray-200 dark:border-gray-700">
-                <span class="text-base text-gray-600 dark:text-gray-400">In Stock</span>
-                <p class="mt-2 text-sm text-blue-500 dark:text-blue-200">Ships from china.
-                  <span class="text-gray-600 dark:text-gray-400">
-                    Most customers receive within 3-31 days.
-                  </span>
-                </p>
-              </div> */}
+              <span class="text-base text-gray-600 dark:text-gray-400">In Stock</span>
+              <p class="mt-2 text-sm text-blue-500 dark:text-blue-200">Ships from china.
+                <span class="text-gray-600 dark:text-gray-400">
+                  Most customers receive within 3-31 days.
+                </span>
+              </p>
+            </div> */}
                 <div className="mb-6 "></div>
 
                 <div className="flex gap-4 mb-6">
