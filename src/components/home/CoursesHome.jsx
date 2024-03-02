@@ -1,4 +1,3 @@
-// import React from 'react'
 import CourseCard from '../CourseCard'
 // import { courses } from '../../constants/data'
 import clienteAxios from '../../config/clientAxios'
