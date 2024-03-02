@@ -10,6 +10,7 @@ const Galery = () => {
 
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(false);
+  const [selectImageIndex, setSelectImageIndex] = useState(null);
 
   const handleScroll = () => {
     if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
@@ -18,8 +19,9 @@ const Galery = () => {
 
   window.addEventListener('scroll', handleScroll);
 
-  const openModel = () => {
+  const openModal = (index) => {
     setModal(true);
+    setSelectImageIndex(index)
   }
 
   return (
@@ -43,7 +45,7 @@ const Galery = () => {
               sm:top-16 sm:right-96 text-2xl right-40 top-12 md:right-96'>
                 <IoMdCloseCircle className='w-6 h-6 text-white' />
               </button>
-              <img src={galery[0]} alt="imagen" className='w-full h-[400px] object-cover rounded-lg' />
+              <img src={galery[selectImageIndex]} alt="imagen" className='w-full h-[400px] object-cover rounded-lg' />
             </div>
           </div>
         )}
@@ -58,7 +60,7 @@ const Galery = () => {
                     loading='lazy'
                     src={img} alt=""
                     className='w-full h-full object-cover rounded-sm shadow-lg cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out'
-                    onClick={openModel}
+                    onClick={() => openModal(index)}
                   />
                 </div>
               ))
