@@ -1,7 +1,7 @@
 import { images } from '../constants';
 import { Rating } from "@material-tailwind/react";
 import Layout from '../components/Layout';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import clienteAxios from '../config/clientAxios';
 import Spinner from '../components/Spinner';
@@ -157,8 +157,11 @@ const CourseDetail = () => {
                 <div className="mb-6 "></div>
 
                 <div className="flex gap-4 mb-6">
-                  <a href="#" className="w-full py-3 font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center">
-                    Inscribete Ahora</a>
+                  <Link
+                    to='/checkout'
+                    className="w-full py-3 font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center">
+                    Inscribete Ahora
+                  </Link>
                 </div>
               </div>
             </div>

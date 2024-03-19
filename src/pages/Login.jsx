@@ -66,7 +66,7 @@ const Login = () => {
             const response = await clienteAxios.post('/singUp', user);
             // console.log(response.data);
 
-            const { token } = response.data.user;
+            const { token, role } = response.data.user;
 
             setAuth({
                 token: token,

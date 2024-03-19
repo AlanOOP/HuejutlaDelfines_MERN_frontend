@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import AdminLayout from './layout/AdminLayout'
 import clienteAxios from '../../config/clientAxios'
 import { toast, ToastContainer } from 'react-toastify'
@@ -10,6 +10,7 @@ const AddCourse = () => {
 
     const navigate = useNavigate();
 
+    const [instructors, setInstructors] = useState([]);
     const [course, setCourse] = useState({
         title: '',
         description: '',
@@ -18,6 +19,21 @@ const AddCourse = () => {
         price: '',
         offer: '',
     })
+
+
+    useEffect(() => {
+        const getInstructor = async () => {
+            try {
+                const response = await clienteAxios.get('/instructor')
+                setInstructors(response.data);
+                console.log(instructors)
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        // getInstructor()
+
+    }, [instructors])
 
     const [image, setImage] = useState([]);
 
@@ -47,7 +63,7 @@ const AddCourse = () => {
         // Crear un formdata
 
         let formData = new FormData();
-        
+
         for (const file of image) {
             // console.log(file)
             formData.append("image", file[0]);
@@ -122,20 +138,34 @@ const AddCourse = () => {
                         className="w-full"
                         onSubmit={handleSubmit}
                     >
+                        <div className='flex space-x-5 py-4'>
+                            <div className="w-1/2 flex flex-col space-y-1 space-x-1">
+                                <label htmlFor="name" className='font-medium text-slate-700 pb-2'>Titulo: </label>
+                                <input
+                                    name='title'
+                                    defaultValue={course.title}
+                                    onChange={actualizarState}
+                                    className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
+                                    type="text"
+                                />
+                            </div>
+                            <div className="w-1/2 flex flex-col space-y-1 space-x-1">
+                                <label htmlFor="name" className='font-medium text-slate-700 pb-2'>Categoria: </label>
+                                {/* selecy con opciones de principiante intermedio  */}
+                                <select
+                                    name='category'
+                                    defaultValue={course.category}
+                                    onChange={actualizarState}
+                                    className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
+                                >
+                                    <option value="">Ninguno</option>
+                                    <option value="Principiante">Principiante</option>
+                                    <option value="Intermedio">Intermedio</option>
+                                    <option value="Avanzado">Avanzado</option>
+                                </select>
+                            </div>
 
-                        <div className="w-1/2 flex flex-col space-y-1 space-x-1">
-                            <label htmlFor="name" className='font-medium text-slate-700 pb-2'>Titulo: </label>
-                            <input
-                                name='title'
-                                defaultValue={course.title}
-                                onChange={actualizarState}
-                                className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
-                                type="text"
-                            />
                         </div>
-
-
-
                         <div className="w-full flex flex-col space-y-1 space-x-1">
                             <label htmlFor="name" className='font-medium text-slate-700 pb-2'>Descripción: </label>
                             <textarea
@@ -161,23 +191,28 @@ const AddCourse = () => {
                             </div>
 
                             <div className="w-1/2 flex flex-col space-y-1 space-x-1">
-                                <label htmlFor="name" className='font-medium text-slate-700 pb-2'>Categoria: </label>
+                                <label htmlFor="name" className='font-medium text-slate-700 pb-2'>Instructor: </label>
                                 {/* selecy con opciones de principiante intermedio  */}
                                 <select
-                                    name='category'
-                                    defaultValue={course.category}
-                                    onChange={actualizarState}
+                                    // name='category'
+                                    // defaultValue={course.category}
+                                    // onChange={actualizarState}
                                     className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
                                 >
                                     <option value="">Ninguno</option>
-                                    <option value="Principiante">Principiante</option>
-                                    <option value="Intermedio">Intermedio</option>
-                                    <option value="Avanzado">Avanzado</option>
+                                    {
+                                        instructors.map(({ _id, name, lastName }) => (
+                                            <option value={`${_id}`}>{name}  {lastName}</option>
+
+                                        ))
+
+                                    }
                                 </select>
                             </div>
+
                         </div>
 
-                        <div className='flex justify-center'>
+                        <div className='flex justify-center space-x-2'>
 
                             <div className="w-1/2 flex flex-col space-y-1 space-x-1">
                                 <label htmlFor="name" className='font-medium text-slate-700 pb-2'>Oferta: </label>
@@ -189,31 +224,22 @@ const AddCourse = () => {
                                     className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
                                     type="number"
                                 />
-
                                 {/* tomar la otra mitad */}
-
-
                             </div>
 
-                            <div className="w-1/2 flex justify-center  space-y-1 space-x-1">
-                                {
-                                    image.length > 0 &&
-                                    image.map((img, index) => {
-                                        // Crear un objeto URL para la imagen
-                                        const url = URL.createObjectURL(img[0]);
-                                        return (
-                                            <img
-                                                key={index}
-                                                className='w-1/4'
-                                                src={url}
-                                                alt="Imagen del curso"
-                                                onClick={() => removeImage(index)}
-                                            />
-                                        )
-                                    })
-                                }
-
+                            <div className="w-1/2 flex flex-col space-y-1 space-x-1">
+                                <label htmlFor="name" className='font-medium text-slate-700 pb-2'>Cupos: </label>
+                                {/* selecy con opciones de principiante intermedio  */}
+                                <input
+                                    name='offer'
+                                    defaultValue={course.offer}
+                                    onChange={actualizarState}
+                                    className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
+                                    type="number"
+                                />
+                                {/* tomar la otra mitad */}
                             </div>
+
                         </div>
 
                         <div className="w-full flex flex-col space-y-1 space-x-1">
@@ -227,12 +253,27 @@ const AddCourse = () => {
                                 id="image"
                                 multiple
                             />
-
-
                             {/* span que avisa cuaantas imagenes le faltaan se requieren 2 imagbes */}
 
-                            <span className='text-xs text-slate-700'>Se requieren 2 imagenes</span>
+                        </div>
 
+                        <div className="w-1/2 flex justify-center  space-y-1 space-x-1">
+                            {
+                                image.length > 0 &&
+                                image.map((img, index) => {
+                                    // Crear un objeto URL para la imagen
+                                    const url = URL.createObjectURL(img[0]);
+                                    return (
+                                        <img
+                                            key={index}
+                                            className='w-1/4'
+                                            src={url}
+                                            alt="Imagen del curso"
+                                            onClick={() => removeImage(index)}
+                                        />
+                                    )
+                                })
+                            }
 
                         </div>
 
