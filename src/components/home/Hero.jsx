@@ -65,7 +65,7 @@ const Hero = () => {
           <div className='flex justify-center items-center mt-10 shadow'>
             <img
               className=" object-cover  h-auto md:h-3/6 lg:h-5/6 xl:h-5/6"
-              src={currentImage}
+              src={logos[0]}
               alt="users are reading articles"
             />
 

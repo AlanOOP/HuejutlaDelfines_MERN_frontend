@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
   const { isStyle, setIsStyle, isPlaying, setIsPlaying, darkMode, setDarkMode } = useDelf();
 
   return (
-    <div className={`${isStyle ? 'no-styles' : ''} ${darkMode ? 'bg-gray-600' : ''}`}>
+    <div className={`${isStyle ? 'no-styles' : ''} ${darkMode ? 'bg-gray-600' : ''} `}>
 
       {/* <Helmet>
         <meta

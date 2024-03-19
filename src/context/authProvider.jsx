@@ -11,9 +11,9 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState({});
 
     useEffect(() => {
+
         const authUser = async () => {
             const token = localStorage.getItem('token');
-
             if (!token) return;
 
             const config = {
@@ -25,12 +25,15 @@ const AuthProvider = ({ children }) => {
 
             try {
                 const { data } = await clienteAxios.get('/user/profile', config);
-                setUser(data.user);
+                const { user } = data;
+                setUser(user);
+                
+
                 setAuth({
                     token: token,
                     auth: true,
                 });
-                console.log(data);
+
             } catch (error) {
                 console.log(error);
             }
@@ -43,7 +46,9 @@ const AuthProvider = ({ children }) => {
     return (
         <AuthContext.Provider value={{
             auth,
-            setAuth
+            setAuth,
+            user,
+            setUser
         }}>
             {children}
         </AuthContext.Provider>
