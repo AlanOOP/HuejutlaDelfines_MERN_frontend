@@ -182,6 +182,7 @@ const Register = () => {
       }
 
     } catch (error) {
+      setLoading(false)
       // console.error(error)
     }
   }

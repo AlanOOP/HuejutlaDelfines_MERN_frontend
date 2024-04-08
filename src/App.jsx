@@ -15,6 +15,7 @@ import Blog from './pages/Blog';
 import Contacto from './pages/Galery';
 import Page404 from './pages/Page404';
 import Profile from './pages/Profile';
+import Progress from './pages/dashboardUser/Progress';
 import PrivatePolicy from './pages/PrivatePolicy';
 import FAQ from './pages/FAQ';
 import Terms from './pages/Terms';
@@ -25,6 +26,7 @@ import NewPassword from './pages/NewPassword';
 import OTPVerification from './pages/OTPVerification';
 import Confirmar from './pages/Confirmar';
 import Payment from './pages/Payment';
+import PurchaseSummary from './pages/PurchaseSummary';
 
 import { HomeProvider } from './context/homeProvider';
 import { AuthProvider } from './context/authProvider';
@@ -56,6 +58,7 @@ function App() {
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/profile' element={<Profile />} />
+              <Route path='/profile/progress' element={<Progress />} />
               <Route path='/about' element={<AboutMe />} />
               <Route path='/galeria' element={<Contacto />} />
               <Route path='/blog' element={<Blog />} />
@@ -70,7 +73,9 @@ function App() {
               <Route path='/olvide-password/:token' element={<NewPassword />} />
               <Route path='/otp-verification' element={<OTPVerification />} />
               <Route path='/confirmar/:token' element={<Confirmar />} />
-              <Route path='/checkout' element={<Payment />} />
+              <Route path='/checkout/:id' element={<Payment />} />
+              <Route path='/purchase-summary' element={<PurchaseSummary />} />
+
               {/* private */}
 
               <Route path='/admin/dashboard' element={<HomeAdmin />} />

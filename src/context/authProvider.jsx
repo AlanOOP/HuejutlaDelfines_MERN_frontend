@@ -10,6 +10,7 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState({});
 
+
     useEffect(() => {
 
         const authUser = async () => {
@@ -22,13 +23,11 @@ const AuthProvider = ({ children }) => {
                     Authorization: `Bearer ${token}`
                 }
             }
-
+ 
             try {
                 const { data } = await clienteAxios.get('/user/profile', config);
                 const { user } = data;
                 setUser(user);
-                
-
                 setAuth({
                     token: token,
                     auth: true,

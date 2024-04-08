@@ -18,6 +18,8 @@ const AddCourse = () => {
         category: '',
         price: '',
         offer: '',
+        instructor: '',
+        cupos: ''
     })
 
 
@@ -31,7 +33,7 @@ const AddCourse = () => {
                 console.error(error);
             }
         }
-        // getInstructor()
+        getInstructor()
 
     }, [instructors])
 
@@ -75,6 +77,8 @@ const AddCourse = () => {
 
         formData.append('price', course.price);
         formData.append('offer', course.offer);
+        formData.append('instructor', course.instructor);
+        formData.append('cupos', course.cupos);
 
         // console.log(image)
 
@@ -194,9 +198,9 @@ const AddCourse = () => {
                                 <label htmlFor="name" className='font-medium text-slate-700 pb-2'>Instructor: </label>
                                 {/* selecy con opciones de principiante intermedio  */}
                                 <select
-                                    // name='category'
-                                    // defaultValue={course.category}
-                                    // onChange={actualizarState}
+                                    name='instructor'
+                                    defaultValue={course.instructor}
+                                    onChange={actualizarState}
                                     className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
                                 >
                                     <option value="">Ninguno</option>
@@ -231,8 +235,8 @@ const AddCourse = () => {
                                 <label htmlFor="name" className='font-medium text-slate-700 pb-2'>Cupos: </label>
                                 {/* selecy con opciones de principiante intermedio  */}
                                 <input
-                                    name='offer'
-                                    defaultValue={course.offer}
+                                    name='cupos'
+                                    defaultValue={course.cupos}
                                     onChange={actualizarState}
                                     className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
                                     type="number"
@@ -277,7 +281,7 @@ const AddCourse = () => {
 
                         </div>
 
-                        <div className='flex justify-end'>
+                        <div className='flex justify-end mt-2'>
                             <input
                                 type="submit"
                                 className={`w-2/12 p-3 font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center ${validateButton() ? 'opacity-50 cursor-not-allowed' : ''}`}

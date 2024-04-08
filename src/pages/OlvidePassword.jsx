@@ -15,6 +15,8 @@ const OlvidePassword = () => {
         email: '',
     });
 
+
+
     const updateState = (e) => {
         setUser({
             ...user,
@@ -22,7 +24,7 @@ const OlvidePassword = () => {
         })
     }
 
-    
+
 
     const isValidated = () => {
         if (user.email === '' || user.password === '') {
@@ -46,16 +48,10 @@ const OlvidePassword = () => {
         //olvide password 
         try {
             const response = await clienteAxios.post('/olvide-password', user);
-
-            // console.log(response.data);
-            toast.success(response.data.message);
-            setUser({
-                email: '',
-                password: '',
-            })
-
+            toast.success(response.data.message)
         } catch (error) {
             toast.warn(error.response.data.message)
+            console.error(error);
         }
     }
 
