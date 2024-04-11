@@ -78,7 +78,7 @@ const StudentEvaluation = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await clienteAxios.post(`/evaluation/${id}`, evaluation);
+            const response = await clienteAxios.post(`/evaluation-create/${id}`, evaluation);
             console.log(response.data);
             setEvaluations(response.data);
             toast.success('Evaluación agregada');
