@@ -6,7 +6,8 @@ import useAuth from '../hooks/useAuth';
 import clienteAxios from '../config/clientAxios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import Spinner from '../components/Spinner'
+import Spinner from '../components/Spinner';
+import { FaCcPaypal } from "react-icons/fa6";
 
 const Payment = () => {
 
@@ -55,7 +56,7 @@ const Payment = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await clienteAxios.post('/enrollment', {
+            const response = await clienteAxios.post('/create-order', {
                 id_student: client._id,
                 id_course: course._id,
                 amount: course.price
@@ -63,16 +64,10 @@ const Payment = () => {
 
             setLoading(false)
 
-
-            setPayment(response.data);
-            console.log(response.data);
+            console.log(response)
 
             if (response.status === 200) {
-                toast.success('Pago exitoso');
-
-                setTimeout(() => {
-                    navigate('/courses');
-                }, 3000);
+                window.location.href = response.data.links[1].href;
             }
 
 
@@ -204,10 +199,10 @@ const Payment = () => {
                                 !loading ?
                                     (
                                         <button
-                                            className="w-full px-4 py-2 text-center text-white font-semibold cursor-pointer"
-                                            style={{ background: "#303031" }}
+                                            className="btn-action"
                                         >
-                                            Pagar
+                                            <FaCcPaypal className="w-6 h-6" />
+                                            <span>Pagar</span>
                                         </button>
                                     ) : <Spinner />
                             }

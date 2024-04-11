@@ -15,16 +15,12 @@ const OlvidePassword = () => {
         email: '',
     });
 
-
-
     const updateState = (e) => {
         setUser({
             ...user,
             [e.target.name]: e.target.value
         })
     }
-
-
 
     const isValidated = () => {
         if (user.email === '' || user.password === '') {

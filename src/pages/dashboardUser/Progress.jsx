@@ -23,12 +23,56 @@ const Progress = () => {
     const [month, setMonth] = useState(new Date().getMonth())
 
 
+    //states para la calculadora
+
+    const [timeInitial, setTimeInitial] = useState(0)
+    const [dayInitial, setDayInitial] = useState(0)
+    const [kTime, setKTime] = useState(0)
+    const [kDay, setKDay] = useState(0)
+    const [option, setOption] = useState(0)
+    const [variable, setVariable] = useState(0)
+    const [result, setResult] = useState(0)
+
+    console.log(timeInitial, dayInitial, kTime, kDay, option, variable, result);
+
+    const calcularTasaCambio = (tiempoInicial, tiempoFinal, dias) => {
+        return Math.log(tiempoFinal / tiempoInicial) / dias;
+    }
+
+    const calcularDiaParaTiempoInstancia = (tiempoInicial, tiempoDeseado, tasaCambio) => {
+        return Math.log(tiempoDeseado / tiempoInicial) / tasaCambio;
+    }
+
+    const calcularTiempoInstanciaEnDia = (tiempoInicial, dias, tasaCambio) => {
+        return tiempoInicial * Math.exp(tasaCambio * dias);
+    }
+
+    const handleCalculate = (e) => {
+        e.preventDefault();
+
+        if (timeInitial === 0 || dayInitial === 0 || kTime === 0 || kDay === 0 || option === 0 || variable === 0) {
+            toast.error('Todos los campos son obligatorios')
+            return;
+        }
+
+        if (option === "1") {
+            const tasaCambio = calcularTasaCambio(timeInitial, kTime, kDay - 1);
+            console.log(tasaCambio, 1)
+            setResult(calcularTiempoInstanciaEnDia(timeInitial, variable, tasaCambio))
+        } else {
+            const tasaCambio = calcularTasaCambio(timeInitial, kTime, kDay - 1);
+            console.log(tasaCambio, 2)
+            setResult(calcularDiaParaTiempoInstancia(timeInitial, variable, tasaCambio))
+        }
+
+    }
 
     useEffect(() => {
         const getDays = () => {
             return Array.from({ length: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate() }, (_, i) => i + 1);
         }
         setDays(getDays())
+
     }, [])
 
     const resetForm = () => {
@@ -65,8 +109,11 @@ const Progress = () => {
 
         //guardar la fecha en el state dates
         setDates([...dates, { day, month, time }])
-        //resetear los campos
 
+        //almacenar en el local storage
+        localStorage.setItem('dates', JSON.stringify([...dates, { day, month, time }]))
+
+        //resetear los campos
         resetForm();
 
     }
@@ -205,59 +252,61 @@ const Progress = () => {
 
                     <div className="py-4 px-4 md:px-8 lg:px-16 flex flex-col space-y-4 text-center">
                         <h2 className="py-4 px-4 text-2xl font-bold text-center">
-                            Calcular Laplace de Nado crecimiento de tiempo
+                            Calculadora 🧮
                         </h2>
 
                         <form
-                            onSubmit={handleSave}
+                            onSubmit={handleCalculate}
                             className='py-4 px-4 md:px-8 lg:px-16 flex flex-col space-y-4'
                             noValidate
                         >
-                            <h2 className="py-4 px-4 text-2xl font-bold text-center"> Datos </h2>
+                            <h3 className="text-blue-600 px-4 text-2xl font-bold text-center">
+                                Datos
+                            </h3>
                             <div className='flex space-x-5 py-4'>
                                 <div className="w-1/2 flex flex-col space-y-1 space-x-1">
-                                    <label htmlFor="month" className='text-slate-700 pb-2 font-bold'> Tiempo Inicial </label>
+                                    <label htmlFor="timeInitial" className='text-slate-700 pb-2 font-bold'> Tiempo Inicial </label>
                                     <input
-                                        value={time}
-                                        onChange={(e) => setTime(e.target.value)}
+                                        value={timeInitial}
+                                        onChange={(e) => setTimeInitial(e.target.value)}
                                         type="number"
-                                        name="time"
-                                        id="time"
+                                        name="timeInitial"
+                                        id="timeInitial"
                                         className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
                                     />
                                 </div>
                                 <div className="w-1/2 flex flex-col space-y-1 space-x-1">
-                                    <label htmlFor="time" className="text-slate-700 pb-2 font-bold">Dias</label>
+                                    <label htmlFor="dayInitial" className="text-slate-700 pb-2 font-bold">Dias</label>
                                     <input
-                                        value={time}
-                                        onChange={(e) => setTime(e.target.value)}
+                                        value={dayInitial}
+                                        onChange={(e) => setDayInitial(e.target.value)}
                                         type="number"
-                                        name="time"
-                                        id="time"
+                                        name="dayInitial"
+                                        id="dayInitial"
                                         className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
                                     />
                                 </div>
                             </div>
                             <div className='flex space-x-5'>
                                 <div className="w-1/2 flex flex-col space-y-1 space-x-1">
-                                    <label htmlFor="month" className='text-slate-700 pb-2 font-bold'> Tiempo (K) </label>
+                                    <label htmlFor="kTime" className='text-slate-700 pb-2 font-bold'> Tiempo (K) </label>
                                     <input
-                                        value={time}
-                                        onChange={(e) => setTime(e.target.value)}
+                                        value={kTime}
+                                        onChange={(e) => setKTime(e.target.value)}
                                         type="number"
-                                        name="time"
-                                        id="time"
+                                        name="kTime"
+                                        id="kTime"
                                         className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
                                     />
                                 </div>
                                 <div className="w-1/2 flex flex-col space-y-1 space-x-1">
-                                    <label htmlFor="time" className="text-slate-700 pb-2 font-bold"> Dias </label>
+                                    <label htmlFor="kDay" className="text-slate-700 pb-2 font-bold"> Dias </label>
                                     <input
-                                        value={time}
-                                        onChange={(e) => setTime(e.target.value)}
+                                        value={kDay}
+                                        onChange={(e) => setKDay(e.target.value)}
                                         type="number"
-                                        name="time"
-                                        id="time"
+                                        name="kDay"
+                                        id="kDay"
                                         className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
                                     />
                                 </div>
@@ -265,12 +314,12 @@ const Progress = () => {
 
                             <div className='flex space-x-5'>
                                 <div className="w-1/2 flex flex-col space-y-1 space-x-1">
-                                    <label htmlFor="month" className='text-slate-700 pb-2 font-bold'> ¿Que desea calcular? </label>
+                                    <label htmlFor="option" className='text-slate-700 pb-2 font-bold'> ¿Que desea calcular? </label>
                                     <select
-                                        id="month"
-                                        value={day}
-                                        onChange={(e) => setDay(e.target.value)}
-                                        name='month'
+                                        id="option"
+                                        value={option}
+                                        onChange={(e) => setOption(e.target.value)}
+                                        name='option'
                                         className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
                                     >
                                         <option value="" > -- Seleccione una opción </option>
@@ -280,13 +329,13 @@ const Progress = () => {
                                     </select>
                                 </div>
                                 <div className="w-1/2 flex flex-col space-y-1 space-x-1">
-                                    <label htmlFor="time" className="text-slate-700 pb-2 font-bold"> Tiempo / Dias </label>
+                                    <label htmlFor="variable" className="text-slate-700 pb-2 font-bold"> Tiempo / Dias </label>
                                     <input
-                                        value={time}
-                                        onChange={(e) => setTime(e.target.value)}
+                                        value={variable}
+                                        onChange={(e) => setVariable(e.target.value)}
                                         type="number"
-                                        name="time"
-                                        id="time"
+                                        name="variable"
+                                        id="variable"
                                         className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
                                     />
                                 </div>
@@ -300,13 +349,21 @@ const Progress = () => {
                             </div>
                         </form>
 
+                        {
+                            result !== 0 && (
+                                <div className="py-4 px-4 md:px-8 lg:px-16 flex flex-col space-y-4 text-center">
+                                    <h3 className="text-blue-600 px-4 text-2xl font-bold text-center">
+                                        Resultado
+                                    </h3>
+                                    <p className="text-slate-700"> {result}  {option === "1" ? <span>Minutos</span> : <span>Dias</span>}</p>
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
-
-
             </section>
         </LayoutUser>
     )
 }
 
-export default Progress
+export default Progress;

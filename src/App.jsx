@@ -22,7 +22,9 @@ import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
 import Accesibility from './pages/Accesibility';
 import OlvidePassword from './pages/OlvidePassword';
+import RecoverPassword from './pages/RecoverPassword';
 import NewPassword from './pages/NewPassword';
+import RecoverPasswordSecret from './pages/RecoverPasswordSecret';
 import OTPVerification from './pages/OTPVerification';
 import Confirmar from './pages/Confirmar';
 import Payment from './pages/Payment';
@@ -30,6 +32,12 @@ import PurchaseSummary from './pages/PurchaseSummary';
 
 import { HomeProvider } from './context/homeProvider';
 import { AuthProvider } from './context/authProvider';
+
+
+// Instructor
+import ProfileInstructor from './pages/dashboardInstructor/ProfileInstructor';
+import CourseInstructor from './pages/dashboardInstructor/CourseInstructor';
+import StudentEvaluation from './pages/dashboardInstructor/StudentEvaluation';
 
 // privado
 
@@ -69,12 +77,20 @@ function App() {
               <Route path='/terms' element={<Terms />} />
               <Route path='/cookies' element={<Cookies />} />
               <Route path='/accesibility' element={<Accesibility />} />
+              <Route path='/recover-password' element={<RecoverPassword />} />
+              <Route path='/recover-password-secret-question' element={<RecoverPasswordSecret />} />
               <Route path='/olvide-password' element={<OlvidePassword />} />
               <Route path='/olvide-password/:token' element={<NewPassword />} />
               <Route path='/otp-verification' element={<OTPVerification />} />
               <Route path='/confirmar/:token' element={<Confirmar />} />
               <Route path='/checkout/:id' element={<Payment />} />
-              <Route path='/purchase-summary' element={<PurchaseSummary />} />
+              <Route path='/capture-order' element={<PurchaseSummary />} />
+
+
+              {/* Instructor */}
+              <Route path='/instructor/dashboard' element={<ProfileInstructor />} />
+              <Route path='/instructor/course/:id' element={< CourseInstructor />} />
+              <Route path='/instructor/progress/:id' element={<StudentEvaluation />} />
 
               {/* private */}
 

@@ -76,7 +76,7 @@ const Header = () => {
 
   const [navIsVisible, setNavIsVisible] = useState(false);
   // const userState = useSelector((state) => state.user);
-  const { auth, setAuth } = useAuth();
+  const { auth, setAuth, isAdmin, isInstructor, isUser } = useAuth();
   const { darkMode, setDarkMode } = useDelf();
 
   const [profileDrowpdown, setProfileDrowpdown] = useState(false);
@@ -157,21 +157,40 @@ const Header = () => {
                     >
                       <ul className="bg-dark-soft lg:bg-transparent text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
 
-                        <button
-                          onClick={() => navigate("/admin/dashboard")}
-                          type="button"
-                          className="hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft"
-                        >
-                          Admin Dashboard
-                        </button>
+                        {
+                          isAdmin() && (
+                            <button
+                              onClick={() => navigate("/admin/dashboard")}
+                              type="button"
+                              className="hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft"
+                            >
+                              Admin Dashboard
+                            </button>
+                          )
+                        }
 
-                        <button
-                          onClick={() => navigate("/profile")}
-                          type="button"
-                          className="hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft"
-                        >
-                          Perfil
-                        </button>
+                        {
+                          isUser() && (
+                            <button
+                              onClick={() => navigate("/profile")}
+                              type="button"
+                              className="hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft"
+                            >
+                              Perfil
+                            </button>
+                          )
+                        }
+                        {
+                          isInstructor() && (
+                            <button
+                              onClick={() => navigate("/instructor/dashboard")}
+                              type="button"
+                              className="hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft"
+                            >
+                              Instructor Dashboard
+                            </button>
+                          )
+                        }
                         <button
                           onClick={logoutHandler}
                           type="button"

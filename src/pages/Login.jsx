@@ -53,10 +53,10 @@ const Login = () => {
             return false;
         }
 
-        if (!isPassword(user.password)) {
-            toast.error('La contraseña no es valida')
-            return false;
-        }
+        // if (!isPassword(user.password)) {
+        //     toast.error('La contraseña no es valida')
+        //     return false;
+        // }
         return true;
     }
 
@@ -69,7 +69,7 @@ const Login = () => {
         };
         try {
             const response = await clienteAxios.post('/singUp', user);
-            // console.log(response.data);
+
 
             const { token, role } = response.data.user;
             setLoading(false);
@@ -79,7 +79,8 @@ const Login = () => {
                 auth: true,
             });
             localStorage.setItem('token', token);
-            console.log(token);
+            localStorage.setItem('role', role);
+
 
             toast.success('Bienvenido a Huejutla Delfines');
 
@@ -182,7 +183,7 @@ const Login = () => {
                                 </label>
                             </div>
                             <div>
-                                <Link to='/olvide-password' className="font-medium text-blue-600">Recuperar Contraseña?</Link>
+                                <Link to='/recover-password' className="font-medium text-blue-600">Recuperar Contraseña?</Link>
                             </div>
                         </div>
                         {

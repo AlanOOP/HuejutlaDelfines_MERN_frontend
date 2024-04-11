@@ -1,13 +1,79 @@
 import LayoutUser from './dashboardUser/LayoutUser';
+import useAuth from '../hooks/useAuth';
+import { useEffect, useState } from 'react';
+import clienteAxios from '../config/clientAxios';
+import { toast } from 'react-hot-toast';
+import { questions } from '../constants/app';
+
 
 const Profile = () => {
 
-  const handleProfile = async (e) => {
-    e.preventDefault()
+  const { user } = useAuth();
+  const [usuario, setUsuario] = useState({})
+  const [secretQuestion, setSecretQuestion] = useState({
+    question: '',
+    answer: ''
+  })
+
+
+
+  console.log(secretQuestion);
+
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const { data } = await clienteAxios.get(`/student/user/${user._id}`);
+        setUsuario(data);
+        console.log(usuario);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getUser();
+  }, [user._id]);
+
+  const updateState = (e) => {
+    setUsuario({
+      ...usuario,
+      [e.target.name]: e.target.value
+    })
   }
 
+  const handleProfile = async (e) => {
+    e.preventDefault();
+
+    try {
+      const { data } = await clienteAxios.put(`/student/update/${usuario._id}`, {
+        name: usuario.name,
+        lastName: usuario.lastName,
+        phone: usuario.phone
+      });
+      console.log(data);
+      toast.success(data.message);
+    } catch (error) {
+      console.log(error);
+      toast.error('Error al actualizar la información');
+    }
+  }
   const handleQuestion = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
+
+    if (secretQuestion.question === '' || secretQuestion.answer === '') {
+      return toast.error('Todos los campos son obligatorios');
+    }
+
+    try {
+      const { data } = await clienteAxios.post(`/secretQuestion/${user._id}`, {
+        question: secretQuestion.question,
+        answer: secretQuestion.answer.toUpperCase()
+      });
+      console.log(data);
+      toast.success(data.message);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data);
+    }
+
   }
 
   return (
@@ -22,23 +88,36 @@ const Profile = () => {
             onSubmit={handleProfile}
             className="py-4 px-4 md:px-8 lg:px-16 flex flex-col space-y-4"
           >
-            {/* {fData.success ? ( */}
 
 
-            <div className="flex flex-col space-y-2">
-              <label htmlFor="name">Nombre:</label>
-              <input
-                // onChange={(e) => setFdata({ ...fData, name: e.target.value })}
-                value="Alan Alexis Hernandez Francisco"
-                type="text"
-                id="name"
-                className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
-              />
+            <div className='flex gap-x-2'>
+              <div className="flex flex-col space-y-2 w-1/2">
+                <label htmlFor="name">Nombre:</label>
+                <input
+                  name='name'
+                  type="text"
+                  id="name"
+                  className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
+                  onChange={updateState}
+                  value={usuario.name ?? ''}
+                />
+              </div>
+              <div className="flex flex-col space-y-2 w-1/2">
+                <label htmlFor="lastName">Apellido:</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name='lastName'
+                  className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
+                  onChange={updateState}
+                  value={usuario.lastName ?? ''}
+                />
+              </div>
             </div>
             <div className="flex flex-col space-y-2">
               <label htmlFor="email">Email</label>
               <input
-                value="alan@alan.com"
+                value={usuario.user?.email ?? ''}
                 readOnly
                 type="email"
                 id="email"
@@ -49,13 +128,14 @@ const Profile = () => {
               </span>
             </div>
             <div className="flex flex-col space-y-2">
-              <label htmlFor="number">Numero de telefono:</label>
+              <label htmlFor="phone">Numero de telefono:</label>
               <input
-                // onChange={(e) => setFdata({ ...fData, phone: e.target.value })}
-                value="7717128042"
                 type="number"
-                id="number"
+                name='phone'
+                id="phone"
                 className="border px-4 py-2 w-full focus:outline-none"
+                onChange={updateState}
+                value={usuario.phone ?? ''}
               />
             </div>
             <button
@@ -76,25 +156,26 @@ const Profile = () => {
                   <label htmlFor="name" className='font-medium text-slate-700 pb-2'>Pregunta: </label>
                   {/* selecy con opciones de principiante intermedio  */}
                   <select
-                    name='category'
+                    name='question'
                     className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
+                    value={secretQuestion.question}
+                    onChange={(e) => setSecretQuestion({ ...secretQuestion, question: e.target.value })}
                   >
-                    <option value=""> -- Seleccione una opción </option>
-                    <option value="">¿Cuál es el nombre de tu primera mascota ? </option>
-                    <option value="">¿Cuál es tu comida favorita ? </option>
-                    <option value="">¿Cuál es el nombre de tu película favorita ? </option>
-                    <option value="">¿Cuál es tu equipo deportivo favorito ? </option>
-                    <option value="">¿Cuál es el nombre de tu primer amor ? </option>
-                    <option value="">¿Cuál es el nombre de tu canción favorita ? </option>
-                    <option value="">¿Cuál es el nombre de tu libro favorito ? </option>
+                    <option value="">Selecciona una pregunta</option>
+                    {
+                      questions.map(question => (
+                        <option key={question.id} value={question.question}>{question.question}</option>
+                      ))
+                    }
                   </select>
                 </div>
                 <div className="w-1/2 flex flex-col space-y-1 space-x-1">
                   <label htmlFor="name" className='font-medium text-slate-700 pb-2'>Respuesta: </label>
                   <input
-                    name='title'
-
-                    className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
+                    name='answer'
+                    value={secretQuestion.answer}
+                    onChange={(e) => setSecretQuestion({ ...secretQuestion, answer: e.target.value })}
+                    className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow uppercase"
                     type="text"
                   />
                 </div>
