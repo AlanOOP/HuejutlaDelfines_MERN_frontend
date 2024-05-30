@@ -46,10 +46,10 @@ const Sidebar = () => {
         </div>
         <hr />
         <div
-          //onClick={(e) => history.push("/wish-list")}
+          onClick={(e) => navigate("/profile/payments")}
           className={` px-4 py-4 hover:bg-gray-200 cursor-pointer`}
         >
-          Mis Favoritos
+          Pagos
         </div>
         <hr />
         <div

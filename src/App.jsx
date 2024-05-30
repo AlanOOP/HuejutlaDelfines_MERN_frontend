@@ -16,6 +16,7 @@ import Contacto from './pages/Galery';
 import Page404 from './pages/Page404';
 import Profile from './pages/Profile';
 import Progress from './pages/dashboardUser/Progress';
+import PaymentsUser from './pages/dashboardUser/PaymentsUser';
 import PrivatePolicy from './pages/PrivatePolicy';
 import FAQ from './pages/FAQ';
 import Terms from './pages/Terms';
@@ -46,6 +47,9 @@ import HomeAdmin from './components/admin/HomeAdmin';
 
 import CoursesAdmin from './pages/dashboardAdmin/CoursesAdmin';
 import AddCourse from './pages/dashboardAdmin/AddCourse';
+import CourseDetailA from './pages/dashboardAdmin/CourseDetailA';
+import Amount from './pages/dashboardAdmin/Amount';
+
 import PageError from './pages/PageError';
 
 function App() {
@@ -67,6 +71,7 @@ function App() {
               <Route path='/register' element={<Register />} />
               <Route path='/profile' element={<Profile />} />
               <Route path='/profile/progress' element={<Progress />} />
+              <Route path='/profile/payments' element={<PaymentsUser />} />
               <Route path='/about' element={<AboutMe />} />
               <Route path='/galeria' element={<Contacto />} />
               <Route path='/blog' element={<Blog />} />
@@ -106,6 +111,10 @@ function App() {
                 des={"Estamos teniendo problemas con el servidor"}
               />} />
               <Route path='/admin/dashboard/courses' element={<CoursesAdmin />} />
+              <Route path='/admin/dashboard/courses/curso-detail/:id' element={<CourseDetailA />} />
+              <Route path='/admin/dashboard/membership' element={<Amount />} />
+
+              {/* 404 */}
               <Route path='/admin/dashboard/addCourse' element={<AddCourse />} />
 
               {/* 404 */}

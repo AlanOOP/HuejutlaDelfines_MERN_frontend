@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from 'react-router-dom'
 
 
+
 const AddCourse = () => {
 
     const navigate = useNavigate();
@@ -94,10 +95,12 @@ const AddCourse = () => {
                     position: toast.POSITION.BOTTOM_RIGHT
                 });
 
+                navigate('/admin/dashboard');
+
             }
 
         } catch (error) {
-            // console.log(error);
+            console.log(error);
         }
     }
 
@@ -257,7 +260,7 @@ const AddCourse = () => {
                                 id="image"
                                 multiple
                             />
-                            {/* span que avisa cuaantas imagenes le faltaan se requieren 2 imagbes */}
+                            <span className='text-xs text-blue-600'>Se requieren minimo 2 imagenes</span>
 
                         </div>
 
