@@ -15,19 +15,31 @@ import Blog from './pages/Blog';
 import Contacto from './pages/Galery';
 import Page404 from './pages/Page404';
 import Profile from './pages/Profile';
+import Progress from './pages/dashboardUser/Progress';
+import PaymentsUser from './pages/dashboardUser/PaymentsUser';
 import PrivatePolicy from './pages/PrivatePolicy';
 import FAQ from './pages/FAQ';
 import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
 import Accesibility from './pages/Accesibility';
 import OlvidePassword from './pages/OlvidePassword';
+import RecoverPassword from './pages/RecoverPassword';
 import NewPassword from './pages/NewPassword';
+import RecoverPasswordSecret from './pages/RecoverPasswordSecret';
 import OTPVerification from './pages/OTPVerification';
 import Confirmar from './pages/Confirmar';
 import Payment from './pages/Payment';
+import PurchaseSummary from './pages/PurchaseSummary';
 
 import { HomeProvider } from './context/homeProvider';
 import { AuthProvider } from './context/authProvider';
+
+
+// Instructor
+import ProfileInstructor from './pages/dashboardInstructor/ProfileInstructor';
+import CourseInstructor from './pages/dashboardInstructor/CourseInstructor';
+import StudentEvaluation from './pages/dashboardInstructor/StudentEvaluation';
+import Notifications from './pages/dashboardInstructor/Notifications';
 
 // privado
 
@@ -36,6 +48,9 @@ import HomeAdmin from './components/admin/HomeAdmin';
 
 import CoursesAdmin from './pages/dashboardAdmin/CoursesAdmin';
 import AddCourse from './pages/dashboardAdmin/AddCourse';
+import CourseDetailA from './pages/dashboardAdmin/CourseDetailA';
+import Amount from './pages/dashboardAdmin/Amount';
+
 import PageError from './pages/PageError';
 
 function App() {
@@ -56,6 +71,8 @@ function App() {
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/profile' element={<Profile />} />
+              <Route path='/profile/progress' element={<Progress />} />
+              <Route path='/profile/payments' element={<PaymentsUser />} />
               <Route path='/about' element={<AboutMe />} />
               <Route path='/galeria' element={<Contacto />} />
               <Route path='/blog' element={<Blog />} />
@@ -66,11 +83,22 @@ function App() {
               <Route path='/terms' element={<Terms />} />
               <Route path='/cookies' element={<Cookies />} />
               <Route path='/accesibility' element={<Accesibility />} />
+              <Route path='/recover-password' element={<RecoverPassword />} />
+              <Route path='/recover-password-secret-question' element={<RecoverPasswordSecret />} />
               <Route path='/olvide-password' element={<OlvidePassword />} />
               <Route path='/olvide-password/:token' element={<NewPassword />} />
               <Route path='/otp-verification' element={<OTPVerification />} />
               <Route path='/confirmar/:token' element={<Confirmar />} />
-              <Route path='/checkout' element={<Payment />} />
+              <Route path='/checkout/:id' element={<Payment />} />
+              <Route path='/capture-order' element={<PurchaseSummary />} />
+
+
+              {/* Instructor */}
+              <Route path='/instructor/dashboard' element={<ProfileInstructor />} />
+              <Route path='/instructor/course/:id' element={< CourseInstructor />} />
+              <Route path='/instructor/progress/:id' element={<StudentEvaluation />} />
+              <Route path='/instructor/notifications' element={<Notifications />} />
+
               {/* private */}
 
               <Route path='/admin/dashboard' element={<HomeAdmin />} />
@@ -85,6 +113,10 @@ function App() {
                 des={"Estamos teniendo problemas con el servidor"}
               />} />
               <Route path='/admin/dashboard/courses' element={<CoursesAdmin />} />
+              <Route path='/admin/dashboard/courses/curso-detail/:id' element={<CourseDetailA />} />
+              <Route path='/admin/dashboard/membership' element={<Amount />} />
+
+              {/* 404 */}
               <Route path='/admin/dashboard/addCourse' element={<AddCourse />} />
 
               {/* 404 */}

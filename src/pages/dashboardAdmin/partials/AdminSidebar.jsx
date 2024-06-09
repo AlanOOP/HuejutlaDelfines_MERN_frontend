@@ -31,8 +31,8 @@ const AdminSidebar = () => {
 
 
         <NavItem
-          title="Users"
-          link="/admin/users"
+          title="Cursos"
+          link="/admin/dashboard/courses"
           icon={<FaUser className="text-xl" />}
           name="users"
           activeNavName={activeNavName}
@@ -40,8 +40,8 @@ const AdminSidebar = () => {
         />
 
         <NavItem
-          title="Cursos"
-          link="/admin/dashboard/courses"
+          title="Membresia"
+          link="/admin/dashboard/membership"
           icon={<FaDiscourse className="text-xl" />}
           name="courses"
           activeNavName={activeNavName}
