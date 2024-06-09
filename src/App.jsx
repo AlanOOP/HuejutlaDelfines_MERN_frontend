@@ -39,6 +39,7 @@ import { AuthProvider } from './context/authProvider';
 import ProfileInstructor from './pages/dashboardInstructor/ProfileInstructor';
 import CourseInstructor from './pages/dashboardInstructor/CourseInstructor';
 import StudentEvaluation from './pages/dashboardInstructor/StudentEvaluation';
+import Notifications from './pages/dashboardInstructor/Notifications';
 
 // privado
 
@@ -96,6 +97,7 @@ function App() {
               <Route path='/instructor/dashboard' element={<ProfileInstructor />} />
               <Route path='/instructor/course/:id' element={< CourseInstructor />} />
               <Route path='/instructor/progress/:id' element={<StudentEvaluation />} />
+              <Route path='/instructor/notifications' element={<Notifications />} />
 
               {/* private */}
 

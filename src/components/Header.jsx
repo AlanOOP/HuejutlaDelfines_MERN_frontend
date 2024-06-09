@@ -170,7 +170,7 @@ const Header = () => {
                         }
 
                         {
-                          isUser() && (
+                          (
                             <button
                               onClick={() => navigate("/profile")}
                               type="button"
@@ -181,7 +181,7 @@ const Header = () => {
                           )
                         }
                         {
-                          isInstructor() && (
+                          (
                             <button
                               onClick={() => navigate("/instructor/dashboard")}
                               type="button"
