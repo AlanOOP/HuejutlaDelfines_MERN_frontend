@@ -1,21 +1,13 @@
-# correr doccker 
-# docker build -t client .
+FROM node:18-alpine
 
-FROM node:18
+WORKDIR /app
 
-# Create app directory
-WORKDIR /usr/src/app
-
-# Install app dependencies
-COPY package*.json ./
+COPY package.json .
 
 RUN npm install
 
-# Bundle app source
 COPY . .
 
-# Build app
-EXPOSE 5173
+EXPOSE 8080
 
-# Start app
-CMD [ "npm", "dev" ]
+CMD [ "npm", "run", "dev" ]

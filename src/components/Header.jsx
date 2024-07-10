@@ -158,7 +158,7 @@ const Header = () => {
                       <ul className="bg-dark-soft lg:bg-transparent text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
 
                         {
-
+                          isAdmin &&
                           <button
                             onClick={() => navigate("/admin/dashboard")}
                             type="button"
@@ -170,6 +170,7 @@ const Header = () => {
                         }
 
                         {
+                          isUser &&
                           (
                             <button
                               onClick={() => navigate("/profile")}
@@ -181,6 +182,7 @@ const Header = () => {
                           )
                         }
                         {
+                          isInstructor &&
                           (
                             <button
                               onClick={() => navigate("/instructor/dashboard")}

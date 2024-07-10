@@ -59,8 +59,8 @@ const AdminSidebar = () => {
         />
 
         <NavItem
-          title="Blog"
-          link="/admin/dashboard/courses"
+          title="Noticias"
+          link="/admin/dashboard/noticias"
           icon={<FaBlogger className="text-xl" />}
           name="blog"
           activeNavName={activeNavName}

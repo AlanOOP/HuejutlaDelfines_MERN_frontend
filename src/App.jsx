@@ -51,6 +51,8 @@ import AddCourse from './pages/dashboardAdmin/AddCourse';
 import CourseDetailA from './pages/dashboardAdmin/CourseDetailA';
 import Amount from './pages/dashboardAdmin/Amount';
 
+import Noticias from './pages/dashboardAdmin/Noticias';
+
 import PageError from './pages/PageError';
 
 function App() {
@@ -115,6 +117,7 @@ function App() {
               <Route path='/admin/dashboard/courses' element={<CoursesAdmin />} />
               <Route path='/admin/dashboard/courses/curso-detail/:id' element={<CourseDetailA />} />
               <Route path='/admin/dashboard/membership' element={<Amount />} />
+              <Route path='/admin/dashboard/noticias' element={<Noticias />} />
 
               {/* 404 */}
               <Route path='/admin/dashboard/addCourse' element={<AddCourse />} />

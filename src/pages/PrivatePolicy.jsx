@@ -165,7 +165,7 @@ const PrivatePolicy = () => {
         </div>
 
         <footer className='my-10'>
-          <p className='text-2xl'> Todo los Derechos Reservados UTHH 2023 , Hecho con fines educativos. </p>
+          <p className='text-2xl'> Todo los Derechos Reservados Huejutla Delfines. </p>
         </footer>
 
       </div>
