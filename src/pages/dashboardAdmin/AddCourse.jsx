@@ -36,7 +36,7 @@ const AddCourse = () => {
         }
         getInstructor()
 
-    }, [instructors])
+    }, [])
 
     const [image, setImage] = useState([]);
 
@@ -209,7 +209,7 @@ const AddCourse = () => {
                                     <option value="">Ninguno</option>
                                     {
                                         instructors.map(({ _id, name, lastName }) => (
-                                            <option value={`${_id}`}>{name}  {lastName}</option>
+                                            <option key={_id} value={`${_id}`}>{name}  {lastName}</option>
 
                                         ))
 
