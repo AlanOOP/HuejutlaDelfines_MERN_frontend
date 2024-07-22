@@ -10,6 +10,11 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState({});
 
+
+    const isAdmin = () => user.role === 2;
+    const isInstructor = () => user.role === 1;
+    const isUser = () => user.role === 0;
+
     useEffect(() => {
 
         const authUser = async () => {
@@ -27,8 +32,6 @@ const AuthProvider = ({ children }) => {
                 const { data } = await clienteAxios.get('/user/profile', config);
                 const { user } = data;
                 setUser(user);
-                
-
                 setAuth({
                     token: token,
                     auth: true,
@@ -48,7 +51,10 @@ const AuthProvider = ({ children }) => {
             auth,
             setAuth,
             user,
-            setUser
+            setUser,
+            isAdmin,
+            isInstructor,
+            isUser
         }}>
             {children}
         </AuthContext.Provider>

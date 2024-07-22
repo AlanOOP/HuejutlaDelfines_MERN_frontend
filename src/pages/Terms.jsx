@@ -12,10 +12,10 @@ const Terms = () => {
 
     return (
         <Layout>
-            <main className='my-5 flex flex-col items-center'>
+            <main className='my-5 flex flex-col items-center max-w-6xl mx-auto mt-10 '>
 
 
-                <h1 className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-4xl  p-4 uppercase">
+                <h1 className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-700 md:text-2xl lg:text-4xl  p-4 uppercase">
                     Términos y Condiciones
                 </h1>
 
