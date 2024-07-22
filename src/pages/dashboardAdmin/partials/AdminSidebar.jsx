@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import NavItem from '../components/NavItem';
-import { AiFillDashboard, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { AiFillDashboard, AiOutlineClose, AiOutlineMenu, AiOutlineSchedule } from "react-icons/ai";
 import { FaComments, FaUser, FaDiscourse, FaChalkboardTeacher, FaBlogger, FaPhotoVideo, FaQuestionCircle } from "react-icons/fa";
+import { GiPodiumWinner } from "react-icons/gi";
 import { MdDashboard } from "react-icons/md";
 
 const AdminSidebar = () => {
   const [collapseShow, setCollapseShow] = useState("hidden");
   const [isMenuActive, setIsMenuActive] = useState(false);
-  const [activeNavName, setActiveNavName] = useState("dashboard");
+  const [activeNavName, setActiveNavName] = useState("");
 
   return (
     <div
@@ -51,7 +52,7 @@ const AdminSidebar = () => {
 
         <NavItem
           title="Instructores"
-          link="/admin/dashboard/courses"
+          link="/admin/dashboard/instructors"
           icon={<FaChalkboardTeacher className="text-xl" />}
           name="instructors"
           activeNavName={activeNavName}
@@ -68,16 +69,32 @@ const AdminSidebar = () => {
         />
         <NavItem
           title="Galería"
-          link="/admin/dashboard/courses"
+          link="/admin/dashboard/galery"
           icon={<FaPhotoVideo className="text-xl" />}
           name="galery"
           activeNavName={activeNavName}
           setActiveNavName={setActiveNavName}
         />
+        <NavItem
+          title="Competencias"
+          link="/admin/dashboard/competence"
+          icon={<GiPodiumWinner className="text-xl" />}
+          name="competence"
+          activeNavName={activeNavName}
+          setActiveNavName={setActiveNavName}
+        />
 
         <NavItem
+          title="Horarios"
+          link="/admin/dashboard/schedule"
+          icon={<AiOutlineSchedule className="text-xl" />}
+          name="schedule"
+          activeNavName={activeNavName}
+          setActiveNavName={setActiveNavName}
+        />
+        <NavItem
           title="Faqs"
-          link="/admin/dashboard/courses"
+          link="/admin/dashboard/faqs"
           icon={<FaQuestionCircle className="text-xl" />}
           name="faq"
           activeNavName={activeNavName}

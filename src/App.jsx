@@ -53,7 +53,21 @@ import Amount from './pages/dashboardAdmin/Amount';
 
 import Noticias from './pages/dashboardAdmin/Noticias';
 
+import AdminGalery from './pages/dashboardAdmin/galery/AdminGalery';
+
+
 import PageError from './pages/PageError';
+import AdminInstructors from './pages/dashboardAdmin/instructors/AdminInstructors';
+import AdminAddInstructor from './pages/dashboardAdmin/instructors/AdminAddInstructor';
+import AddNews from './pages/dashboardAdmin/news/AddNews';
+import AdminFaqs from './pages/dashboardAdmin/faqs/AdminFaqs';
+import AdminAddFaq from './pages/dashboardAdmin/faqs/AdminAddFaq';
+import AdminEditFaq from './pages/dashboardAdmin/faqs/AdminEditFaq';
+import AdminCompetence from './pages/dashboardAdmin/competence/AdminCompetence';
+import AdminAddCompetence from './pages/dashboardAdmin/competence/AdminAddCompetence';
+import AdminEditCompetence from './pages/dashboardAdmin/competence/AdminEditCompetence';
+import AdminSchedule from './pages/dashboardAdmin/schedule/AdminSchedule';
+import AdminAddSchedule from './pages/dashboardAdmin/schedule/AdminAddSchedule';
 
 function App() {
 
@@ -104,23 +118,35 @@ function App() {
               {/* private */}
 
               <Route path='/admin/dashboard' element={<HomeAdmin />} />
-              <Route path='/admin' element={<PageError
-                codigo={"403"}
-                error={"Acceso denegado"}
-                des={"No tienes acceso a esta pagina"}
-              />} />
-              <Route path='/admin/servidor' element={<PageError
-                codigo={"500"}
-                error={"Error del servidor"}
-                des={"Estamos teniendo problemas con el servidor"}
-              />} />
+
+
               <Route path='/admin/dashboard/courses' element={<CoursesAdmin />} />
               <Route path='/admin/dashboard/courses/curso-detail/:id' element={<CourseDetailA />} />
               <Route path='/admin/dashboard/membership' element={<Amount />} />
+
               <Route path='/admin/dashboard/noticias' element={<Noticias />} />
+              <Route path='/admin/dashboard/add-news' element={<AddNews />} />
+
+
+              <Route path='/admin/dashboard/instructors' element={<AdminInstructors />} />
+              <Route path='/admin/dashboard/add-instructor' element={<AdminAddInstructor />} />
+
+              <Route path='/admin/dashboard/galery' element={<AdminGalery />} />
+
+              <Route path='/admin/dashboard/faqs' element={<AdminFaqs />} />
+              <Route path='/admin/dashboard/add-faq' element={<AdminAddFaq />} />
+              <Route path='/admin/dashboard/edit-faq/:id' element={<AdminEditFaq />} />
 
               {/* 404 */}
               <Route path='/admin/dashboard/addCourse' element={<AddCourse />} />
+
+              <Route path='/admin/dashboard/competence' element={<AdminCompetence />} />
+              <Route path='/admin/dashboard/add-competence' element={<AdminAddCompetence />} />
+              <Route path='/admin/dashboard/edit-competence/:id' element={<AdminEditCompetence />} />
+
+              <Route path='/admin/dashboard/schedule' element={<AdminSchedule />} />
+              <Route path='/admin/dashboard/add-schedule' element={<AdminAddSchedule />} />
+
 
               {/* 404 */}
 
