@@ -12,7 +12,7 @@
   "dependencies": {
     "@marsidev/react-turnstile": "^0.5.2",
     "@material-tailwind/react": "^2.1.4",
-    "axios": "^1.6.2",
+    "axios": "^1.7.4",
     "braintree-web-drop-in": "^1.42.0",
     "html-react-parser": "^5.1.10",
     "query-string": "^9.0.0",
