@@ -1,45 +1,59 @@
-# Huejutla Delfines - Web
+README - Web (Huejutla Delfines Web)
+markdown
+Copiar código
+# 🏊‍♂️ Huejutla Delfines - Web
 
 ## Descripción
 
-Este proyecto es la aplicación web para la escuela de natación *Huejutla Delfines*. El objetivo es ofrecer una plataforma accesible para la gestión de inscripciones, horarios, entrenadores, y pagos en línea. La web está desarrollada con el stack MERN (MongoDB, Express, React, Node.js).
+Este proyecto es la versión web de la aplicación para la escuela de natación *Huejutla Delfines*. La aplicación permite la gestión de usuarios, clases, entrenadores, y pagos. Utiliza el stack MERN (MongoDB, Express, React, Node.js) para garantizar un funcionamiento robusto y eficiente.
 
-### Objetivos del Proyecto
-- Proveer una interfaz amigable para la gestión de clases de natación.
-- Facilitar el registro de usuarios y la inscripción a clases.
-- Implementar un sistema de reservas y pagos en línea.
+---
 
-### Metodología de Trabajo
-Este proyecto se gestionó bajo la metodología **Scrum**, con sprints quincenales para el desarrollo iterativo y la entrega continua de funcionalidades. Para el tracking de tareas y el seguimiento del equipo se utilizó **Jira**.
+## 📋 **Objetivos**
+- Facilitar la inscripción y administración de clases de natación.
+- Gestionar horarios y entrenadores en tiempo real.
+- Permitir el pago de membresías y cursos a través de la plataforma.
+- Ofrecer un historial de actividades y clases asistidas.
 
-## Control de Versiones
+## ⚙️ **Tecnologías Utilizadas**
+- **Frontend**: React.js con TailwindCSS.
+- **Backend**: Node.js, Express.js.
+- **Base de Datos**: MongoDB.
+- **Control de Versiones**: GitHub.
+- **Estrategia de Versionamiento**: GitFlow.
 
-Usamos **GitHub** como la herramienta principal de control de versiones. Todo el flujo de trabajo sigue la estrategia **Git Flow**, lo que permite una colaboración estructurada.
+---
 
-### Flujo de Trabajo
-- **Main**: rama principal y estable.
-- **Develop**: rama de desarrollo.
-- **Feature/bugfix**: ramas individuales para cada nueva característica o corrección.
-- **Release**: para preparar versiones de producción.
-- **Hotfix**: ramas para correcciones críticas en producción.
+## 🛠 **Instalación**
 
-## Estrategia de Versionamiento
+### Requisitos
+- Node.js >= 14.x
+- MongoDB
+- Git
 
-Se sigue la estrategia **Git Flow**, donde las ramas se manejan según el tipo de cambio:
-- Cada nueva funcionalidad o cambio se implementa en una rama `feature`.
-- Al finalizar una nueva funcionalidad, se fusiona en `develop` para pruebas.
-- Cuando se lanza una nueva versión estable, se fusiona en `main`.
+### Clonar el Repositorio
 
-## Despliegue
-
-### Entornos
-- **Desarrollo**: Ambiente de prueba con datos no reales.
-- **Producción**: Versión estable que está activa para los usuarios.
-
-Usamos una estrategia de despliegue **Rolling**, con **CI/CD** mediante GitHub Actions para integración continua. Esto permite aplicar actualizaciones sin interrumpir el servicio.
-
-## Instrucciones de Uso
-
-### Clonación del Repositorio
 ```bash
-git clone https://github.com/tuusuario/huejutladelfines-web.git
+git clone https://github.com/AlanOOP/HuejutlaDelfines_MERN_frontend.git
+Instalación de Dependencias
+bash
+Copiar código
+cd HuejutlaDelfines_MERN_frontend
+npm install
+Ejecutar el Proyecto
+bash
+Copiar código
+npm start
+🔀 Estrategia de Versionamiento
+Usamos GitFlow como estrategia de versionamiento, con las siguientes ramas principales:
+
+main: Versión estable en producción.
+develop: Integración de nuevas características.
+feature/*: Nuevas funcionalidades.
+release/*: Preparación de lanzamientos.
+Flujo de Trabajo
+Crear una nueva rama feature desde develop.
+Realizar los cambios y hacer commits.
+Fusionar la rama feature en develop y luego en main.
+🚀 Despliegue
+El despliegue se realiza en un entorno de producción con Netlify. Se utilizan tres entornos: desarrollo, staging, y producción, asegurando calidad en cada fase.
