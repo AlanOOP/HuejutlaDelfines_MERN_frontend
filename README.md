@@ -33,7 +33,7 @@ Este proyecto es la versión web de la aplicación para la escuela de natación 
 
 ### Clonar el Repositorio
 
-```bash
+### bash
 git clone https://github.com/AlanOOP/HuejutlaDelfines_MERN_frontend.git
 Instalación de Dependencias
 bash
@@ -44,16 +44,19 @@ Ejecutar el Proyecto
 bash
 Copiar código
 npm start
-🔀 Estrategia de Versionamiento
+
+### 🔀 Estrategia de Versionamiento
 Usamos GitFlow como estrategia de versionamiento, con las siguientes ramas principales:
 
 main: Versión estable en producción.
 develop: Integración de nuevas características.
 feature/*: Nuevas funcionalidades.
 release/*: Preparación de lanzamientos.
-Flujo de Trabajo
+
+### Flujo de Trabajo
 Crear una nueva rama feature desde develop.
 Realizar los cambios y hacer commits.
 Fusionar la rama feature en develop y luego en main.
-🚀 Despliegue
+
+# 🚀 Despliegue
 El despliegue se realiza en un entorno de producción con Netlify. Se utilizan tres entornos: desarrollo, staging, y producción, asegurando calidad en cada fase.
