@@ -68,6 +68,8 @@ import AdminAddCompetence from './pages/dashboardAdmin/competence/AdminAddCompet
 import AdminEditCompetence from './pages/dashboardAdmin/competence/AdminEditCompetence';
 import AdminSchedule from './pages/dashboardAdmin/schedule/AdminSchedule';
 import AdminAddSchedule from './pages/dashboardAdmin/schedule/AdminAddSchedule';
+import BlogDetail from './components/blog/BlogDetail';
+import PredictInstructor from './pages/dashboardInstructor/PredictInstructor';
 
 function App() {
 
@@ -92,6 +94,7 @@ function App() {
               <Route path='/about' element={<AboutMe />} />
               <Route path='/galeria' element={<Contacto />} />
               <Route path='/blog' element={<Blog />} />
+              <Route path='/blog-detail/:id' element={<BlogDetail />} />
               <Route path='/courses' element={<Courses />} />
               <Route path='/course-detail/:id' element={<ProductDetail />} />
               <Route path='/private-policy' element={<PrivatePolicy />} />
@@ -114,6 +117,8 @@ function App() {
               <Route path='/instructor/course/:id' element={< CourseInstructor />} />
               <Route path='/instructor/progress/:id' element={<StudentEvaluation />} />
               <Route path='/instructor/notifications' element={<Notifications />} />
+              <Route path='/instructor/predict' element={<PredictInstructor />} />
+
 
               {/* private */}
 

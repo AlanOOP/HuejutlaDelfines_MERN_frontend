@@ -10,6 +10,7 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState({});
 
+    console.log(user);
 
     const isAdmin = () => user.role === 2;
     const isInstructor = () => user.role === 1;
@@ -29,8 +30,10 @@ const AuthProvider = ({ children }) => {
             }
 
             try {
-                const { data } = await clienteAxios.get('/user/profile', config);
-                const { user } = data;
+                const response = await clienteAxios.get('/user/profile', config);
+               
+                const { user } = response.data;
+               
                 setUser(user);
                 setAuth({
                     token: token,

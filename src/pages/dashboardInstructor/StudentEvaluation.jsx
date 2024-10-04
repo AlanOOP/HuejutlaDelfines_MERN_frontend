@@ -27,6 +27,8 @@ const StudentEvaluation = () => {
         month: month
     });
 
+    console.log(evaluation);
+
 
     useEffect(() => {
         const getEvaluations = async () => {
@@ -37,7 +39,7 @@ const StudentEvaluation = () => {
                     month: month,
                     year: year
                 });
-                console.log(response.data);
+
                 setEvaluations(response.data);
                 setLoading(false);
             } catch (error) {
@@ -80,11 +82,14 @@ const StudentEvaluation = () => {
         try {
             const response = await clienteAxios.post(`/evaluation-create/${id}`, evaluation);
             console.log(response.data);
-            setEvaluations(response.data);
+            //resetear el formulario
+            setEvaluation(response.data);
+
             toast.success('Evaluación agregada');
+
         } catch (error) {
             console.log(error);
-            toast.error(error.response.data);
+            toast.error(error.response.data.message);
         }
     }
 
@@ -99,7 +104,7 @@ const StudentEvaluation = () => {
                     <div className="p-4">
                         {/* <p className="text-center">Aquí se mostrará la evaluación de los estudiantes</p> */}
                         <div className="flex flex-col justify-center items-center">
-                            <p className='text-center capitalize'>Alan Alexis Hernandez Francisco</p>
+                            {/* <p className='text-center capitalize'>Alan Alexis Hernandez Francisco</p> */}
                             {id}
                         </div>
                     </div>
@@ -117,7 +122,7 @@ const StudentEvaluation = () => {
                                     </label>
                                     <select
                                         id="trainingType"
-                                        value={evaluation.trainingType}
+                                        defaultValue={evaluation.trainingType}
                                         onChange={handleChange}
                                         name='trainingType'
                                         className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
@@ -136,7 +141,7 @@ const StudentEvaluation = () => {
                                     </label>
                                     <select
                                         id="date"
-                                        value={evaluation.date}
+                                        defaultValue={evaluation.date}
                                         onChange={handleChange}
                                         name='date'
                                         className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"

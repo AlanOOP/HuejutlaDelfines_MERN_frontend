@@ -32,14 +32,14 @@ const Sidebar = () => {
                 </div>
                 <hr />
                 <div
-                    onClick={(e) => navigate("/profile/progress")}
-                    className={`${location.pathname === "/profile/progress"
+                    onClick={(e) => navigate("/instructor/predict")}
+                    className={`${location.pathname === "/instructor/predict"
                         ? "border-r-4 border-yellow-700 bg-gray-200"
                         : ""
                         }  px-4 py-4 hover:bg-gray-200 cursor-pointer`}
                 >
                     <p>
-                        Progeso Estudiantes
+                        Predicciones de Estudiantes
                     </p>
                 </div>
                 <hr />
