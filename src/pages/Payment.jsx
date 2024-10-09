@@ -2,44 +2,81 @@ import React, { useEffect, useState } from 'react'
 import Layout from '../components/Layout';
 import { BiLeftArrowAlt } from "react-icons/bi";
 import { TbCheck } from "react-icons/tb";
-import useDelf from '../hooks/useDelf';
+import useAuth from '../hooks/useAuth';
 import clienteAxios from '../config/clientAxios';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import Spinner from '../components/Spinner';
+import { FaCcPaypal } from "react-icons/fa6";
 
 const Payment = () => {
 
-    const [user, setUser] = useState({});
-    console.log(user.email);
+    const { user } = useAuth();
+
+    const [client, setClient] = useState({})
+    const [course, setCourse] = useState({})
+    const [loading, setLoading] = useState(false);
+    const [payment, setPayment] = useState({});
+
+    const navigate = useNavigate();
+
+    const { id } = useParams();
 
     useEffect(() => {
-
-        const getPayment = async () => {
-            const token = localStorage.getItem('token');
-
-            if (!token) return;
-
+        const getClient = async () => {
             try {
-                const response = await clienteAxios.get('/user/profile', {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-
-                setUser(response.data.user); // Assign the response data to setUser
-
+                const { data } = await clienteAxios.get(`/student/user/${user._id}`);
+                setClient(data);
 
             } catch (error) {
                 console.log(error);
             }
         }
 
-        if (!user.email) {
-            getPayment();
+        const getCourse = async () => {
+            try {
+                const { data } = await clienteAxios.get(`/courses/${id}`);
+                setCourse(data);
+
+            } catch (error) {
+                console.log(error);
+            }
         }
 
-    }, [user.email]) // Add user.email as a dependency to run the effect only when it changes
+        if (user && user._id && !client.name) {
+            getClient();
+        }
+        getCourse();
+
+    }, [user, client.name])
 
 
+
+    const handlePayment = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+            const response = await clienteAxios.post('/create-order', {
+                id_student: client._id,
+                id_course: course._id,
+                amount: course.price
+            });
+
+            setLoading(false)
+
+            console.log(response)
+
+            if (response.status === 200) {
+                window.location.href = response.data.links[1].href;
+            }
+
+
+        } catch (error) {
+            toast.error(error.response.data);
+            setLoading(false)
+            console.log(error)
+        }
+    }
 
     return (
         <Layout>
@@ -61,20 +98,33 @@ const Payment = () => {
 
                                 <div className='md:flex flex-col md:items-center md:space-x-4'>
                                     <div className='flex ml-10 sm:flex-row flex-col'>
-                                        <img src="https://www.ccnatacion.com/wp-content/uploads/2023/11/entrenamiento-de-natacion.jpg" alt="" className='cursor-pointer md:h-20 md:w-20 object-cover object-center' />
-                                        <p className='tetx-lg md:ml-6 truncate font-bold'>
-                                            Curso de Natación
-                                        </p>
-                                        <p className='md:ml-6 font-semibold text-gray-600 text-md'>
-                                            Precio : $500.00
-                                        </p>
-                                        <p className='md:ml-6 font-semibold text-gray-600 text-md'>
-                                            Cantidad: 1
-                                        </p>
-                                        <p className='md:ml-6 font-semibold text-gray-600 text-md'>
-                                            Subtotal : $500.00
-                                        </p>
+                                        <img src={
+                                            course && course.image
+                                                ? `${import.meta.env.VITE_BACKEND_URL}/uploads/${course.image[0]}`
+                                                : 'https://via.placeholder.com/150'
+                                        }
+                                            alt="course"
+                                            className='w-20 h-20 md:w-48 md:h-44 rounded-sm'
+                                        />
+                                        <div>
+                                            <p className='tetx-lg md:ml-6 truncate font-bold'>
+                                                {course && course.title}
+                                            </p>
+                                            <p className='md:ml-6 font-semibold text-gray-600 text-md'>
+                                                $  {course && course.price}
+                                            </p>
+                                            <p className='md:ml-6 font-semibold text-gray-600 text-md'>
+                                                Cantidad: 1
+                                            </p>
+                                            <p className='md:ml-6 font-semibold text-gray-600 text-md'>
+                                                {
+                                                    course && course.cupos > 0 ? 'Disponible' : 'No Disponible'
+                                                }
+                                            </p>
+                                        </div>
+
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -89,13 +139,16 @@ const Payment = () => {
                             </h2>
                         </div>
 
-                        <form className='p-4 md:p-8'>
+                        <form
+                            onSubmit={handlePayment}
+                            className='p-4 md:p-8'
+                        >
                             <div className="flex flex-col py-2">
                                 <label htmlFor="nombre" className="pb-2">
-                                    {user && user.email}
+                                    Nombre:
                                 </label>
                                 <input
-                                    defaultValue={user && user.name}
+                                    defaultValue={client && client.name}
                                     type="text"
                                     id="nombre"
                                     className="border px-4 py-2"
@@ -107,7 +160,7 @@ const Payment = () => {
                                     Correo:
                                 </label>
                                 <input
-
+                                    defaultValue={user && user.email}
                                     type="text"
                                     id="correo"
                                     className="border px-4 py-2"
@@ -119,6 +172,7 @@ const Payment = () => {
                                     Dirección:
                                 </label>
                                 <input
+                                    defaultValue={'Huejutla de Reyes, Hidalgo, México'}
                                     type="text"
                                     id="address"
                                     className="border px-4 py-2"
@@ -130,6 +184,7 @@ const Payment = () => {
                                     Numero de Teléfono:
                                 </label>
                                 <input
+                                    defaultValue={client && client.phone}
                                     type="number"
                                     id="phone"
                                     className="border px-4 py-2"
@@ -140,12 +195,17 @@ const Payment = () => {
                             <div id="dropin-container"></div>
 
 
-                            <button
-                                className="w-full px-4 py-2 text-center text-white font-semibold cursor-pointer"
-                                style={{ background: "#303031" }}
-                            >
-                                Pagar
-                            </button>
+                            {
+                                !loading ?
+                                    (
+                                        <button
+                                            className="btn-action"
+                                        >
+                                            <FaCcPaypal className="w-6 h-6" />
+                                            <span>Pagar</span>
+                                        </button>
+                                    ) : <Spinner />
+                            }
                         </form>
                     </div>
                 </div>

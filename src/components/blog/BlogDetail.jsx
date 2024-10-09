@@ -1,41 +1,47 @@
+import Layout from "../Layout";
+import clienteAxios from "../../config/clientAxios";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import CommentsSection from "./CommentsSection";
 
-const BlogDetail = ({ item }) => {
 
-  const { id, tittle, image, date, description } = item;
+
+const BlogDetail = () => {
+
+  const { id } = useParams();
+
+  const [news, setNews] = useState({});
+
+  useEffect(() => {
+    const getNews = async () => {
+      try {
+        const response = await clienteAxios.get(`/news/${id}`);
+        setNews(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getNews();
+
+  }, [id]);
+
 
   return (
-    <div className=" flex">
-      <div className="max-w-3xl">
-        <div
-          className="m-4  rounded-sm bg-white p-6 shadow-lg ">
-          <div className="max-w-md">
-            <div
-              className="">
-              <img
-                src={image}
-                className="w-full object-cover object-center h-auto md:h-52 lg:h-48 xl:h-60 "
-                alt="Estilos de nado"
-                loading='lazy'
-              />
-            </div>
-            <div className="mt-5 space-y-3">
-              <p
-                className="mb-2 text-xl font-semibold text-neutral-800 capitalize">
-                {tittle}
-              </p>
-              <p
-                className="mb-0 font-semibold text-neutral-500 ">
-                Fecha: <span className="text-neutral-700 ">{date}</span>
-              </p>
-              <p
-                className="mb-6 font-light text-neutral-500 ">
-                {description}
-              </p>
-            </div>
-          </div>
+    <Layout>
+      <div className='container mx-auto my-10 max-w-3xl'>
+        <div className='flex justify-center'>
+          <h1 className='text-2xl font-bold text-dark-hard text-center mb-10 mt-10 px-2 py-2 border-[4px] border-yellow-400'>{news.title}</h1>
         </div>
+        <div className='flex justify-center'>
+          <img src={news.url} alt={news.title} className='w-1/3 h-1/3' />
+        </div>
+        <div className='flex justify-center'>
+          <p className='text-lg font-medium text-dark-hard text-center mt-10 px-8 py-2'>{news.content}</p>
+        </div>
+        <hr />
+        <CommentsSection id={id} />
       </div>
-    </div>
+    </Layout>
   )
 }
 

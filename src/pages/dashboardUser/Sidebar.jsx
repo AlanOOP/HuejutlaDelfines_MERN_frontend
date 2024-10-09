@@ -1,15 +1,15 @@
 
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
 
+  const navigate = useNavigate();
   const history = useNavigate();
   const location = useLocation();
 
   return (
     <div className="flex flex-col w-full space-y-4 md:w-3/12 font-medium">
       <div
-
         className="flex items-center space-x-2 bg-dark-hard rounded-sm shadow p-2 text-gray-100"
       >
 
@@ -24,30 +24,32 @@ const Sidebar = () => {
       </div>
       <div className="shadow  md:block w-full flex flex-col">
         <div
-          //onClick={(e) => history.push("/user/orders")}
-          className={`${location.pathname === "/user/orders"
+          onClick={(e) => navigate("/profile")}
+          className={`${location.pathname === "/profile"
             ? "border-r-4 border-yellow-700 bg-gray-200"
             : ""
             }  px-4 py-4 hover:bg-gray-200 cursor-pointer`}
         >
-          Progreso
+          Perfil
         </div>
         <hr />
         <div
-          //onClick={(e) => history.push("/user/profile")}
-          className={`${location.pathname === "/user/profile"
+          onClick={(e) => navigate("/profile/progress")}
+          className={`${location.pathname === "/profile/progress"
             ? "border-r-4 border-yellow-700 bg-gray-200"
             : ""
             }  px-4 py-4 hover:bg-gray-200 cursor-pointer`}
         >
-          Mi Cuenta
+          <p>
+            Progreso
+          </p>
         </div>
         <hr />
         <div
-          //onClick={(e) => history.push("/wish-list")}
+          onClick={(e) => navigate("/profile/payments")}
           className={` px-4 py-4 hover:bg-gray-200 cursor-pointer`}
         >
-          Mis Favoritos
+          Pagos
         </div>
         <hr />
         <div
@@ -70,7 +72,7 @@ const Sidebar = () => {
           Cerrar Sesión
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

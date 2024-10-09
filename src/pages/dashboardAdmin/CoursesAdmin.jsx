@@ -131,16 +131,12 @@ const CoursesAdmin = () => {
               <table className="table-auto border w-full my-2">
                 <thead>
                   <tr>
-                    <th className="px-4 py-2 border">Product</th>
-                    <th className="px-4 py-2 border">Description</th>
-                    <th className="px-4 py-2 border">Image</th>
-                    <th className="px-4 py-2 border">Status</th>
-                    <th className="px-4 py-2 border">Stock</th>
-                    <th className="px-4 py-2 border">Category</th>
-                    <th className="px-4 py-2 border">Offer</th>
-                    <th className="px-4 py-2 border">Created at</th>
-                    <th className="px-4 py-2 border">Updated at</th>
-                    <th className="px-4 py-2 border">Actions</th>
+                    <th className="px-4 py-2 border">Curso</th>
+                    <th className="px-4 py-2 border">Descripcion</th>
+                    <th className="px-4 py-2 border">Estado</th>
+                    <th className="px-4 py-2 border">Precio</th>
+                    <th className="px-4 py-2 border">Categoria</th>
+                    <th className="px-4 py-2 border">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -163,23 +159,18 @@ const CoursesAdmin = () => {
 
 const CourseTable = ({ course }) => {
 
-  const { title, description, image, active, category, offer, price, updatedAt, createdAt } = course;
+  const { title, description, image, active, category, offer, price, updatedAt, createdAt, _id } = course;
 
   return (
     <Fragment>
       <tr>
-        <td className="p-2 text-left">
-          {title}
+        <td className="p-2 text-left underline">
+          <Link to={`curso-detail/${_id}`}>
+            {title}
+          </Link>
         </td>
         <td className="p-2 text-left">
           {description}
-        </td>
-        <td className="p-2 text-center">
-          <img
-            className="w-12 h-12 object-cover object-center"
-            src={`${import.meta.env.VITE_BACKEND_URL}/uploads/${image[0]}`}
-            alt="pic"
-          />
         </td>
         <td className="p-2 text-center">
           {active ? (
@@ -195,13 +186,8 @@ const CourseTable = ({ course }) => {
         </td>
         <td className="p-2 text-center"> ${price} </td>
         <td className="p-2 text-center"> {category} </td>
-        <td className="p-2 text-center"> {offer}% </td>
-        <td className="p-2 text-center">
-          {createdAt.slice(0, 10)}
-        </td>
-        <td className="p-2 text-center">
-          {updatedAt.slice(0, 10)}
-        </td>
+
+
         <td className="p-2 flex items-center justify-center">
           <span
             // onClick={(e) => editProduct(product._id, product, true)}
