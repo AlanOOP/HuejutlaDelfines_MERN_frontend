@@ -23,7 +23,7 @@ const Notifications = () => {
         }
 
         try {
-            const response = await clienteAxios.post('/notification', notification);
+            const response = await clienteAxios.put('/notification', notification);
 
             if (response.status === 200) {
                 toast.success('Notificación creada');
