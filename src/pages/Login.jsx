@@ -14,8 +14,7 @@ import { toast } from 'react-hot-toast';
 import Breadcrumb from '../components/Breadcrumb';
 import { IoIosEyeOff } from "react-icons/io";
 import { Turnstile } from '@marsidev/react-turnstile'
-
-
+import Spinner from '../components/Spinner';
 
 
 const Login = () => {
@@ -27,6 +26,7 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const togglePassword = () => setShowPassword(!showPassword);
     const [attempt, setAttempt] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     const [user, setUser] = useState({
         email: '',
@@ -52,28 +52,34 @@ const Login = () => {
             return false;
         }
 
-        if (!isPassword(user.password)) {
-            toast.error('La contraseña no es valida')
-            return false;
-        }
+        // if (!isPassword(user.password)) {
+        //     toast.error('La contraseña no es valida')
+        //     return false;
+        // }
         return true;
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!isValidated()) return;
+        setLoading(true);
+        if (!isValidated()) {
+            setLoading(false);
+            return;
+        };
         try {
             const response = await clienteAxios.post('/singUp', user);
-            // console.log(response.data);
+
 
             const { token, role } = response.data.user;
+            setLoading(false);
 
             setAuth({
                 token: token,
                 auth: true,
             });
             localStorage.setItem('token', token);
-            console.log(token);
+            localStorage.setItem('role', role);
+
 
             toast.success('Bienvenido a Huejutla Delfines');
 
@@ -82,6 +88,7 @@ const Login = () => {
             }, 3000);
 
         } catch (error) {
+            setLoading(false);
             toast.error(error.response.data);
             setAttempt(attempt + 1);
         }
@@ -175,14 +182,20 @@ const Login = () => {
                                 </label>
                             </div>
                             <div>
-                                <Link to='/olvide-password' className="font-medium text-blue-600">Recuperar Contraseña?</Link>
+                                <Link to='/recover-password' className="font-medium text-blue-600">Recuperar Contraseña?</Link>
                             </div>
                         </div>
-                        <button className="btn-action">
-                            <IoLogIn className="w-6 h-6" />
-                            <span>Login</span>
-                        </button>
-                        {/* <Spinner /> */}
+                        {
+                            !loading ? (
+                                <button
+                                    type="submit"
+                                    className="btn-action"
+                                >
+                                    <IoLogIn className="w-6 h-6" />
+                                    <span>Iniciar Sesión</span>
+                                </button>
+                            ) : <Spinner />
+                        }
                         <p className="text-center">Aún no tienes cuenta?
                             <Link
                                 to='/register'

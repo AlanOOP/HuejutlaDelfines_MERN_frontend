@@ -11,12 +11,9 @@ const NavItem = ({
 }) => {
     return (
         <NavLink
-            to={link}
-            className={`${name === activeNavName
-                    ? "font-bold text-primary"
-                    : "font-semibold text-[#A5A5A5]"
-                } flex items-center gap-x-2 py-2 text-lg`}
             onClick={() => setActiveNavName(name)}
+            to={link}
+            className={({ isActive }) => `flex items-center gap-2 py-2 px-4 text-gray-600 hover:bg-gray-100 hover:text-gray-800 transition-colors duration-300 ${isActive ? "font-bold text-primary" : "font-semibold text-[#A5A5A5]"} `}
         >
             {icon}
             {title}
@@ -25,3 +22,4 @@ const NavItem = ({
 };
 
 export default NavItem;
+

@@ -5,6 +5,7 @@ import useAuth from '../hooks/useAuth';
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
+import { Navigate } from 'react-router-dom';
 import useDelf from '../hooks/useDelf';
 
 
@@ -14,7 +15,7 @@ const navItemsInfo = [
   { name: "Cursos", type: "link", href: "/courses" },
   { name: "Blog", type: "link", href: "/blog" },
   { name: "Acerca de", type: "link", href: "/about" },
-  { name: "Galeria", type: "link", href: "/galeria" },
+  { name: "Galería", type: "link", href: "/galeria" },
 ];
 
 const NavItem = ({ item }) => {
@@ -30,11 +31,11 @@ const NavItem = ({ item }) => {
     <li className="relative group">
       {item.type === "link" ? (
         <>
-          <Link to={item.href} className="px-4 py-2">
+          <Link to={item.href} className="px-4 py-2 text-slate-700">
             {item.name}
           </Link>
-          <span className="cursor-pointer text-blue-500 absolute transition-all duration-500 font-bold right-0 top-0 group-hover:right-[90%] opacity-0 group-hover:opacity-100">
-            /
+          <span className="cursor-pointer text-blue-800 absolute transition-all duration-500 font-bold right-0 top-0 group-hover:right-[90%] opacity-0 group-hover:opacity-100">
+            //
           </span>
         </>
       ) : (
@@ -75,7 +76,7 @@ const Header = () => {
 
   const [navIsVisible, setNavIsVisible] = useState(false);
   // const userState = useSelector((state) => state.user);
-  const { auth, setAuth } = useAuth();
+  const { auth, setAuth, isAdmin, isInstructor, isUser } = useAuth();
   const { darkMode, setDarkMode } = useDelf();
 
   const [profileDrowpdown, setProfileDrowpdown] = useState(false);
@@ -92,12 +93,15 @@ const Header = () => {
       token: '',
       auth: false,
     });
-    navigate('/login');
+
+    localStorage.removeItem('token');
+
+    navigate('/');
   };
 
   return (
     <section
-      className={`${darkMode ? "bg-gradient-to-tr from-slate-500 to-sky-900" : "bg-white"} sticky top-0 left-0 right-0 z-50 shadow-md `}
+      className={`${darkMode ? "bg-gradient-to-tr from-slate-500 to-sky-900" : "bg-white"} sticky top-0 left-0 right-0 z-50 shadow-md bg-gradient-to-bl from-blue-400 to-blue-200`}
     >
       <header className="container mx-auto px-5 flex justify-between py-4 items-center">
         <Link to="/">
@@ -136,12 +140,12 @@ const Header = () => {
                 <div className="relative group">
                   <div className="flex flex-col items-center">
                     {/* <button
-                  className="flex gap-x-1 items-center mt-5 lg:mt-0 border-2 border-blue-500 px-6 py-2 rounded-md text-blue-500 font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300"
+                className="flex gap-x-1 items-center mt-5 lg:mt-0 border-2 border-blue-500 px-6 py-2 rounded-md text-blue-500 font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300"
 
-                >
-                  <span>Cuenta</span>
-                  <MdKeyboardArrowDown />
-                </button> */}
+              >
+                <span>Cuenta</span>
+                <MdKeyboardArrowDown />
+              </button> */}
                     <img
                       className="w-10 h-10 rounded-full cursor-pointer"
                       src="https://cloudfront-us-east-1.images.arcpublishing.com/gruponacion/R52P6MRMR5DIFNOPRDODMV23WQ.jpg" alt="Rounded avatar"
@@ -153,21 +157,42 @@ const Header = () => {
                     >
                       <ul className="bg-dark-soft lg:bg-transparent text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
 
-                        <button
-                          onClick={() => navigate("/admin/dashboard")}
-                          type="button"
-                          className="hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft"
-                        >
-                          Admin Dashboard
-                        </button>
+                        {
+                          isAdmin &&
+                          <button
+                            onClick={() => navigate("/admin/dashboard")}
+                            type="button"
+                            className="hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft"
+                          >
+                            Admin Dashboard
+                          </button>
 
-                        <button
-                          onClick={() => navigate("/profile")}
-                          type="button"
-                          className="hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft"
-                        >
-                          Perfil
-                        </button>
+                        }
+
+                        {
+                          isUser &&
+                          (
+                            <button
+                              onClick={() => navigate("/profile")}
+                              type="button"
+                              className="hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft"
+                            >
+                              Perfil
+                            </button>
+                          )
+                        }
+                        {
+                          isInstructor &&
+                          (
+                            <button
+                              onClick={() => navigate("/instructor/dashboard")}
+                              type="button"
+                              className="hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft"
+                            >
+                              Instructor Dashboard
+                            </button>
+                          )
+                        }
                         <button
                           onClick={logoutHandler}
                           type="button"

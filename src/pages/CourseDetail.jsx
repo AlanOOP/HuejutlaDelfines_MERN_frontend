@@ -3,15 +3,19 @@ import { Rating } from "@material-tailwind/react";
 import Layout from '../components/Layout';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import useAuth from '../hooks/useAuth';
 import clienteAxios from '../config/clientAxios';
 import Spinner from '../components/Spinner';
 
 const CourseDetail = () => {
 
+  const { user } = useAuth();
   const { id } = useParams();
 
   const [course, setCourse] = useState([])
   const [loading, setLoading] = useState(false)
+
+  console.log(user._id)
 
   useEffect(() => {
     const getCourse = async () => {
@@ -156,12 +160,21 @@ const CourseDetail = () => {
             </div> */}
                 <div className="mb-6 "></div>
 
-                <div className="flex gap-4 mb-6">
-                  <Link
-                    to='/checkout'
-                    className="w-full py-3 font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center">
-                    Inscribete Ahora
-                  </Link>
+                <div className="flex gap-4 mb-6 ">
+
+                  {
+                    user._id ?
+                      <Link
+                        to={`/checkout/${course._id}`}
+                        className="w-full py-3 font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center">
+                        Inscribete Ahora
+                      </Link> : <Link
+                        to='/login'
+                        className="w-full py-3 font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center capitalize">
+                        Inicia sesion para inscribirte
+                      </Link>
+                  }
+
                 </div>
               </div>
             </div>

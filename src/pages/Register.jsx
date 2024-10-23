@@ -182,6 +182,7 @@ const Register = () => {
       }
 
     } catch (error) {
+      setLoading(false)
       // console.error(error)
     }
   }
@@ -374,7 +375,7 @@ const Register = () => {
                 </label>
               </div>
               <div>
-                <Link to="/olvide-password" className="font-medium text-blue-600">Recuperar Contraseña?</Link>
+                <Link to="/recover-password" className="font-medium text-blue-600">Recuperar Contraseña?</Link>
               </div>
             </div>
 

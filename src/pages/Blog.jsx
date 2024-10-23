@@ -1,38 +1,55 @@
 
-// import { Link } from 'react-router-dom'
-import Layout from '../components/Layout';
-// import BlogDetail from '../components/blog/BlogDetail';
-// import CourseCard from '../components/CourseCard';
+import { useEffect, useState } from "react"
+import BlogCard from "../components/home/BlogCard"
+import clienteAxios from "../config/clientAxios";
 
 const Blog = () => {
+
+  const [news, setNews] = useState([]);
+
+  useEffect(() => {
+    const getNews = async () => {
+      try {
+        const response = await clienteAxios.get('/news');
+        setNews(response.data);
+      
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getNews();
+  }, [])
+
   return (
-    <Layout>
-      <section className=" px-5 py-10">
-        <div className="flex-col gap-5 p-5 md:col-span-2 bg-blue-500 text-slate-100 flex  justify-center items-center md:flex-row">
+    <div className='flex flex-col my-10 bg-slate-200'>
+      {/* badge */}
 
-          <div>
-            <h1 className="text-3xl text-center font-extrabold md:text-4xl lg:text-5xl xl:text-6xl bg-opacity-10  rounded py-2">
-              Noticias
-            </h1>
-          </div>
+      <div className='flex justify-center'>
+        <h3 className='text-5xl font-bold text-dark-hard text-center mb-10 mt-10 px-8 py-2 border-[8px] border-yellow-400'>Noticias </h3>
+      </div>
 
-        </div>
+      <div className='flex container mx-auto justify-start'>
+        <span className="bg-blue-100 text-blue-800 text-md mx-2 font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
+          Las más recientes:
+        </span>
+      </div>
+
+      <div className='sm:mx-14 mx-2 sm:grid grid-cols-3 gap-x-4 gap-y-5 pb-10 flex flex-wrap'>
+
+        {
+          news.map((item) => (
+            <BlogCard
+              key={item.id}
+              item={item}
+            />
+          ))
+        }
+
+      </div>
 
 
-        <div className='flex items-center justify-center'>
-          <div className=' mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-5 gap-y-5 pb-10  mt-5'>
+    </div>
 
-            {/* <BlogDetail />
-            <BlogDetail />
-            <BlogDetail />
-            <BlogDetail /> */}
-
-          </div>
-        </div>
-
-
-      </section>
-    </Layout>
   )
 }
 
