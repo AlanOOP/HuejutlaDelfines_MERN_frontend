@@ -1,0 +1,39 @@
+name: Puppeteer Screenshot
+
+on: [push, pull_request]
+
+jobs:
+  puppeteer:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install Puppeteer
+      run: npm install puppeteer
+
+    - name: Run Puppeteer Script
+      run: |
+        node -e "
+        const puppeteer = require('puppeteer');
+        (async () => {
+          const browser = await puppeteer.launch();
+          const page = await browser.newPage();
+          await page.goto('https://huejutla-delfines.netlify.app/', { waitUntil: 'networkidle2' });
+          await page.screenshot({ path: 'screenshot.png', fullPage: true });
+          console.log('Screenshot taken');
+          await browser.close();
+        })();
+        "
+
+    - name: Upload Screenshot
+      uses: actions/upload-artifact@v3
+      with:
+        name: screenshot
+        path: screenshot.png

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -71,7 +71,60 @@ import AdminAddSchedule from './pages/dashboardAdmin/schedule/AdminAddSchedule';
 import BlogDetail from './components/blog/BlogDetail';
 import PredictInstructor from './pages/dashboardInstructor/PredictInstructor';
 
+
+// Función para solicitar permisos de notificación
+async function askNotificationPermission() {
+  const permission = await Notification.requestPermission();
+  if (permission === 'granted') {
+    console.log('Permiso concedido para notificaciones');
+    subscribeUser();  // Llama a la suscripción si los permisos son concedidos
+  } else {
+    console.log('Permiso denegado');
+  }
+}
+
+// Función para suscribir al usuario a las notificaciones
+async function subscribeUser() {
+  const registration = await navigator.serviceWorker.ready;
+  const subscription = await registration.pushManager.subscribe({
+    userVisibleOnly: true,
+    applicationServerKey: urlBase64ToUint8Array('BFqF9D2BByNesBz3cMr77s8MXdLNbdHYW-gYNwGNEWMMFE9OFAsOfTnvjFTt2AaA0sf82ld1cuuByeVB2JgaWio')
+  });
+
+  // Enviar la suscripción al backend
+  await fetch('http://localhost:3000/api/subscribe', {
+    method: 'POST',
+    body: JSON.stringify(subscription),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(data => console.log('Suscripción enviada al backend:', data))
+    .catch(error => console.error('Error al enviar la suscripción:', error));
+}
+
+// Convertir clave VAPID de base64 a Uint8Array
+function urlBase64ToUint8Array(base64String) {
+  const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+  const rawData = window.atob(base64);
+  return new Uint8Array([...rawData].map(char => char.charCodeAt(0)));
+}
+
 function App() {
+
+  useEffect(() => {
+    // Registrar el Service Worker y solicitar permisos
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/pushNotification.js')
+        .then(registration => {
+          console.log('Service Worker registrado:', registration);
+          askNotificationPermission();  // Solicitar permisos aquí
+        })
+        .catch(error => console.error('Error al registrar el Service Worker:', error));
+    }
+  }, []);
 
   return (
     <>
