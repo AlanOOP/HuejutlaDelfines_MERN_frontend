@@ -1,10 +1,6 @@
 import { useState } from 'react'
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
-
 import ScrollTop from './utils/ScrollTop';
-
 import HomePage from './pages/HomePage';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -35,8 +31,11 @@ import AdminLayout from './pages/dashboardAdmin/layout/AdminLayout';
 import HomeAdmin from './components/admin/HomeAdmin';
 
 import CoursesAdmin from './pages/dashboardAdmin/CoursesAdmin';
+import Instructor from './pages/dashboardAdmin/Instructor';
 import AddCourse from './pages/dashboardAdmin/AddCourse';
+import AddInstructor from './pages/dashboardAdmin/AddInstructor';
 import PageError from './pages/PageError';
+import FaqsAdmin from './pages/dashboardAdmin/FaqsAdmin';
 
 function App() {
 
@@ -74,6 +73,7 @@ function App() {
               {/* private */}
 
               <Route path='/admin/dashboard' element={<HomeAdmin />} />
+            
               <Route path='/admin' element={<PageError
                 codigo={"403"}
                 error={"Acceso denegado"}
@@ -86,7 +86,9 @@ function App() {
               />} />
               <Route path='/admin/dashboard/courses' element={<CoursesAdmin />} />
               <Route path='/admin/dashboard/addCourse' element={<AddCourse />} />
-
+              <Route path='/admin/dashboard/intructor' element={<Instructor />} />
+              <Route path='/admin/dashboard/addInstructor' element={<AddInstructor />} />
+           
               {/* 404 */}
 
               <Route path='*' element={<Page404 />} />

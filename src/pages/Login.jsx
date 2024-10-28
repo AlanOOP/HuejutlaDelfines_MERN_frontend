@@ -167,7 +167,7 @@ const Login = () => {
                             }
                         </div>
 
-                        <div clascosName="flex flex-row justify-between">
+                        <div className="flex flex-row justify-between">
                             <div>
                                 <label htmlFor="remember" className="">
                                     <input type="checkbox" id="remember" className="w-4 h-4 border-slate-200 focus:bg-blue-600" />

@@ -11,6 +11,7 @@ const AddCourse = () => {
     const navigate = useNavigate();
 
     const [instructors, setInstructors] = useState([]);
+    
     const [course, setCourse] = useState({
         title: '',
         description: '',

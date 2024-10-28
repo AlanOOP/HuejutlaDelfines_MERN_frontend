@@ -51,7 +51,7 @@ const AdminSidebar = () => {
 
         <NavItem
           title="Instructores"
-          link="/admin/dashboard/courses"
+          link="/admin/dashboard/intructor"
           icon={<FaChalkboardTeacher className="text-xl" />}
           name="instructors"
           activeNavName={activeNavName}
@@ -77,9 +77,9 @@ const AdminSidebar = () => {
 
         <NavItem
           title="Faqs"
-          link="/admin/dashboard/courses"
+          link="/admin/dashboard/faqs"
           icon={<FaQuestionCircle className="text-xl" />}
-          name="faq"
+          name="faqs"
           activeNavName={activeNavName}
           setActiveNavName={setActiveNavName}
         />
