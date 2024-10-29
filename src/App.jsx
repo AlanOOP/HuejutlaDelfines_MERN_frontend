@@ -92,7 +92,7 @@ async function subscribeUser() {
   });
 
   // Enviar la suscripción al backend
-  await fetch('http://localhost:3000/api/subscribe', {
+  await fetch('https://huejutla-delfines-mern-backend.vercel.app/api/subscribe', {
     method: 'POST',
     body: JSON.stringify(subscription),
     headers: {
