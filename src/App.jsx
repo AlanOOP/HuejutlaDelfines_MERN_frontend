@@ -118,6 +118,7 @@ function App() {
   useEffect(() => {
     // Registrar el Service Worker y solicitar permisos
     if ('serviceWorker' in navigator) {
+      console.log('Service Worker disponible de notificaciones push');
       navigator.serviceWorker.register('/pushNotification.js')
         .then(registration => {
           console.log('Service Worker registrado:', registration);
