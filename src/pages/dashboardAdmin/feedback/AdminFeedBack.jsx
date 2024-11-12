@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AdminLayout from '../layout/AdminLayout';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
 import clienteAxios from '../../../config/clientAxios';
 
 const AdminFeedBack = () => {
@@ -45,6 +45,15 @@ const AdminFeedBack = () => {
         getFeedback();
     }, []);
 
+    // Asignar colores específicos a cada tipo de feedback
+    const colorMap = {
+        'Muy Fácil': '#10b981',  // Verde
+        'Fácil': '#3b82f6',      // Verde claro
+        'Regular': '#f59e0b',    // Amarillo
+        'Difícil': '#f97316',    // Naranja
+        'Muy Difícil': '#ef4444' // Rojo
+    };
+
     return (
         <AdminLayout>
             <section className='my-10'>
@@ -59,7 +68,11 @@ const AdminFeedBack = () => {
                     <YAxis label={{ value: 'Cantidad', angle: -90, position: 'insideLeft', dx: -10 }} />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="count" fill="#8884d8" name="Cantidad de Feedbacks" />
+                    <Bar dataKey="count" name="Cantidad de Feedbacks">
+                        {data.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={colorMap[entry.label]} />
+                        ))}
+                    </Bar>
                 </BarChart>
             </ResponsiveContainer>
         </AdminLayout>

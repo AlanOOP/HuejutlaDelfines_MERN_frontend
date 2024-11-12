@@ -1,9 +1,11 @@
 import LayoutUser from './dashboardUser/LayoutUser';
 import useAuth from '../hooks/useAuth';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import clienteAxios from '../config/clientAxios';
 import { toast } from 'react-hot-toast';
 import { questions } from '../constants/app';
+import Webcam from 'react-webcam';
+import { FaCamera } from "react-icons/fa";
 
 
 const Profile = () => {
@@ -15,7 +17,16 @@ const Profile = () => {
     answer: ''
   })
 
+  const [isCameraOpen, setIsCameraOpen] = useState(false);
+  const [avatar, setAvatar] = useState(user.avatar);
+  const webcamRef = useRef(null);
 
+  // Configuración para el componente de Webcam
+  const videoConstraints = {
+    width: 300,
+    height: 300,
+    facingMode: "user",
+  };
 
   console.log(secretQuestion);
 
@@ -76,6 +87,30 @@ const Profile = () => {
 
   }
 
+  const handleCapture = async () => {
+    if (webcamRef.current) {
+      // Toma la foto y obtiene la imagen en base64
+      const imageSrc = webcamRef.current.getScreenshot();
+      setAvatar(imageSrc);
+      setIsCameraOpen(false);
+
+      // Convierte la imagen base64 a un Blob
+      const response = await fetch(imageSrc);
+      const blob = await response.blob();
+      // Crea el FormData para enviar al backend
+      const formData = new FormData();
+      formData.append('img', blob, 'avatar.jpg');
+
+      try {
+        // Realiza la petición al backend
+        const response = await clienteAxios.post(`/user/avatar/${user._id}`, formData);
+        console.log("Avatar actualizado:", response.data);
+      } catch (error) {
+        console.error("Error al subir el avatar:", error);
+      }
+    }
+  };
+
   return (
     <LayoutUser>
       <section className="flex flex-col w-full my-4 md:my-0 md:w-9/12 md:px-8">
@@ -84,6 +119,37 @@ const Profile = () => {
             Información Personal
           </h1>
           <hr />
+
+          <div className="flex flex-col items-center">
+            {/* Mostrar el avatar o la vista de la cámara */}
+            {isCameraOpen ? (
+              <Webcam
+                audio={false}
+                ref={webcamRef}
+                screenshotFormat="image/jpeg"
+                videoConstraints={videoConstraints}
+                className="w-32 h-32 rounded-full object-cover"
+              />
+            ) : (
+              <img
+                src={user.avatar}
+                alt="avatar"
+                className="w-32 h-32 rounded-full object-cover"
+              />
+            )}
+
+            {/* Botón para tomar la foto o abrir la cámara */}
+            <button onClick={() => setIsCameraOpen(!isCameraOpen)} className="mt-2">
+              <FaCamera className="h-6 w-6 text-slate-600" />
+            </button>
+
+            {/* Mostrar el botón de captura solo si la cámara está abierta */}
+            {isCameraOpen && (
+              <button onClick={handleCapture} className="mt-2 bg-blue-500 text-white px-4 py-2 rounded">
+                Tomar Foto
+              </button>
+            )}
+          </div>
           <form
             onSubmit={handleProfile}
             className="py-4 px-4 md:px-8 lg:px-16 flex flex-col space-y-4"
