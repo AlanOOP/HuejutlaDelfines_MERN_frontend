@@ -70,6 +70,7 @@ import AdminSchedule from './pages/dashboardAdmin/schedule/AdminSchedule';
 import AdminAddSchedule from './pages/dashboardAdmin/schedule/AdminAddSchedule';
 import BlogDetail from './components/blog/BlogDetail';
 import PredictInstructor from './pages/dashboardInstructor/PredictInstructor';
+import AdminFeedBack from './pages/dashboardAdmin/feedback/AdminFeedBack';
 
 
 // Función para solicitar permisos de notificación
@@ -204,6 +205,7 @@ function App() {
 
               <Route path='/admin/dashboard/schedule' element={<AdminSchedule />} />
               <Route path='/admin/dashboard/add-schedule' element={<AdminAddSchedule />} />
+              <Route path='/admin/dashboard/feedback' element={<AdminFeedBack />} />
 
 
               {/* 404 */}

@@ -100,6 +100,14 @@ const AdminSidebar = () => {
           activeNavName={activeNavName}
           setActiveNavName={setActiveNavName}
         />
+        <NavItem
+          title="Feedback"
+          link="/admin/dashboard/feedback"
+          icon={<FaQuestionCircle className="text-xl" />}
+          name="faq"
+          activeNavName={activeNavName}
+          setActiveNavName={setActiveNavName}
+        />
 
       </div>
 
